@@ -108,7 +108,7 @@ small, .small-text {
 }
 
 /* Global Cursor Styles for Interactive Elements */
-a, button, .punk-sticker, .project-card, .mode-toggle, .logo, .toggle-switch, .footer-icon, .about-panel, .normal-project-card, .normal-button, .contact-link, .photo-placeholder-frame, .back-link, [role="button"] {
+a, button, .punk-sticker, .project-card, .logo, .footer-icon, .about-panel, .normal-project-card, .normal-button, .contact-link, .photo-placeholder-frame, .back-link, [role="button"] {
     cursor: pointer !important;
 }
 
@@ -546,10 +546,6 @@ body.fun-mode-active .nav-links a {
 body.fun-mode-active .nav-links a:hover {
     color: var(--hot-pink);
     transform: scale(1.1);
-}
-
-body.fun-mode-active .mode-toggle-label {
-    color: var(--black);
 }
 
 /* ========================================

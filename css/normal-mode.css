@@ -38,7 +38,6 @@ body:not(.fun-mode-active):has(.normal-mode.active) .footer-icon *,
 body:not(.fun-mode-active):has(.normal-mode.active) .project-card,
 body:not(.fun-mode-active):has(.normal-mode.active) .logo,
 body:not(.fun-mode-active):has(.normal-mode.active) .logo *,
-body:not(.fun-mode-active):has(.normal-mode.active) .toggle-switch,
 body:not(.fun-mode-active):has(.normal-mode.active) [role="button"] {
     cursor: pointer !important;
 }
