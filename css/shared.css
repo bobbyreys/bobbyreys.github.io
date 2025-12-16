@@ -186,54 +186,84 @@ nav {
     opacity: 0.7;
 }
 
-/* Mode Toggle */
-.mode-toggle-container {
+/* Mode Icon Button */
+.mode-icon-button {
+    background: none;
+    border: none;
+    color: var(--black);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
     display: flex;
     align-items: center;
-    gap: 12px;
-}
-
-.mode-toggle-label {
-    color: #999999;
-    font-size: 16px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    transition: color 0.2s ease;
-}
-
-.toggle-switch {
-    width: 48px;
-    height: 26px;
-    background: #d1d1d1;
-    border-radius: 13px;
+    justify-content: center;
+    transition: transform 0.3s ease, color 0.2s ease;
     position: relative;
-    cursor: pointer;
-    transition: all 0.2s ease;
 }
 
-.toggle-switch:hover {
-    background: #bbbbbb;
+.mode-icon-button:hover {
+    transform: scale(1.1);
+    opacity: 0.7;
 }
 
-.toggle-knob {
-    width: 22px;
-    height: 22px;
-    background: white;
-    border-radius: 50%;
+.mode-icon-button i {
+    transition: transform 0.3s ease;
+}
+
+.mode-icon-button.rotating i {
+    transform: rotate(180deg);
+}
+
+/* Tooltip - Desktop Only */
+.mode-icon-button::after {
+    content: attr(data-tooltip);
     position: absolute;
-    top: 2px;
-    left: 2px;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--black);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 1000;
 }
 
-.toggle-switch.active {
-    background: var(--hot-pink);
+.mode-icon-button::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid var(--black);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 1001;
 }
 
-.toggle-switch.active .toggle-knob {
-    left: 24px;
-    background: var(--neon-green);
+@media (min-width: 769px) {
+    .mode-icon-button:hover::after,
+    .mode-icon-button:hover::before {
+        opacity: 1;
+    }
+}
+
+/* Play Mode - Colorful Palette Icon */
+body.fun-mode-active .mode-icon-button {
+    color: var(--hot-pink);
+}
+
+body.fun-mode-active .mode-icon-button:hover {
+    color: var(--neon-green);
+    transform: scale(1.15);
 }
 
 /* ========================================
@@ -583,32 +613,31 @@ body.fun-mode-active .mode-toggle-label {
 
     .nav-container {
         padding: 0 20px;
-        flex-direction: column;
-        gap: 12px;
+        flex-direction: row;
+        gap: 16px;
         align-items: center;
+        justify-content: space-between;
     }
 
     .logo {
         margin-bottom: 0;
+        flex-shrink: 0;
     }
 
     .logo-image {
-        height: 32px;
+        height: 28px;
     }
 
     .nav-right {
-        width: 100%;
         flex-direction: row;
         gap: 16px;
         align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
+        flex-shrink: 0;
     }
 
     .nav-links {
         display: flex;
-        gap: 20px;
-        justify-content: center;
+        gap: 16px;
         flex-wrap: nowrap;
         flex-shrink: 0;
     }
@@ -617,33 +646,8 @@ body.fun-mode-active .mode-toggle-label {
         font-size: 15px;
     }
 
-    .mode-toggle-container {
-        gap: 8px;
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-    }
-
-    .mode-toggle-label {
-        font-size: 15px;
-        white-space: nowrap;
-    }
-
-    .toggle-switch {
-        width: 40px;
-        height: 22px;
-        flex-shrink: 0;
-    }
-
-    .toggle-knob {
-        width: 18px;
-        height: 18px;
-        top: 2px;
-        left: 2px;
-    }
-
-    .toggle-switch.active .toggle-knob {
-        left: 18px;
+    .mode-icon-button {
+        font-size: 18px;
     }
 
     /* Fun mode nav adjustments for mobile */

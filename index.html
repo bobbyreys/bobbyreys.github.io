@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/shared.css">
     <link rel="stylesheet" href="css/normal-mode.css">
     <link rel="stylesheet" href="css/fun-mode.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="js/shared.js"></script>
     <style>
         /* ========================================
@@ -893,12 +894,13 @@
                         <li><a href="about-me.html">About</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
-                    <div class="mode-toggle-container">
-                        <span class="mode-toggle-label">Play Mode</span>
-                        <div class="toggle-switch" id="toggle-switch" onclick="toggleFunMode()">
-                            <div class="toggle-knob"></div>
-                        </div>
-                    </div>
+                    <button class="mode-icon-button"
+                            id="mode-toggle-btn"
+                            onclick="toggleFunMode()"
+                            aria-label="Switch to Play Mode"
+                            data-tooltip="Play Mode">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </button>
                 </div>
             </div>
         </nav>

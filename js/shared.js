@@ -9,26 +9,43 @@ let transitionCleanupTimeouts = [];
 
 function toggleFunMode() {
     const body = document.body;
-    const toggleSwitches = document.querySelectorAll('.toggle-switch');
-    const toggleLabels = document.querySelectorAll('.mode-toggle-label');
+    const modeButtons = document.querySelectorAll('.mode-icon-button');
 
-    if (toggleSwitches.length === 0 || toggleLabels.length === 0) return;
+    if (modeButtons.length === 0) return;
 
     body.classList.toggle('fun-mode-active');
+    const isFunMode = body.classList.contains('fun-mode-active');
 
-    // Update all toggle switches on the page
-    toggleSwitches.forEach(toggle => {
-        toggle.classList.toggle('active');
-    });
+    // Update all mode buttons on the page
+    modeButtons.forEach(button => {
+        const icon = button.querySelector('i');
 
-    // Update all labels based on current state
-    const labelText = body.classList.contains('fun-mode-active') ? 'Work Mode' : 'Play Mode';
-    toggleLabels.forEach(label => {
-        label.textContent = labelText;
+        // Add rotating class for animation
+        button.classList.add('rotating');
+
+        // Update icon, aria-label, and tooltip after rotation starts
+        setTimeout(() => {
+            if (isFunMode) {
+                // In Play Mode - show colorful palette icon
+                icon.className = 'fa-solid fa-palette';
+                button.setAttribute('aria-label', 'Disable Play Mode');
+                button.setAttribute('data-tooltip', 'Disable Play Mode');
+            } else {
+                // In Work Mode - show briefcase icon
+                icon.className = 'fa-solid fa-briefcase';
+                button.setAttribute('aria-label', 'Enable Play Mode');
+                button.setAttribute('data-tooltip', 'Enable Play Mode');
+            }
+
+            // Remove rotating class after animation completes
+            setTimeout(() => {
+                button.classList.remove('rotating');
+            }, 50);
+        }, 150);
     });
 
     // Trigger glitch effect when entering fun mode
-    if (body.classList.contains('fun-mode-active')) {
+    if (isFunMode) {
         triggerEasterEgg();
     }
 }
@@ -56,11 +73,11 @@ function triggerEasterEgg() {
         transitionCleanupTimeouts.forEach(timeout => clearTimeout(timeout));
         transitionCleanupTimeouts = [];
 
-        // Get toggle switch position for ripple origin (use first visible toggle)
-        const toggleSwitch = document.querySelector('.toggle-switch');
-        const toggleRect = toggleSwitch ? toggleSwitch.getBoundingClientRect() : null;
-        const rippleX = toggleRect ? toggleRect.left + (toggleRect.width / 2) : window.innerWidth - 100;
-        const rippleY = toggleRect ? toggleRect.top + (toggleRect.height / 2) : 50;
+        // Get mode button position for ripple origin (use first visible button)
+        const modeButton = document.querySelector('.mode-icon-button');
+        const buttonRect = modeButton ? modeButton.getBoundingClientRect() : null;
+        const rippleX = buttonRect ? buttonRect.left + (buttonRect.width / 2) : window.innerWidth - 100;
+        const rippleY = buttonRect ? buttonRect.top + (buttonRect.height / 2) : 50;
 
         // Create ripple effect
         const ripple = document.createElement('div');
@@ -121,26 +138,32 @@ function triggerEasterEgg() {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
-    const toggleLabels = document.querySelectorAll('.mode-toggle-label');
-    const toggleSwitches = document.querySelectorAll('.toggle-switch');
+    const modeButtons = document.querySelectorAll('.mode-icon-button');
     const body = document.body;
 
-    // Ensure labels and toggle states are correct on page load
-    const isFunMode = body.classList.contains('fun-mode-active');
-    const labelText = isFunMode ? 'Work Mode' : 'Play Mode';
+    // Small delay to ensure body classes are fully loaded
+    setTimeout(() => {
+        // Ensure button states are correct on page load
+        const isFunMode = body.classList.contains('fun-mode-active');
 
-    toggleLabels.forEach(label => {
-        label.textContent = labelText;
-    });
+        modeButtons.forEach(button => {
+            const icon = button.querySelector('i');
 
-    // Sync toggle switch visual state with body class
-    toggleSwitches.forEach(toggle => {
-        if (isFunMode) {
-            toggle.classList.add('active');
-        } else {
-            toggle.classList.remove('active');
-        }
-    });
+            if (isFunMode) {
+                // In Play Mode - show colorful palette icon
+                icon.className = 'fa-solid fa-palette';
+                button.setAttribute('aria-label', 'Disable Play Mode');
+                button.setAttribute('data-tooltip', 'Disable Play Mode');
+                button.removeAttribute('title'); // Remove to prevent double tooltips
+            } else {
+                // In Work Mode - show briefcase icon
+                icon.className = 'fa-solid fa-briefcase';
+                button.setAttribute('aria-label', 'Enable Play Mode');
+                button.setAttribute('data-tooltip', 'Enable Play Mode');
+                button.removeAttribute('title'); // Remove to prevent double tooltips
+            }
+        });
+    }, 10);
 });
 
 // ========================================
