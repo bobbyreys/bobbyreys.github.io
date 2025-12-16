@@ -1,0 +1,235 @@
+/* ========================================
+   FUN MODE STYLES
+   Common fun mode overrides across all pages
+   ======================================== */
+
+/* Fun Mode Overlays */
+.fun-mode-overlays {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    display: none !important;
+}
+
+body.fun-mode-active .fun-mode-overlays {
+    display: block !important;
+}
+
+.fun-symbol {
+    position: absolute;
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--hot-pink);
+    animation: funFloat 3s ease-in-out infinite;
+}
+
+.fun-x {
+    color: var(--hot-pink);
+    font-size: 45px;
+}
+
+.fun-arrow {
+    color: var(--red);
+    font-size: 55px;
+}
+
+.fun-plus {
+    color: var(--neon-green);
+    font-size: 50px;
+}
+
+.fun-star {
+    color: var(--neon-green);
+    font-size: 35px;
+}
+
+.fun-circle {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 4px solid var(--hot-pink);
+    border-radius: 50%;
+    animation: funRotate 8s linear infinite;
+}
+
+@keyframes funFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+}
+
+@keyframes funRotate {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.2);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+/* Fun Mode Typography - Punk Style */
+body.fun-mode-active .normal-intro-small {
+    font-family: 'Anton', 'Bebas Neue', 'Impact', sans-serif !important;
+    font-size: 64px !important;
+    color: var(--hot-pink);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-top: 0;
+    padding-top: 0;
+    transform: none;
+    text-shadow:
+        -3px -3px 0 var(--black),
+        3px -3px 0 var(--black),
+        -3px 3px 0 var(--black),
+        3px 3px 0 var(--black),
+        -4px 0 0 var(--black),
+        4px 0 0 var(--black),
+        0 -4px 0 var(--black),
+        0 4px 0 var(--black),
+        -2px -2px 0 var(--black),
+        2px -2px 0 var(--black),
+        -2px 2px 0 var(--black),
+        2px 2px 0 var(--black);
+}
+
+body.fun-mode-active .normal-section-headline {
+    font-family: 'Anton', 'Bebas Neue', 'Impact', sans-serif;
+    color: var(--neon-green);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow:
+        -3px -3px 0 var(--black),
+        3px -3px 0 var(--black),
+        -3px 3px 0 var(--black),
+        3px 3px 0 var(--black),
+        -4px 0 0 var(--black),
+        4px 0 0 var(--black),
+        0 -4px 0 var(--black),
+        0 4px 0 var(--black),
+        5px 5px 0 var(--hot-pink);
+}
+
+/* Fun Mode Project Cards */
+body.fun-mode-active .normal-project-item {
+    border: 4px solid var(--black);
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.3);
+    background: var(--white);
+    transform: rotate(-2deg);
+}
+
+body.fun-mode-active .normal-project-item:hover {
+    transform: rotate(2deg) translateY(-8px);
+    box-shadow: 12px 12px 0 rgba(0,0,0,0.4);
+}
+
+body.fun-mode-active .normal-project-image {
+    background: linear-gradient(135deg, var(--hot-pink) 0%, var(--neon-green) 100%);
+    border-bottom: 4px solid var(--black);
+}
+
+body.fun-mode-active .normal-project-name::before {
+    content: '×××';
+    margin-right: 12px;
+    color: var(--hot-pink);
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+body.fun-mode-active .normal-project-name {
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: var(--black);
+}
+
+/* Cutout Wrapper Effects - Box Style */
+body.fun-mode-active .cutout-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+body.fun-mode-active .cutout-wrapper [class^="cutout-"] {
+    display: inline-block;
+    font-family: 'Anton', 'Bebas Neue', 'Impact', sans-serif;
+    font-weight: 900;
+    color: var(--black);
+    background: var(--white);
+    border: 4px solid var(--black);
+    padding: 12px 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 24px;
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.3);
+    position: relative;
+    white-space: nowrap;
+}
+
+/* Add aggressive rotation to each cutout box */
+body.fun-mode-active .cutout-wrapper [class^="cutout-"]:nth-child(1) {
+    transform: rotate(-5deg);
+}
+
+body.fun-mode-active .cutout-wrapper [class^="cutout-"]:nth-child(2) {
+    transform: rotate(4deg);
+}
+
+body.fun-mode-active .cutout-wrapper [class^="cutout-"]:nth-child(3) {
+    transform: rotate(-3deg);
+}
+
+body.fun-mode-active .cutout-wrapper [class^="cutout-"]:nth-child(4) {
+    transform: rotate(6deg);
+}
+
+/* Description Text - Dashed Box */
+body.fun-mode-active .description-text {
+    display: block;
+    font-family: 'Courier New', monospace;
+    background: var(--white);
+    color: var(--black);
+    padding: 25px 30px;
+    border: 3px dashed var(--black);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 18px;
+    line-height: 1.8;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+body.fun-mode-active .normal-project-desc {
+    color: var(--black);
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+
+/* Profile Photo Punk Styling */
+body.fun-mode-active .profile-photo,
+body.fun-mode-active .normal-profile-photo {
+    border: 4px solid var(--black) !important;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.3) !important;
+    transform: rotate(-3deg) !important;
+    transition: all 0.3s ease !important;
+}
+
+body.fun-mode-active .profile-photo:hover,
+body.fun-mode-active .normal-profile-photo:hover {
+    transform: rotate(2deg) !important;
+    box-shadow: 10px 10px 0 rgba(0,0,0,0.4) !important;
+}

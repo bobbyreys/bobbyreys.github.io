@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forager - Bobby Reyes</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/project-page.css">
+    <link rel="stylesheet" href="css/fun-mode.css">
+    <script src="js/shared.js"></script>
+
+    <style>
+        /* ========================================
+           PAGE-SPECIFIC STYLES
+           Shared styles are in css/shared.css
+           Project page styles are in css/project-page.css
+           ======================================== */
+
+        /* No page-specific styles needed - all styles are shared */
+    </style>
+</head>
+<body>
+    <!-- Play Mode Decorations -->
+    <div class="fun-decorations">
+        <span class="float-symbol symbol-1">×</span>
+        <span class="float-symbol symbol-2">★</span>
+        <span class="float-symbol symbol-3">→</span>
+        <span class="float-symbol symbol-4">⭕</span>
+        <span class="float-symbol symbol-5">+</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="Bobby_Reyes.png" alt="Bobby Reyes" class="logo-image">
+            </a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="index.html#work">Work</a></li>
+                    <li><a href="about-me.html">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mode-toggle-container">
+                    <span class="mode-toggle-label">Play Mode</span>
+                    <div class="toggle-switch" id="toggle-switch" onclick="toggleFunMode()">
+                        <div class="toggle-knob"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Header - Split Layout -->
+    <header class="project-header">
+        <div class="header-content">
+            <div class="header-left">
+                <div class="project-category">UX Design • Logistics</div>
+                <h1 class="project-title">Forager</h1>
+                <p class="project-description">Building the future of cross-border freight forwarding.</p>
+                
+                <div class="project-meta-grid">
+                    <div class="meta-item">
+                        <span class="meta-label">Role</span>
+                        <span>Product Designer</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Timeline</span>
+                        <span>2021 - 2022</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Services</span>
+                        <span>Strategy,Research,Design</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Platform</span>
+                        <span>Web Application</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <div class="hero-image-container">
+                    [Main project hero image]
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Problem & Solution Split -->
+    <section class="split-section">
+        <div class="split-side">
+            <h2>The Problem</h2>
+            <p>Forager's load board lacked a direct way for carriers to negotiate rates, forcing both sides into inefficient manual processes.</p>
+            
+            <ul class="key-points">
+                <li>Carriers couldn't submit counter-offers above target rates</li>
+                <li>Manual negotiation outside platform delayed bookings</li>
+                <li>No real time visibility into bid status or responses</li>
+                <li>Lack of transparency slowed load coverage decisions</li>
+            </ul>
+        </div>
+        
+        <div class="split-side">
+            <h2>The Solution</h2>
+            <p>I designed a self-service bidding platform that enabled direct negotiation and real time decision making</p>
+            
+            <ul class="key-points">
+                <li>Carrier interface for browsing loads and submitting bids</li>
+                <li>Real time Slack notifications for new bid submissions</li>
+                <li>Forager dashboard to review, counter, and accept bids</li>
+                <li>Automated booking upon bid acceptance</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Design Showcase -->
+    <section class="full-width-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Key Features</h2>
+                <p class="section-subtitle">A closer look at the solutions that improved efficiency and user satisfaction.</p>
+            </div>
+            
+            <div class="design-grid">
+                <div class="design-card">
+                    <div class="design-image">[Screenshot 1]</div>
+                    <div class="design-info">
+                        <h3>Carrier Load Board</h3>
+                        <p>Filterable table view of available shipments with detailed load requirements, enabling carriers to identify and bid on suitable opportunities.</p>
+                    </div>
+                </div>
+                
+                <div class="design-card">
+                    <div class="design-image">[Screenshot 2]</div>
+                    <div class="design-info">
+                        <h3>Bid Submission Interface</h3>
+                        <p>Simple bid form allowing carriers to submit offers above target rates with customizable expiration times.</p>
+                    </div>
+                </div>
+                
+                <div class="design-card">
+                    <div class="design-image">[Screenshot 3]</div>
+                    <div class="design-info">
+                        <h3>Real Time Notifications</h3>
+                        <p>Instant Slack alerts notify Foragers of new bids, ensuring timely review and faster load coverage decisions.</p>
+                    </div>
+                </div>
+                
+                <div class="design-card">
+                    <div class="design-image">[Screenshot 4]</div>
+                    <div class="design-info">
+                        <h3>Forager Bid Dashboard</h3>
+                        <p>Centralized review interface enabling Foragers to accept, counter, or decline bids directly within the platform.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="results-section">
+        <div class="results-container">
+            <div class="results-header">
+                <h2 class="results-title">The Impact</h2>
+                <p class="results-intro">The self-service bidding feature transformed how carriers and Foragers negotiated rates, creating a faster and more transparent marketplace.</p>
+            </div>
+            
+            <div class="impact-body">
+                <p>The new bidding system eliminated the need for manual, offline negotiations that previously delayed load coverage. Carriers could now submit counter-offers directly through the load board, while real-time Slack notifications ensured Foragers could review and respond to bids immediately.</p>
+
+                <p>By centralizing the negotiation process within the platform, both carriers and Foragers gained transparency and efficiency. What was once a fragmented, time-consuming back-and-forth became a streamlined workflow that increased carrier engagement and accelerated booking times. The reusable bidding component also laid the foundation for future marketplace enhancements.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Steps CTA -->
+    <section class="next-steps-section">
+        <div class="next-steps-container">
+            <h2 class="next-steps-title">Want to Learn More?</h2>
+            
+            <div class="cta-box">
+                <p>The full case study with detailed process, research findings, and design iterations is coming soon. In the meantime, I'd be happy to discuss this project in more detail.</p>
+                <a href="mailto:yesbobbyreyes@gmail.com" class="cta-button">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Navigation - CLEAN THREE COLUMN -->
+    <section class="project-navigation">
+        <a href="project-groupon.html" class="nav-link prev">
+            <span>← Previous Project</span>
+            <span class="project-name">Groupon</span>
+        </a>
+        
+        <a href="index.html" class="nav-link home">Back to Work</a>
+        
+        <a href="project-mcdonalds.html" class="nav-link next">
+            <span>Next Project →</span>
+            <span class="project-name">McDonald's</span>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <h3 class="footer-heading">Let's Connect</h3>
+            <a href="mailto:yesbobbyreyes@gmail.com" class="footer-email">yesbobbyreyes@gmail.com</a>
+            <div class="footer-icons">
+                <a href="https://www.linkedin.com/in/bobbyreys/" target="_blank" class="footer-icon" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+                <a href="https://www.behance.net/bobbyreys1465" target="_blank" class="footer-icon" aria-label="Behance">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14h-8.027c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zm-3.466-8.988h3.584c2.508 0 2.906-3-.312-3h-3.272v3zm3.391 3h-3.391v3.016h3.341c3.055 0 2.868-3.016.05-3.016z"/>
+                    </svg>
+                </a>
+                <a href="https://github.com/bobbyreys" target="_blank" class="footer-icon" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+            </div>
+            <p class="footer-copyright">© 2025 Bobby Reyes. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

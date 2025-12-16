@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupon - Bobby Reyes</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/project-page.css">
+    <link rel="stylesheet" href="css/fun-mode.css">
+    <script src="js/shared.js"></script>
+
+    <style>
+        /* ========================================
+           PAGE-SPECIFIC STYLES
+           Shared styles are in css/shared.css
+           Project page styles are in css/project-page.css
+           ======================================== */
+
+        /* No page-specific styles needed - all styles are shared */
+    </style>
+</head>
+<body>
+    <!-- Play Mode Decorations -->
+    <div class="fun-decorations">
+        <span class="float-symbol symbol-1">×</span>
+        <span class="float-symbol symbol-2">★</span>
+        <span class="float-symbol symbol-3">→</span>
+        <span class="float-symbol symbol-4">⭕</span>
+        <span class="float-symbol symbol-5">+</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="Bobby_Reyes.png" alt="Bobby Reyes" class="logo-image">
+            </a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="index.html#work">Work</a></li>
+                    <li><a href="about-me.html">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mode-toggle-container">
+                    <span class="mode-toggle-label">Play Mode</span>
+                    <div class="toggle-switch" id="toggle-switch" onclick="toggleFunMode()">
+                        <div class="toggle-knob"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Header - Split Layout -->
+    <header class="project-header">
+        <div class="header-content">
+            <div class="header-left">
+                <div class="project-category">UX Design • E-commerce</div>
+                <h1 class="project-title">Groupon</h1>
+                <p class="project-description">Reimagining the merchant experience to empower local businesses.</p>
+                
+                <div class="project-meta-grid">
+                    <div class="meta-item">
+                        <span class="meta-label">Role</span>
+                        <span>Product Designer II</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Timeline</span>
+                        <span>2022</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Services</span>
+                        <span>Strategy, Research, Design</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Platform</span>
+                        <span>Web & Mobile</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <div class="hero-image-container">
+                    <img src="groupon-hero-image.png" alt="Groupon Merchant Dashboard" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Problem & Solution Split -->
+    <section class="split-section">
+        <div class="split-side">
+            <h2>The Problem</h2>
+            <p>Merchants were confused about Account Balance vs. Budget Remaining, leading to mistrust and poor budget planning.</p>
+            
+            <ul class="key-points">
+                <li>Account Balance and Budget Remaining didn't match</li>
+                <li>Lack of transparency in campaign level spending</li>
+                <li>Merchants couldn't track campaign level spending</li>
+                <li>30-day budget renewal cycle wasn't clearly communicated</li>
+            </ul>
+        </div>
+        
+        <div class="split-side">
+            <h2>The Solution</h2>
+            <p>I created clear visual distinctions and surfaced campaign specific spending metrics to build merchant trust.</p>
+            <ul class="key-points">
+                <li>Tooltips distinguishing wallet from campaign budget</li>
+                <li>Campaign level spending breakdowns</li>
+                <li>Created funding alert system for low balances</li>
+                <li>Built statistics education modal for merchant clarity</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Design Showcase -->
+    <section class="full-width-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Key Features</h2>
+                <p class="section-subtitle">A closer look at the solutions that improved efficiency and user satisfaction.</p>
+            </div>
+            
+            <div class="design-grid">
+                <div class="design-card">
+                    <div class="design-image"><img src="Redesigned Dashboard.png" alt="Redesigned Dashboard"></div>
+                    <div class="design-info">
+                        <h3>Redesigned Dashboard</h3>
+                        <p>Unified view of Account Balance and Budget Remaining with clear visual separation and tooltips.</p>
+                    </div>
+                </div>
+                
+                <div class="design-card">
+                    <div class="design-image"><img src="Campaign Details with Metrics.png" alt="Campaign Details with Metrics"></div>
+                    <div class="design-info">
+                        <h3>Campaign Details with Metrics</h3>
+                        <p>Granular spending breakdown by campaign, showing exactly where budget is allocated and spent in real time.</p>
+                    </div>
+                </div>
+                
+                <div class="design-card">
+                    <div class="design-image"><img src="Add Funds Alert.png" alt="Add Funds Alert"></div>
+                    <div class="design-info">
+                        <h3>Add Funds Alert</h3>
+                        <p>Proactive notification system alerting merchants when Account Balance is low, preventing campaign interruptions.</p>
+                    </div>
+                </div>
+                
+                <div class="design-card">
+                    <div class="design-image"><img src="Statistics Education Modal.png" alt="Statistics Education Modal"></div>
+                    <div class="design-info">
+                        <h3>Statistics Education Modal</h3>
+                        <p>Interactive guide explaining key metrics (impressions, clicks, ROAS) and how they relate to merchant budget and performance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="results-section">
+        <div class="results-container">
+            <div class="results-header">
+                <h2 class="results-title">The Impact</h2>
+                <p class="results-intro">Clear visual distinctions and transparent metrics transformed merchant trust and platform adoption.</p>
+            </div>
+
+            <div class="impact-body">
+                <p>The new design removed critical barriers that prevented merchants from effectively managing their advertising spend. By distinguishing wallet balance from campaign budgets with explanatory tooltips and surfacing granular spending breakdowns, merchants could finally see exactly where their money was going.</p>
+
+                <p>Proactive funding alerts prevented campaign interruptions, while the statistics education modal empowered merchants to make data-driven decisions. What was once a source of frustration became a trusted tool for growing their business.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Steps CTA -->
+    <section class="next-steps-section">
+        <div class="next-steps-container">
+            <h2 class="next-steps-title">Want to Learn More?</h2>
+            
+            <div class="cta-box">
+                <p>The full case study with detailed process, research findings, and design iterations is coming soon. In the meantime, I'd be happy to discuss this project in more detail.</p>
+                <a href="mailto:yesbobbyreyes@gmail.com" class="cta-button">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Navigation - CLEAN THREE COLUMN -->
+    <section class="project-navigation">
+        <a href="project-echo.html" class="nav-link prev">
+            <span>← Previous Project</span>
+            <span class="project-name">Echo Global Logistics</span>
+        </a>
+
+        <a href="index.html" class="nav-link home">Back to Work</a>
+
+        <div class="nav-link next" style="visibility: hidden;">
+            <!-- No next project (Forager is hidden) -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <h3 class="footer-heading">Let's Connect</h3>
+            <a href="mailto:yesbobbyreyes@gmail.com" class="footer-email">yesbobbyreyes@gmail.com</a>
+            <div class="footer-icons">
+                <a href="https://www.linkedin.com/in/bobbyreys/" target="_blank" class="footer-icon" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+                <a href="https://www.behance.net/bobbyreys1465" target="_blank" class="footer-icon" aria-label="Behance">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14h-8.027c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zm-3.466-8.988h3.584c2.508 0 2.906-3-.312-3h-3.272v3zm3.391 3h-3.391v3.016h3.341c3.055 0 2.868-3.016.05-3.016z"/>
+                    </svg>
+                </a>
+                <a href="https://github.com/bobbyreys" target="_blank" class="footer-icon" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+            </div>
+            <p class="footer-copyright">© 2025 Bobby Reyes. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

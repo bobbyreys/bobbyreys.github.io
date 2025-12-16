@@ -1,0 +1,712 @@
+/* ========================================
+   SHARED STYLES - Bobby Reyes Portfolio
+   Used across all pages
+   ======================================== */
+
+/* Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=Anton&family=Bebas+Neue&display=swap');
+
+/* Temporary Hide Projects - Remove class to unhide */
+.project-hidden {
+    display: none !important;
+}
+
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Root Variables */
+:root {
+    /* Primary Colors */
+    --teal-dark: #2c5f5d;
+    --hot-pink: #ff00ff;
+    --neon-green: #00ff00;
+    --red: #ff0000;
+    --black: #000000;
+    --white: #ffffff;
+
+    /* Grays */
+    --gray-dark: #4a4a4a;
+    --gray-medium: #999999;
+    --gray-light: #cccccc;
+    --gray-border: #e0e0e0;
+}
+
+/* Base HTML & Body */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    background: #ffffff;
+    color: var(--black);
+    overflow-x: hidden;
+    position: relative;
+    transition: background-color 400ms ease-in-out;
+}
+
+/* Typography Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+}
+
+h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+h4 {
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+h5 {
+    font-size: clamp(1.1rem, 2vw, 1.25rem);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+h6 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+small, .small-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+/* Global Cursor Styles for Interactive Elements */
+a, button, .punk-sticker, .project-card, .mode-toggle, .logo, .toggle-switch, .footer-icon, .about-panel, .normal-project-card, .normal-button, .contact-link, .photo-placeholder-frame, .back-link, [role="button"] {
+    cursor: pointer !important;
+}
+
+/* ========================================
+   NAVIGATION STYLES
+   ======================================== */
+
+nav {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    padding: 24px 0;
+    z-index: 1000;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+}
+
+.logo {
+    color: var(--black);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.logo:hover {
+    opacity: 0.7;
+}
+
+.logo-image {
+    height: 42px;
+    width: auto;
+    display: block;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: var(--black);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+}
+
+.nav-links a:hover {
+    opacity: 0.7;
+}
+
+/* Mode Toggle */
+.mode-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mode-toggle-label {
+    color: #999999;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.toggle-switch {
+    width: 48px;
+    height: 26px;
+    background: #d1d1d1;
+    border-radius: 13px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.toggle-switch:hover {
+    background: #bbbbbb;
+}
+
+.toggle-knob {
+    width: 22px;
+    height: 22px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.toggle-switch.active {
+    background: var(--hot-pink);
+}
+
+.toggle-switch.active .toggle-knob {
+    left: 24px;
+    background: var(--neon-green);
+}
+
+/* ========================================
+   GRUNGE SECTION STYLES
+   ======================================== */
+
+.grunge-section {
+    margin-bottom: 60px;
+    background: var(--white);
+    border: 4px solid var(--black);
+    position: relative;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.3);
+    scroll-margin-top: 20px;
+}
+
+.grunge-section:nth-child(odd) {
+    transform: rotate(-0.5deg);
+}
+
+.grunge-section:nth-child(even) {
+    transform: rotate(0.5deg);
+}
+
+.grunge-header {
+    background: var(--black);
+    padding: 20px 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.grunge-header::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(135deg,
+        var(--black) 0%, var(--black) 10%,
+        transparent 10%, transparent 15%,
+        var(--black) 15%, var(--black) 25%,
+        transparent 25%, transparent 30%,
+        var(--black) 30%, var(--black) 40%,
+        transparent 40%);
+    background-size: 30px 30px;
+}
+
+.grunge-title {
+    font-family: 'Anton', 'Impact', sans-serif;
+    font-size: clamp(36px, 6vw, 56px);
+    color: var(--neon-green);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 3px 3px 0 var(--hot-pink);
+}
+
+.grunge-title::before {
+    content: '▶';
+    color: var(--hot-pink);
+    margin-right: 10px;
+}
+
+.grunge-content {
+    padding: 40px;
+    font-size: 20px;
+    line-height: 1.8;
+    color: var(--black);
+}
+
+/* ========================================
+   CTA BUTTON
+   ======================================== */
+
+.cta-button {
+    display: inline-block;
+    background: var(--teal-dark);
+    color: white;
+    padding: 15px 40px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.2s;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    opacity: 0.7;
+}
+
+/* ========================================
+   FOOTER STYLES
+   ======================================== */
+
+footer {
+    background: var(--teal-dark);
+    padding: 40px 0;
+    color: white;
+    text-align: center;
+    margin-top: 0;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5em;
+    margin: 0;
+    line-height: 1.2;
+    font-weight: 400;
+    display: block;
+}
+
+.footer-email {
+    color: white;
+    text-decoration: underline;
+    font-size: 1em;
+    margin: 0;
+    line-height: 1;
+    display: block;
+    transition: opacity 0.2s;
+}
+
+.footer-email:hover {
+    opacity: 0.8;
+}
+
+.footer-icons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 0;
+}
+
+.footer-icon {
+    color: white;
+    transition: opacity 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.footer-icon:hover {
+    opacity: 0.8;
+}
+
+.footer-copyright {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9em;
+    margin: 0;
+}
+
+/* ========================================
+   FUN MODE DECORATIONS
+   ======================================== */
+
+.fun-decorations {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+body.fun-mode-active .fun-decorations {
+    opacity: 1;
+}
+
+.float-symbol {
+    position: absolute;
+    font-size: 40px;
+    animation: float 4s ease-in-out infinite;
+    opacity: 0.6;
+}
+
+.symbol-1 {
+    top: 15%;
+    left: 5%;
+    color: var(--hot-pink);
+}
+
+.symbol-2 {
+    top: 30%;
+    right: 10%;
+    color: var(--neon-green);
+    animation-delay: 0.5s;
+}
+
+.symbol-3 {
+    bottom: 20%;
+    left: 15%;
+    color: var(--hot-pink);
+    animation-delay: 1s;
+}
+
+.symbol-4 {
+    top: 50%;
+    right: 5%;
+    color: var(--neon-green);
+    animation-delay: 1.5s;
+}
+
+.symbol-5 {
+    bottom: 10%;
+    right: 20%;
+    color: var(--hot-pink);
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+/* ========================================
+   FUN MODE CURSOR STYLES
+   ======================================== */
+
+body.fun-mode-active {
+    background: #FFFEF8 !important; /* Subtle warm cream tint */
+    position: relative;
+}
+
+/* Dot pattern for playful aesthetic */
+body.fun-mode-active::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background-image:
+        /* Hot pink dots */
+        radial-gradient(circle, var(--hot-pink) 1.5px, transparent 1.5px),
+        /* Neon green dots */
+        radial-gradient(circle, var(--neon-green) 1.5px, transparent 1.5px),
+        /* Additional pink dots offset */
+        radial-gradient(circle, var(--hot-pink) 1px, transparent 1px);
+    background-size:
+        60px 60px,
+        60px 60px,
+        30px 30px;
+    background-position:
+        0 0,
+        30px 30px,
+        15px 15px;
+    opacity: 0.15;
+}
+
+body.fun-mode-active nav {
+    box-shadow: 0 4px 20px rgba(255, 0, 255, 0.3);
+}
+
+body.fun-mode-active .nav-right {
+    gap: 40px; /* Ensure gap stays consistent */
+}
+
+body.fun-mode-active .nav-links {
+    gap: 40px; /* Ensure gap stays consistent */
+}
+
+body.fun-mode-active .nav-links a {
+    transition: all 0.2s ease;
+}
+
+body.fun-mode-active .nav-links a:hover {
+    color: var(--hot-pink);
+    transform: scale(1.1);
+}
+
+body.fun-mode-active .mode-toggle-label {
+    color: var(--black);
+}
+
+/* ========================================
+   TRANSITION ANIMATIONS
+   ======================================== */
+
+/* Ripple effect expanding from toggle */
+@keyframes rippleExpand {
+    0% {
+        transform: scale(0);
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* Color wash sweeping across screen */
+@keyframes colorWash {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    30% {
+        opacity: 0.3;
+    }
+    70% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Gentle fade for reduced motion */
+@keyframes gentleFade {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* ========================================
+   RESPONSIVE MEDIA QUERIES
+   ======================================== */
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 24px;
+        gap: 20px;
+    }
+
+    .nav-right {
+        gap: 20px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .mode-toggle-container {
+        gap: 8px;
+        flex-shrink: 0;
+    }
+
+    .mode-toggle-label {
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    .toggle-switch {
+        width: 42px;
+        height: 22px;
+        flex-shrink: 0;
+    }
+
+    .toggle-knob {
+        width: 18px;
+        height: 18px;
+        top: 2px;
+        left: 2px;
+    }
+
+    .toggle-switch.active .toggle-knob {
+        left: 22px;
+    }
+
+    /* Fun mode nav adjustments for mobile */
+    body.fun-mode-active .nav-right {
+        gap: 20px !important;
+    }
+
+    body.fun-mode-active .nav-links {
+        gap: 20px !important;
+    }
+
+    footer {
+        padding: 30px 0;
+    }
+
+    .footer-content {
+        padding: 0 24px;
+    }
+
+    .footer-heading {
+        font-size: 1.5em;
+    }
+
+    .footer-email {
+        font-size: 0.9em;
+    }
+}
+
+/* ========================================
+   LIGHTBOX
+   Full-screen image viewer
+   ======================================== */
+
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.lightbox.active {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 10px;
+    line-height: 1;
+    transition: opacity 0.2s;
+}
+
+.lightbox-close:hover {
+    opacity: 0.7;
+}
+
+/* Make project detail page images clickable */
+.hero-image-container img,
+.design-image img,
+.design-card img {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.hero-image-container img:hover,
+.design-image img:hover,
+.design-card img:hover {
+    transform: scale(1.02);
+}

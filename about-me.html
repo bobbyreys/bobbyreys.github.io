@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Bobby Reyes</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/normal-mode.css">
+    <link rel="stylesheet" href="css/fun-mode.css">
+    <script src="js/shared.js"></script>
+    <style>
+        /* ========================================
+           PAGE-SPECIFIC STYLES - about-me.html
+           Shared styles are in css/shared.css
+           ======================================== */
+
+        .chaos-mode,
+        .normal-mode {
+            transition: opacity 400ms ease-in-out, transform 400ms ease-in-out;
+        }
+
+        .chaos-mode.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .normal-mode:not(.active) {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .chaos-mode:not(.hidden) {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .normal-mode.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Chaos Mode Container */
+        .chaos-mode {
+            display: block;
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+        }
+
+        .chaos-mode.hidden {
+            display: none;
+        }
+
+        /* Chaos mode uses standard nav styles from shared.css */
+
+        .sticker-grid {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            transition: opacity 400ms ease-in-out;
+            align-self: center;
+        }
+
+        .punk-sticker {
+            position: relative;
+            background: var(--black);
+            color: var(--neon-green);
+            border: 2px solid var(--neon-green);
+            padding: 6px 14px;
+            font-family: 'Bebas Neue', 'Impact', sans-serif;
+            font-size: 13px;
+            text-transform: uppercase;
+            cursor: pointer;
+            letter-spacing: 1.2px;
+            transform: rotate(-1deg);
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            line-height: 1;
+            box-shadow: 3px 3px 0 var(--hot-pink);
+        }
+
+        .punk-sticker:hover {
+            transform: rotate(-1deg) translate(1px, 1px);
+            box-shadow: 2px 2px 0 var(--hot-pink);
+        }
+
+        .punk-sticker:nth-child(2) {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--black);
+            box-shadow: 3px 3px 0 var(--neon-green);
+            transform: rotate(1deg);
+        }
+
+        .punk-sticker:nth-child(2):hover {
+            transform: rotate(1deg) translate(1px, 1px);
+            box-shadow: 2px 2px 0 var(--neon-green);
+        }
+
+        .punk-sticker:nth-child(3) {
+            background: var(--hot-pink);
+            color: var(--white);
+            border: 2px solid var(--white);
+            box-shadow: 3px 3px 0 var(--neon-green);
+            transform: rotate(0deg);
+        }
+
+        .punk-sticker:nth-child(3):hover {
+            transform: rotate(0deg) translate(1px, 1px);
+            box-shadow: 2px 2px 0 var(--neon-green);
+        }
+
+        /* Chaotic Background Elements */
+        .chaos-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.7;
+            transition: opacity 400ms ease-in-out;
+        }
+
+        .chaos-star {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 18px solid var(--neon-green);
+            animation: float 4s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        .chaos-x {
+            position: absolute;
+            font-size: 28px;
+            color: var(--hot-pink);
+            font-weight: bold;
+            animation: spin 8s linear infinite;
+            opacity: 0.7;
+        }
+
+        .chaos-arrow {
+            position: absolute;
+            font-size: 35px;
+            color: var(--red);
+            font-weight: bold;
+            animation: bounce 3s ease-in-out infinite;
+        }
+
+        .chaos-circle {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--neon-green);
+            border-radius: 50%;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .chaos-square {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--hot-pink);
+            transform: rotate(45deg);
+            animation: spin 10s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(-5deg); }
+            50% { transform: translateY(0px) rotate(0deg); }
+            75% { transform: translateY(-5px) rotate(5deg); }
+        }
+
+        /* Back Link */
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--black);
+            color: var(--neon-green);
+            border: 3px solid var(--neon-green);
+            padding: 12px 24px;
+            font-family: 'Bebas Neue', 'Impact', sans-serif;
+            font-size: 18px;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 1.5px;
+            transform: rotate(-2deg);
+            transition: all 0.2s;
+            box-shadow: 3px 3px 0 var(--hot-pink);
+            z-index: 10000;
+            cursor: pointer;
+        }
+
+        .back-link:hover {
+            transform: rotate(-2deg) translate(2px, 2px);
+            box-shadow: 1px 1px 0 var(--hot-pink);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 100px 20px 40px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(60px, 10vw, 100px);
+            color: var(--black);
+            text-transform: uppercase;
+            letter-spacing: -3px;
+            text-shadow: 
+                4px 4px 0 var(--white),
+                8px 8px 0 var(--black);
+            transform: rotate(-1deg);
+            margin-bottom: 20px;
+        }
+
+        /* Content Container */
+        .content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Page-specific grunge title adjustments */
+        .grunge-title {
+            margin-top: 100px;
+            margin-bottom: 60px;
+        }
+
+        /* About Grid */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 40px 40px 40px;
+        }
+
+        .about-panel {
+            background: var(--white);
+            border: 4px solid var(--black);
+            padding: 30px;
+            box-shadow:
+                8px 8px 0 rgba(0,0,0,0.3),
+                8px 8px 0 var(--neon-green);
+            position: relative;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .about-panel:nth-child(odd) {
+            transform: rotate(2deg);
+        }
+
+        .about-panel:nth-child(even) {
+            transform: rotate(-2deg);
+            box-shadow:
+                8px 8px 0 rgba(0,0,0,0.3),
+                8px 8px 0 var(--hot-pink);
+        }
+
+        .about-panel:hover {
+            transform: rotate(0deg) translateY(-4px);
+            box-shadow:
+                12px 12px 0 rgba(0,0,0,0.2),
+                12px 12px 0 var(--neon-green);
+        }
+
+        .about-panel:nth-child(even):hover {
+            box-shadow:
+                12px 12px 0 rgba(0,0,0,0.2),
+                12px 12px 0 var(--hot-pink);
+        }
+
+        .about-panel h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 40px;
+            color: var(--black);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border-bottom: 4px solid var(--neon-green);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .about-panel h3::before {
+            content: '✕ ✕ ✕  ';
+            color: var(--hot-pink);
+            font-size: 20px;
+        }
+
+        .about-panel p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--black);
+        }
+
+        /* Photo Frame Style */
+        .photo-frame {
+            position: relative;
+            background: var(--white);
+            border: 3px solid var(--black);
+            padding: 15px;
+            transform: rotate(-1deg);
+            box-shadow:
+                5px 5px 0 rgba(0,0,0,0.3),
+                0 8px 16px rgba(0,0,0,0.15);
+            width: 100%;
+        }
+
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            right: 25px;
+            bottom: 25px;
+            border: 1px dashed var(--black);
+            opacity: 0.7;
+        }
+
+        .photo-content {
+            background: var(--white);
+            padding: 30px;
+            font-size: 26px;
+            line-height: 1.5;
+            border: 2px solid var(--black);
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .photo-content-subtitle {
+            font-size: 16px;
+            margin-top: 20px;
+            text-transform: none;
+            font-weight: normal;
+            line-height: 1.6;
+        }
+
+        /* Photo Placeholder Frame - Polaroid Style */
+        .photo-placeholder-frame {
+            position: relative;
+            background: var(--white);
+            border: 3px solid var(--black);
+            padding: 8px;
+            padding-bottom: 20px;
+            transform: rotate(10deg);
+            box-shadow:
+                6px 6px 0 rgba(0,0,0,0.4),
+                0 12px 24px rgba(0,0,0,0.25);
+            width: 100%;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .photo-placeholder-frame:hover {
+            transform: rotate(10deg) translateY(-4px);
+            box-shadow:
+                6px 6px 0 rgba(0,0,0,0.4),
+                0 16px 32px rgba(0,0,0,0.3);
+        }
+
+        .photo-placeholder-frame::before {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            bottom: 24px;
+            border: 1px dashed var(--black);
+            opacity: 0.7;
+        }
+
+        .photo-placeholder-content {
+            background: var(--white);
+            border: 2px solid var(--black);
+            width: 100%;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 16px;
+            color: var(--black);
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .ransom-label {
+            font-size: 18px;
+            margin-bottom: 15px;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+
+        .ransom-label span {
+            display: inline-block;
+            padding: 4px 10px;
+            margin: 0 3px;
+            background: var(--white);
+            border: 2px solid var(--black);
+            transform: rotate(var(--rotation));
+            box-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+        }
+
+        .ransom-label span:nth-child(1) { --rotation: -2deg; }
+        .ransom-label span:nth-child(2) { --rotation: 1deg; }
+
+        /* Intro Section */
+        .intro-section {
+            padding: 60px 40px 80px;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .intro-frames-container {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .intro-text-frame {
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro-photo-frame {
+            position: relative;
+            width: 160px;
+            margin: 40px auto 0;
+            z-index: 2;
+        }
+
+        /* Chaos Photo */
+        .chaos-photo {
+            width: 100%;
+            max-width: 700px;
+            margin: 60px auto 0;
+            transform: rotate(-2deg);
+        }
+
+        .chaos-photo-placeholder {
+            width: 100%;
+            height: 400px;
+            background: #d0d0d0;
+            border: 4px solid var(--black);
+            box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', 'Impact', sans-serif;
+            font-size: 24px;
+            letter-spacing: 2px;
+            color: #666666;
+            background-image: linear-gradient(45deg, #e0e0e0 25%, transparent 25%, transparent 75%, #e0e0e0 75%, #e0e0e0),
+                              linear-gradient(45deg, #e0e0e0 25%, transparent 25%, transparent 75%, #e0e0e0 75%, #e0e0e0);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            padding: 60px 40px;
+            margin-top: 80px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: flex-start;
+        }
+
+        .skill-badge {
+            position: relative;
+            background: var(--black);
+            color: var(--neon-green);
+            border: 3px solid var(--neon-green);
+            padding: 12px 24px;
+            font-family: 'Bebas Neue', 'Impact', sans-serif;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: 4px 4px 0 var(--hot-pink);
+            transition: all 0.2s;
+        }
+
+        .skill-badge:nth-child(1) {
+            transform: rotate(-2deg);
+            border-color: var(--neon-green);
+            color: var(--neon-green);
+            box-shadow: 4px 4px 0 var(--hot-pink);
+        }
+
+        .skill-badge:nth-child(2) {
+            transform: rotate(1deg);
+            border-color: var(--hot-pink);
+            color: var(--hot-pink);
+            box-shadow: 4px 4px 0 var(--neon-green);
+        }
+
+        .skill-badge:nth-child(3) {
+            transform: rotate(-1.5deg);
+            border-color: var(--neon-green);
+            color: var(--neon-green);
+            box-shadow: 4px 4px 0 var(--red);
+        }
+
+        .skill-badge:nth-child(4) {
+            transform: rotate(2deg);
+            border-color: var(--red);
+            color: var(--red);
+            box-shadow: 4px 4px 0 var(--neon-green);
+        }
+
+        .skill-badge:nth-child(5) {
+            transform: rotate(-1deg);
+            border-color: var(--hot-pink);
+            color: var(--hot-pink);
+            box-shadow: 4px 4px 0 var(--red);
+        }
+
+        /* Normal Mode Skills */
+        .normal-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .normal-skill-tag {
+            display: inline-block;
+            background: #f0f0f0;
+            color: #333;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Journey Timeline */
+        .journey-container {
+            padding: 0;
+            margin-top: 100px;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .journey-timeline {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            flex-wrap: nowrap;
+            padding: 30px 0;
+            gap: 40px;
+        }
+
+        .journey-timeline::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            right: 40px;
+            height: 2px;
+            background: var(--black);
+            z-index: 0;
+            opacity: 0.7;
+        }
+
+        .journey-stop {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .journey-dot {
+            width: 20px;
+            height: 20px;
+            background: var(--black);
+            border-radius: 50%;
+            border: 3px solid var(--neon-green);
+            box-shadow: 0 0 0 3px var(--black);
+            margin-bottom: 15px;
+        }
+
+        .journey-stop:nth-child(2) .journey-dot {
+            border-color: var(--hot-pink);
+            box-shadow: 0 0 0 3px var(--black);
+        }
+
+        .journey-stop:nth-child(3) .journey-dot {
+            border-color: var(--red);
+            box-shadow: 0 0 0 3px var(--black);
+        }
+
+        .journey-stop:nth-child(4) .journey-dot {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 0 3px var(--black);
+        }
+
+        .journey-stop:nth-child(5) .journey-dot {
+            border-color: var(--hot-pink);
+            box-shadow: 0 0 0 3px var(--black);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .journey-location {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--black);
+            background: var(--white);
+            padding: 8px 16px;
+            border: 2px solid var(--black);
+            transform: rotate(-1deg);
+            white-space: nowrap;
+        }
+
+        .journey-stop:nth-child(2) .journey-location {
+            transform: rotate(1deg);
+        }
+
+        .journey-stop:nth-child(3) .journey-location {
+            transform: rotate(-1.5deg);
+        }
+
+        .journey-stop:nth-child(4) .journey-location {
+            transform: rotate(1.5deg);
+        }
+
+        .journey-stop:nth-child(5) .journey-location {
+            transform: rotate(-1deg);
+            background: var(--black);
+            color: var(--neon-green);
+            border-color: var(--neon-green);
+        }
+
+        /* Normal Mode Journey */
+        .normal-journey {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .normal-journey-label {
+            font-size: 16px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .normal-journey-stop {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #333;
+            font-size: 15px;
+        }
+
+        .normal-journey-stop::before {
+            content: '•';
+            color: #000;
+            font-size: 20px;
+        }
+
+        .normal-journey-stop:last-child {
+            font-weight: 600;
+            color: #000;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+
+        .contact-links {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-link {
+            display: inline-block;
+            background: var(--black);
+            color: var(--neon-green);
+            padding: 20px 35px;
+            text-decoration: none;
+            border: 4px solid var(--neon-green);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.2s;
+            box-shadow: 6px 6px 0 var(--hot-pink);
+            max-width: 500px;
+            transform: rotate(-1deg);
+        }
+
+        .contact-link:nth-child(2) {
+            transform: rotate(1deg);
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--black);
+            box-shadow: 6px 6px 0 var(--neon-green);
+        }
+
+        .contact-link:hover {
+            transform: rotate(-1deg) translate(3px, 3px);
+            box-shadow: 3px 3px 0 var(--hot-pink);
+        }
+
+        .contact-link:nth-child(2):hover {
+            transform: rotate(1deg) translate(3px, 3px);
+            box-shadow: 3px 3px 0 var(--neon-green);
+        }
+
+        /* Normal Mode Contact */
+        .normal-contact-section {
+            margin-top: 80px;
+        }
+
+        .normal-contact-links {
+            display: flex;
+            gap: 32px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .normal-contact-link {
+            color: #000;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 400;
+            font-family: 'Inter', sans-serif;
+            border-bottom: 1px solid #000;
+            padding-bottom: 2px;
+            transition: opacity 0.2s ease;
+        }
+
+        .normal-contact-link:hover {
+            opacity: 0.7;
+        }
+
+        /* ========================================
+           PAGE-SPECIFIC NORMAL MODE STYLES - about-me.html
+           Common normal mode styles are in css/normal-mode.css
+           ======================================== */
+
+        /* Remove hero bottom padding since content is in separate section */
+        .normal-hero {
+            padding-bottom: 0;
+        }
+
+        /* About section specific to about-me */
+        .normal-about-section {
+            padding: 0 0 80px 0;
+            margin-top: 0;
+        }
+
+        /* Normal Mode Journey */
+        .normal-journey {
+            margin-top: 60px;
+        }
+
+        .normal-journey-stop {
+            margin-bottom: 32px;
+        }
+
+        .normal-journey-label {
+            font-size: 13px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 8px;
+        }
+
+        /* Intro frames (specific to about-me) */
+        .normal-intro-frames-container {
+            max-width: 500px;
+            margin-bottom: 80px;
+        }
+
+        .normal-intro-photo-frame {
+            background: #f5f5f5;
+            border-radius: 8px;
+            aspect-ratio: 3/4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #cccccc;
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Hero photo specific to about-me */
+        .normal-hero-photo {
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 3/4;
+            background: #f0f0f0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #cccccc;
+            font-size: 16px;
+        }
+
+        /* Contact section override */
+        .normal-contact-section {
+            padding: 80px 0;
+        }
+
+        /* Responsive overrides specific to about-me */
+        @media (max-width: 1024px) {
+            .normal-intro-frames-container {
+                max-width: 100%;
+                margin-bottom: 60px;
+            }
+
+            .normal-about-section {
+                padding: 0 0 60px 0;
+            }
+
+            .normal-contact-section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .normal-about-section {
+                padding: 0 0 60px 0;
+            }
+        }
+        /* ========================================
+           PAGE-SPECIFIC FUN MODE STYLES - about-me.html
+           Common fun mode styles are in css/fun-mode.css
+           ======================================== */
+
+        /* About hero title fun mode override */
+        body.fun-mode-active .about-hero-title {
+            animation: funTextGlitch 0.5s ease-in-out infinite;
+            text-shadow:
+                2px 2px 0 var(--neon-green),
+                4px 4px 0 var(--hot-pink),
+                6px 6px 0 var(--black);
+        }
+
+        @keyframes funTextGlitch {
+            0%, 100% {
+                transform: translate(0);
+            }
+            25% {
+                transform: translate(-2px, 2px);
+            }
+            50% {
+                transform: translate(2px, -1px);
+            }
+            75% {
+                transform: translate(-1px, -2px);
+            }
+        }
+
+        body.fun-mode-active .fun-decorations,
+        body.fun-mode-active .normal-project-desc {
+            color: var(--black);
+            font-weight: 500;
+        }
+           VINTAGE GRUNGE EFFECTS FOR FUN MODE
+           ============================================ */
+
+        /* Grain texture overlay removed - flat colors only */
+
+        /* 2. Mix-Blend-Mode for Printed Magazine Look */
+        body.fun-mode-active .normal-project-item {
+            mix-blend-mode: normal;
+            position: relative;
+        }
+
+        body.fun-mode-active .normal-project-image {
+            mix-blend-mode: multiply;
+            opacity: 0.7;
+        }
+
+        /* 3. X Marks Before Project Titles */
+        body.fun-mode-active .normal-project-name::before {
+            content: '×××';
+            color: var(--hot-pink);
+            margin-right: 8px;
+            text-decoration: none;
+            display: inline-block;
+            vertical-align: baseline;
+            position: relative;
+            top: 2px; /* Lower the xxx marks slightly */
+        }
+
+        /* 4. Simple Clean Project Titles */
+        body.fun-mode-active .normal-project-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: bold;
+            color: var(--black);
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            width: fit-content; /* Wrap tightly around content */
+        }
+
+        /* Green underline only under title text (not xxx marks) */
+        body.fun-mode-active .normal-project-name::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 3ch; /* Start at first letter (3 characters for ××× + margin) */
+            right: 0;
+            height: 3px;
+            background: var(--neon-green);
+        }
+
+        /* 5. Mix Cut-Out and Handwritten Hero Text */
+
+        /* Cut-out wrapper for job title */
+        body.fun-mode-active .cutout-wrapper {
+            display: block;
+            margin-bottom: 1.5em;
+            line-height: 2.2;
+        }
+
+        /* Individual cut-out boxes */
+        body.fun-mode-active .cutout-wrapper [class^="cutout-"] {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 0 6px 10px 0;
+            background: white;
+            border: 3px solid black;
+            box-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: bold;
+            font-size: 1.2em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: black;
+        }
+
+        /* Individual rotations and colors */
+        body.fun-mode-active .cutout-1 {
+            transform: rotate(-2deg);
+        }
+
+        body.fun-mode-active .cutout-2 {
+            transform: rotate(1deg);
+        }
+
+        body.fun-mode-active .cutout-3 {
+            transform: rotate(-1deg);
+        }
+
+        body.fun-mode-active .cutout-4 {
+            transform: rotate(3deg);
+            background: var(--hot-pink);
+            color: white;
+        }
+
+        body.fun-mode-active .cutout-5 {
+            transform: rotate(-1.5deg);
+            background: var(--neon-green);
+            color: black;
+        }
+
+        body.fun-mode-active .cutout-6 {
+            transform: rotate(2deg);
+        }
+
+        body.fun-mode-active .cutout-7 {
+            transform: rotate(-0.5deg);
+        }
+
+        /* Typewriter style for description text */
+        body.fun-mode-active .description-text {
+            display: block;
+            font-family: 'Courier New', 'Courier', monospace;
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: var(--black);
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 3px dashed #000;
+            padding: 30px;
+            margin-top: 30px;
+            background: rgba(255,255,255,0.5);
+        }
+
+        /* Project descriptions - typewriter style in fun mode */
+        body.fun-mode-active .normal-project-desc {
+            font-family: 'Courier New', 'Courier', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9em;
+            line-height: 1.5;
+            color: #000;
+            font-weight: normal;
+        }
+
+        /* Normal Mode Profile Photo */
+        .normal-hero-photo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        /* Profile photo - no border in normal mode */
+        body:not(.fun-mode-active) .profile-photo {
+            border: none;
+            outline: none;
+        }
+
+        body:not(.fun-mode-active) .chaos-photo img {
+            border: none;
+            outline: none;
+        }
+
+        /* Profile Photo Punk Styling in Fun Mode */
+        body.fun-mode-active .profile-photo,
+        body.fun-mode-active .chaos-photo img {
+            border: 4px solid var(--black) !important;
+            border-radius: 8px !important;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.3) !important;
+            transform: rotate(-3deg) !important;
+            transition: all 0.3s ease !important;
+        }
+
+        body.fun-mode-active .profile-photo:hover,
+        body.fun-mode-active .chaos-photo img:hover {
+            transform: rotate(2deg) !important;
+            box-shadow: 10px 10px 0 rgba(0,0,0,0.4) !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Fun Mode Decorations - START -->
+    <div class="fun-decorations">
+        <span class="float-symbol symbol-1">×</span>
+        <span class="float-symbol symbol-2">★</span>
+        <span class="float-symbol symbol-3">→</span>
+        <span class="float-symbol symbol-4">⭕</span>
+        <span class="float-symbol symbol-5">+</span>
+    </div>
+    <!-- Fun Mode Decorations - END -->
+
+    <!-- Chaos Mode -->
+    <div class="chaos-mode hidden" id="chaosMode">
+        <!-- Navigation -->
+        <nav>
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="Bobby_Reyes.png" alt="Bobby Reyes" class="logo-image">
+                </a>
+                <div class="nav-right">
+                    <ul class="nav-links">
+                        <li><a href="index.html#work">Work</a></li>
+                        <li><a href="about-me.html">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                    <div class="mode-toggle-container">
+                        <span class="mode-toggle-label">Play Mode</span>
+                        <div class="toggle-switch" id="toggle-switch" onclick="toggleFunMode()">
+                            <div class="toggle-knob"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Chaotic Background -->
+        <div class="chaos-elements">
+            <div class="chaos-star" style="top: 15%; left: 8%;"></div>
+            <div class="chaos-star" style="bottom: 20%; right: 12%; border-bottom-color: var(--hot-pink); animation-delay: 2s;"></div>
+
+            <div class="chaos-x" style="top: 25%; right: 15%;">✕</div>
+            <div class="chaos-x" style="bottom: 30%; left: 10%; animation-delay: 3s; color: var(--neon-green);">✕</div>
+
+            <div class="chaos-circle" style="top: 45%; left: 5%; animation-delay: 2s;"></div>
+            <div class="chaos-circle" style="bottom: 25%; right: 8%; border-color: var(--hot-pink); animation-delay: 4s;"></div>
+        </div>
+
+        <!-- Back Link -->
+        <a href="index.html" class="back-link">← BACK</a>
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">ABOUT ME</h1>
+        </div>
+
+        <!-- Content -->
+        <div class="content-wrapper">
+            <div class="intro-section">
+                <div class="intro-frames-container">
+                    <div class="intro-text-frame">
+                        <div class="photo-frame">
+                            <div class="photo-content">
+                                10 YEARS DESIGNING DIGITAL TOOLS FOR STARTUPS AND GLOBAL COMPANIES
+                                <div class="photo-content-subtitle">
+                                    I love diving into messy problems and turning them into thoughtful, intuitive experiences, from the first idea to the final design.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo element -->
+                <div class="chaos-photo">
+                    <img src="me-photo.png" alt="Bobby Reyes - Product Designer" class="profile-photo">
+                </div>
+
+                <div class="journey-container">
+                    <div class="journey-timeline">
+                        <div class="journey-stop">
+                            <div class="journey-dot"></div>
+                            <div class="journey-location">Chicago</div>
+                        </div>
+                        <div class="journey-stop">
+                            <div class="journey-dot"></div>
+                            <div class="journey-location">Austin</div>
+                        </div>
+                        <div class="journey-stop">
+                            <div class="journey-dot"></div>
+                            <div class="journey-location">Bridgman</div>
+                        </div>
+                        <div class="journey-stop">
+                            <div class="journey-dot"></div>
+                            <div class="journey-location">Tulsa</div>
+                        </div>
+                        <div class="journey-stop">
+                            <div class="journey-dot"></div>
+                            <div class="journey-location">Milwaukee</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="grunge-section">
+                <div class="grunge-header">
+                    <h2 class="grunge-title">I'M BOBBY</h2>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-panel">
+                        <h3>WORK</h3>
+                        <p>
+                            I've spent 10+ years designing digital products for startups and global brands. With a background in psychology, I focus on creating experiences that feel natural for users and grounded in real business outcomes.
+                        </p>
+                        <p>
+                            I work end to end, helping shape early product direction, leading research, and pushing pixels until the final details feel just right. I care about building the right things, not just usable interfaces, and I'm at my best in environments where product, design, and engineering think together from day one. That's where I can influence the product direction as much as the design vision.
+                        </p>
+                    </div>
+
+                    <div class="about-panel">
+                        <h3>FUN</h3>
+                        <p>
+                            Outside of design, I'm usually out exploring, running new routes, building bikes from spare frames and parts, or restoring vintage drum machines just to understand how they were built.
+                        </p>
+                        <p>
+                            I'm always working on some creative project, whether it's reading movie scripts to learn story structure or experimenting with sound and ai software. Staying curious keeps me grounded, open, and constantly learning from the worlds outside of UX.
+                        </p>
+                    </div>
+                </div>
+
+                <div style="padding: 40px; text-align: center;">
+                    <a href="reyes-resume-2025.pdf" download target="_blank" class="cta-button">Download Resume</a>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="grunge-section contact-section">
+                <div class="grunge-header">
+                    <h2 class="grunge-title">GET IN TOUCH</h2>
+                </div>
+                <div class="contact-links">
+                    <a href="https://www.linkedin.com/in/bobbyreys/" target="_blank" class="contact-link">LinkedIn</a>
+                    <a href="mailto:hello@bobbyreyes.com" class="contact-link">Email Me</a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Normal Mode -->
+    <div class="normal-mode active" id="normalMode">
+        <nav>
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="Bobby_Reyes.png" alt="Bobby Reyes" class="logo-image">
+                </a>
+                <div class="nav-right">
+                    <ul class="nav-links">
+                        <li><a href="index.html#work">Work</a></li>
+                        <li><a href="about-me.html">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                    <div class="mode-toggle-container">
+                        <span class="mode-toggle-label">Play Mode</span>
+                        <div class="toggle-switch" id="toggle-switch" onclick="toggleFunMode()">
+                            <div class="toggle-knob"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="normal-hero">
+            <div class="normal-container">
+                <p class="normal-intro-small">Hey there</p>
+            </div>
+        </section>
+
+        <!-- About Section - Two Columns -->
+        <section class="normal-about-section">
+            <div class="normal-container">
+                <div class="normal-about-grid">
+                    <!-- Left Column - Content -->
+                    <div>
+                        <p class="normal-section-text">
+                            I've spent 10+ years designing digital products for startups and global brands. With a background in psychology, I focus on creating experiences that feel natural and deliver real business outcomes.
+                        </p>
+
+                        <p class="normal-section-text">
+                            I work end to end, helping shape early product direction, leading research, and pushing pixels until the final details feel just right. I'm at my best in environments where product, design, and engineering think together from day one, so I can influence the product direction as much as the design vision.
+                        </p>
+
+                        <p class="normal-section-text">
+                            Outside of design, I'm usually exploring, building bikes from spare frames, or restoring vintage drum machines to understand how they were built. I'm always working on some creative project, whether it’s reading movie scripts for story structure, experimenting with sound and hardware, or exploring AI. Staying curious keeps me open and constantly learning from worlds outside UX.
+                        </p>
+                        <p class="normal-location-list">
+                            Chicago • Austin • Bridgman • Tulsa • <span style="font-weight: 700; color: #1a1a1a;">Milwaukee</span>
+                        </p>
+
+                        <a href="reyes-resume-2025.pdf" download target="_blank" class="cta-button">Download Resume</a>
+                    </div>
+
+                    <!-- Right Column - Photo -->
+                    <div>
+                        <div style="width: 100%; height: 100%;">
+                            <img src="me-photo.png"
+                                 alt="Bobby Reyes - Product Designer"
+                                 class="profile-photo normal-profile-photo"
+                                 style="width: 100%;
+                                        height: 100%;
+                                        object-fit: cover;
+                                        border-radius: 8px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="contact">
+            <div class="footer-content">
+                <h3 class="footer-heading">Let's Connect</h3>
+                <a href="mailto:yesbobbyreyes@gmail.com" class="footer-email">yesbobbyreyes@gmail.com</a>
+                <div class="footer-icons">
+                    <a href="https://www.linkedin.com/in/bobbyreys/" target="_blank" class="footer-icon" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.behance.net/bobbyreys1465" target="_blank" class="footer-icon" aria-label="Behance">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14h-8.027c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zm-3.466-8.988h3.584c2.508 0 2.906-3-.312-3h-3.272v3zm3.391 3h-3.391v3.016h3.341c3.055 0 2.868-3.016.05-3.016z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/bobbyreys" target="_blank" class="footer-icon" aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
+                <p class="footer-copyright">© 2025 Bobby Reyes. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Fun Mode Overlays (Hidden by Default) -->
+    <div class="fun-mode-overlays" id="funModeOverlays">
+        <div class="fun-symbol fun-x" style="top: 10%; left: 15%;">✕</div>
+        <div class="fun-symbol fun-x" style="top: 70%; right: 20%;">✕</div>
+        <div class="fun-symbol fun-arrow" style="top: 25%; right: 10%;">→</div>
+        <div class="fun-symbol fun-arrow" style="bottom: 30%; left: 8%;">↑</div>
+        <div class="fun-symbol fun-plus" style="top: 50%; left: 5%;">+</div>
+        <div class="fun-symbol fun-plus" style="bottom: 15%; right: 12%;">+</div>
+        <div class="fun-symbol fun-star" style="top: 80%; left: 25%;">★</div>
+        <div class="fun-symbol fun-star" style="top: 15%; right: 30%;">★</div>
+        <div class="fun-circle" style="top: 40%; right: 5%;"></div>
+        <div class="fun-circle" style="bottom: 20%; left: 18%;"></div>
+    </div>
+</body>
+</html>
