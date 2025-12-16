@@ -577,35 +577,60 @@ body.fun-mode-active .mode-toggle-label {
    ======================================== */
 
 @media (max-width: 768px) {
+    nav {
+        padding: 16px 0;
+    }
+
     .nav-container {
-        padding: 0 24px;
-        gap: 20px;
+        padding: 0 20px;
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .logo {
+        margin-bottom: 0;
+    }
+
+    .logo-image {
+        height: 32px;
     }
 
     .nav-right {
-        gap: 20px;
+        width: 100%;
+        flex-direction: row;
+        gap: 16px;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
     .nav-links {
+        display: flex;
         gap: 20px;
+        justify-content: center;
+        flex-wrap: nowrap;
+        flex-shrink: 0;
     }
 
     .nav-links a {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .mode-toggle-container {
         gap: 8px;
         flex-shrink: 0;
+        display: flex;
+        align-items: center;
     }
 
     .mode-toggle-label {
-        font-size: 14px;
+        font-size: 13px;
         white-space: nowrap;
     }
 
     .toggle-switch {
-        width: 42px;
+        width: 40px;
         height: 22px;
         flex-shrink: 0;
     }
@@ -618,12 +643,12 @@ body.fun-mode-active .mode-toggle-label {
     }
 
     .toggle-switch.active .toggle-knob {
-        left: 22px;
+        left: 18px;
     }
 
     /* Fun mode nav adjustments for mobile */
     body.fun-mode-active .nav-right {
-        gap: 20px !important;
+        gap: 16px !important;
     }
 
     body.fun-mode-active .nav-links {

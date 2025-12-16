@@ -352,14 +352,14 @@ body.fun-mode-active .results-title {
 .results-intro {
     font-size: 1.2em;
     opacity: 0.7;
-    width: 700px !important;
-    margin: 0 !important;
+    max-width: 700px;
+    margin: 0;
 }
 
 /* Impact Body Paragraphs */
 .impact-body {
-    width: 700px !important;
-    margin: 0 !important;
+    max-width: 700px;
+    margin: 0;
 }
 
 .impact-body p {
@@ -521,12 +521,44 @@ body.fun-mode-active .next-steps-title {
         gap: 20px;
     }
 
+    .header-content {
+        padding: 0 24px 60px;
+    }
+
+    .split-section {
+        padding: 60px 24px;
+        gap: 60px;
+    }
+
     .section-container,
     .results-container,
     .next-steps-container,
     .project-navigation {
         padding-left: 24px;
         padding-right: 24px;
+    }
+
+    .project-title {
+        font-size: 2.5em;
+    }
+
+    .section-title {
+        font-size: 2em;
+    }
+
+    .results-title {
+        font-size: 2.2em;
+    }
+
+    /* Make text sections full width on mobile */
+    .results-intro,
+    .impact-body {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .impact-body p {
+        font-size: 1.05em;
     }
 
     .project-navigation {
