@@ -531,14 +531,6 @@ body.fun-mode-active nav {
     box-shadow: 0 4px 20px rgba(255, 0, 255, 0.3);
 }
 
-body.fun-mode-active .nav-right {
-    gap: 40px; /* Ensure gap stays consistent */
-}
-
-body.fun-mode-active .nav-links {
-    gap: 40px; /* Ensure gap stays consistent */
-}
-
 body.fun-mode-active .nav-links a {
     transition: all 0.2s ease;
 }
@@ -644,15 +636,6 @@ body.fun-mode-active .nav-links a:hover {
 
     .mode-icon-button {
         font-size: 18px;
-    }
-
-    /* Fun mode nav adjustments for mobile */
-    body.fun-mode-active .nav-right {
-        gap: 16px !important;
-    }
-
-    body.fun-mode-active .nav-links {
-        gap: 20px !important;
     }
 
     footer {
