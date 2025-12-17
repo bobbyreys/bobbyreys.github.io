@@ -705,16 +705,4 @@ body.fun-mode-active .nav-links a:hover {
     opacity: 0.7;
 }
 
-/* Make project detail page images clickable */
-.hero-image-container img,
-.design-image img,
-.design-card img {
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.hero-image-container img:hover,
-.design-image img:hover,
-.design-card img:hover {
-    transform: scale(1.02);
-}
+/* Image hover effects now handled in project-page.css */
