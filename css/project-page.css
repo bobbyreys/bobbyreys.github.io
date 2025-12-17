@@ -556,6 +556,10 @@ body.fun-mode-active .next-steps-title {
         font-size: 2.5em;
     }
 
+    .hero-image-container {
+        height: 250px;
+    }
+
     .section-title {
         font-size: 2em;
     }
