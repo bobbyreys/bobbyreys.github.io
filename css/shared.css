@@ -125,6 +125,11 @@ nav {
     padding: 24px 0;
     z-index: 1000;
     border-bottom: 1px solid #f0f0f0;
+    transition: transform 0.3s ease;
+}
+
+nav.nav-hidden {
+    transform: translateY(-100%);
 }
 
 .nav-container {

@@ -280,7 +280,108 @@ document.addEventListener('DOMContentLoaded', function() {
                 obs.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
 
     sections.forEach(section => observer.observe(section));
+});
+
+// ========================================
+// SECTION SUB-NAV
+// Sticky in-page nav with scroll-spy for case study pages
+// ========================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const sectionNav = document.getElementById('sectionNav');
+    const mainNav = document.querySelector('nav');
+    if (!sectionNav || !mainNav) return;
+
+    sectionNav.style.top = mainNav.offsetHeight + 'px';
+    document.documentElement.style.scrollPaddingTop = (mainNav.offsetHeight + sectionNav.offsetHeight) + 'px';
+
+    const links = Array.from(sectionNav.querySelectorAll('.section-nav-link'));
+    const targets = links
+        .map(link => document.getElementById(link.getAttribute('href').slice(1)))
+        .filter(Boolean);
+
+    if (targets.length === 0) return;
+
+    function updateActiveSection() {
+        const offset = sectionNav.getBoundingClientRect().bottom + 1;
+        let current = targets[0];
+        for (const target of targets) {
+            if (target.getBoundingClientRect().top - offset <= 0) {
+                current = target;
+            }
+        }
+        links.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + current.id);
+        });
+    }
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+            updateActiveSection();
+            ticking = false;
+        });
+    });
+
+    updateActiveSection();
+});
+
+// ========================================
+// AUTO-HIDE MAIN NAV
+// Hides the main nav on scroll down, reveals it on scroll up.
+// The section sub-nav (if present) slides up to take its place.
+// ========================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const mainNav = document.querySelector('nav');
+    if (!mainNav) return;
+    const sectionNav = document.getElementById('sectionNav');
+    const navHeight = mainNav.offsetHeight;
+
+    let lastScrollY = window.scrollY;
+    let navHidden = false;
+    let suppressAutoHide = false;
+    let suppressTimer = null;
+
+    function setNavHidden(hidden) {
+        if (hidden === navHidden) return;
+        navHidden = hidden;
+        mainNav.classList.toggle('nav-hidden', hidden);
+        if (sectionNav) sectionNav.style.top = (hidden ? 0 : navHeight) + 'px';
+    }
+
+    function onScroll() {
+        const currentScrollY = window.scrollY;
+        if (!suppressAutoHide) {
+            const scrollingDown = currentScrollY > lastScrollY;
+            setNavHidden(scrollingDown && currentScrollY > navHeight);
+        }
+        lastScrollY = currentScrollY;
+    }
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+            onScroll();
+            ticking = false;
+        });
+    });
+
+    if (sectionNav) {
+        sectionNav.querySelectorAll('.section-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                setNavHidden(false);
+                suppressAutoHide = true;
+                clearTimeout(suppressTimer);
+                suppressTimer = setTimeout(() => { suppressAutoHide = false; }, 1200);
+            });
+        });
+    }
 });

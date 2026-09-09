@@ -404,6 +404,55 @@ body.fun-mode-active .full-width-section.bg-white {
     background: transparent;
 }
 
+/* Section sub-nav */
+.section-nav {
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-border);
+    transition: top 0.3s ease;
+}
+
+.section-nav-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    gap: 28px;
+    overflow-x: auto;
+}
+
+.section-nav-link {
+    flex: 0 0 auto;
+    padding: 14px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--teal-dark);
+    opacity: 0.55;
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.section-nav-link:hover {
+    opacity: 0.85;
+}
+
+.section-nav-link.active {
+    opacity: 1;
+    border-bottom-color: var(--teal-dark);
+}
+
+@media (max-width: 768px) {
+    .section-nav-container {
+        padding: 0 24px;
+        gap: 20px;
+    }
+}
+
 /* Scroll reveal */
 .scroll-reveal {
     transition: opacity 0.6s ease, transform 0.6s ease;
