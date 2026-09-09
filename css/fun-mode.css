@@ -140,7 +140,7 @@ body.fun-mode-active .normal-project-image {
 }
 
 body.fun-mode-active .normal-project-name::before {
-    content: '×××';
+    content: '××';
     margin-right: 12px;
     color: var(--hot-pink);
     font-weight: bold;

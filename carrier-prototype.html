@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrier Management Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --mui-blue: #1976d2;
+        --mui-blue-dark: #115293;
+        --mui-blue-light: #e3f2fd;
+        --mui-green: #2e7d32;
+        --mui-red: #d32f2f;
+        --mui-orange: #ed6c02;
+        --mui-border: #e0e0e0;
+        --mui-text: #1a1a2e;
+        --mui-text-secondary: #6b7280;
+        --mui-bg: #fafafa;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: 'Roboto', system-ui, sans-serif;
+        color: var(--mui-text);
+        background: #fff;
+        overflow: hidden;
+    }
+    button { font-family: inherit; cursor: pointer; }
+    input { font-family: inherit; }
+
+    .app {
+        display: flex;
+        height: 100vh;
+        width: 100%;
+    }
+
+    /* ===== Main content ===== */
+    .main {
+        flex: 1;
+        min-width: 0;
+        padding: 32px 40px;
+        overflow-y: auto;
+        background: var(--mui-bg);
+    }
+    .main-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+    }
+    .main-header h1 {
+        font-size: 28px;
+        font-weight: 700;
+        margin: 0;
+    }
+    .btn-primary {
+        background: var(--mui-blue);
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 500;
+        transition: background 0.15s;
+    }
+    .btn-primary:hover { background: var(--mui-blue-dark); }
+
+    .search-bar {
+        position: relative;
+        max-width: 480px;
+        margin-bottom: 28px;
+    }
+    .search-bar input {
+        width: 100%;
+        padding: 11px 14px 11px 40px;
+        border: 1px solid var(--mui-border);
+        border-radius: 8px;
+        font-size: 14px;
+        background: #fff;
+    }
+    .search-bar input:focus {
+        outline: none;
+        border-color: var(--mui-blue);
+        box-shadow: 0 0 0 3px var(--mui-blue-light);
+    }
+    .search-bar svg {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--mui-text-secondary);
+        pointer-events: none;
+    }
+
+    .section-label {
+        font-size: 15px;
+        font-weight: 700;
+        margin: 0 0 12px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        border: 1px solid var(--mui-border);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    thead th {
+        text-align: left;
+        font-size: 12.5px;
+        font-weight: 500;
+        color: var(--mui-text-secondary);
+        padding: 14px 20px;
+        background: #f5f5f7;
+        border-bottom: 1px solid var(--mui-border);
+        white-space: nowrap;
+    }
+    tbody td {
+        padding: 14px 20px;
+        font-size: 14px;
+        border-bottom: 1px solid var(--mui-border);
+        white-space: nowrap;
+    }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr {
+        cursor: pointer;
+        transition: background 0.12s;
+    }
+    tbody tr:hover { background: #f3f3f6; }
+    .l-number-link {
+        color: var(--mui-blue);
+        font-weight: 500;
+        text-decoration: none;
+    }
+    .l-number-link:hover { text-decoration: underline; }
+
+    /* ===== Nav rail ===== */
+    .nav-rail {
+        width: 60px;
+        flex-shrink: 0;
+        background: #fff;
+        border-left: 1px solid var(--mui-border);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding-top: 20px;
+    }
+    .nav-icon-btn {
+        width: 40px;
+        height: 40px;
+        border: none;
+        background: transparent;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--mui-text-secondary);
+        transition: background 0.15s, color 0.15s;
+    }
+    .nav-icon-btn:hover { background: #f0f0f3; color: var(--mui-text); }
+    .nav-icon-btn.active { background: var(--mui-blue); color: #fff; }
+    .nav-icon-btn.active:hover { background: var(--mui-blue-dark); }
+
+    /* ===== My Carriers sidebar ===== */
+    .carrier-sidebar {
+        width: 0;
+        flex-shrink: 0;
+        border-left: 1px solid var(--mui-border);
+        background: #fff;
+        overflow: hidden;
+        transition: width 0.22s ease;
+    }
+    .carrier-sidebar.open { width: 340px; }
+    .carrier-sidebar-inner {
+        width: 340px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .cs-header {
+        padding: 20px 20px 16px;
+        border-bottom: 1px solid var(--mui-border);
+        flex-shrink: 0;
+    }
+    .cs-title-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 16px;
+    }
+    .cs-title-row h2 {
+        font-size: 18px;
+        font-weight: 700;
+        margin: 0;
+    }
+    .cs-title-row button {
+        border: none;
+        background: none;
+        color: var(--mui-text-secondary);
+        display: flex;
+        align-items: center;
+        padding: 2px;
+        border-radius: 4px;
+    }
+    .cs-title-row button:hover { background: #f0f0f3; color: var(--mui-text); }
+    .cs-search { position: relative; margin-bottom: 12px; }
+    .cs-search input {
+        width: 100%;
+        padding: 8px 10px 8px 36px;
+        border: 1px solid var(--mui-border);
+        border-radius: 6px;
+        font-size: 13.5px;
+        background: #f7f7f9;
+    }
+    .cs-search input:focus {
+        outline: none;
+        border-color: var(--mui-blue);
+        background: #fff;
+    }
+    .cs-search svg {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--mui-text-secondary);
+    }
+    .cs-total {
+        margin: 0;
+        font-size: 13px;
+        color: var(--mui-text-secondary);
+    }
+
+    .cs-list {
+        flex: 1;
+        overflow-y: auto;
+    }
+    .cs-item {
+        padding: 16px 20px;
+        border-bottom: 1px solid var(--mui-border);
+        cursor: pointer;
+        transition: background 0.12s;
+        position: relative;
+    }
+    .cs-item:hover { background: #f3f3f6; }
+    .cs-item-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 8px;
+    }
+    .cs-item-name {
+        font-size: 14.5px;
+        font-weight: 500;
+        display: flex;
+        align-items: baseline;
+        gap: 6px;
+        flex-wrap: wrap;
+    }
+    .status-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        display: inline-block;
+        flex-shrink: 0;
+    }
+    .status-dot.lead { background: var(--mui-green); }
+    .status-dot.danger { background: var(--mui-red); }
+    .cs-item-license {
+        color: var(--mui-text-secondary);
+        font-weight: 400;
+        font-size: 13.5px;
+    }
+    .fav-btn {
+        border: none;
+        background: none;
+        padding: 2px;
+        display: flex;
+        color: #d1a10a;
+        flex-shrink: 0;
+    }
+    .cs-icons {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 10px 0 10px;
+    }
+    .cs-icon-wrap { position: relative; display: flex; }
+    .cs-icon-wrap svg { color: var(--mui-text-secondary); }
+    .cs-icon-wrap.on-green svg { color: var(--mui-green); }
+    .cs-icon-wrap.on-orange svg { color: var(--mui-orange); }
+    .cs-icon-wrap.on-red svg { color: var(--mui-red); }
+
+    .floating-tooltip {
+        position: fixed;
+        background: #fff;
+        color: var(--mui-text);
+        font-size: 12.5px;
+        padding: 7px 12px;
+        border-radius: 6px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.16);
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.1s;
+        z-index: 200;
+    }
+    .floating-tooltip.visible { opacity: 1; }
+
+    .cs-actions { display: flex; gap: 16px; }
+    .cs-actions button {
+        border: none;
+        background: none;
+        color: var(--mui-blue);
+        font-size: 13.5px;
+        padding: 0;
+    }
+    .cs-actions button:hover { text-decoration: underline; }
+
+    /* ===== Detail flyout ===== */
+    .detail-overlay {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 420px;
+        max-width: 92vw;
+        background: #fff;
+        border-left: 1px solid var(--mui-border);
+        box-shadow: -8px 0 24px rgba(0,0,0,0.10);
+        transform: translateX(100%);
+        transition: transform 0.24s ease;
+        z-index: 50;
+        display: flex;
+        flex-direction: column;
+    }
+    .detail-overlay.open { transform: translateX(0); }
+    .detail-head {
+        padding: 18px 20px;
+        border-bottom: 1px solid var(--mui-border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-shrink: 0;
+    }
+    .detail-back {
+        border: none;
+        background: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--mui-blue);
+        font-size: 14px;
+        font-weight: 500;
+        padding: 4px 0;
+    }
+    .detail-back:hover { text-decoration: underline; }
+    .detail-ext-btn {
+        border: none;
+        background: none;
+        color: var(--mui-text-secondary);
+        display: flex;
+        padding: 4px;
+        border-radius: 4px;
+    }
+    .detail-ext-btn:hover { background: #f0f0f3; color: var(--mui-text); }
+
+    .detail-body { padding: 20px; overflow-y: auto; flex: 1; }
+    .detail-name-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 6px;
+    }
+    .detail-name-row h2 { font-size: 22px; font-weight: 700; margin: 0; }
+    .detail-lnum-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 24px;
+    }
+    .detail-lnum-row span { font-size: 15px; color: var(--mui-text-secondary); }
+    .copy-btn {
+        border: none;
+        background: none;
+        color: var(--mui-text-secondary);
+        display: flex;
+        padding: 2px;
+    }
+    .copy-btn:hover { color: var(--mui-text); }
+
+    .detail-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-bottom: 28px;
+    }
+    .detail-field-label {
+        font-size: 12.5px;
+        color: var(--mui-text-secondary);
+        margin: 0 0 4px;
+    }
+    .detail-field-value {
+        font-size: 15px;
+        font-weight: 500;
+        margin: 0;
+    }
+    .status-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #e8f5e9;
+        color: var(--mui-green);
+        font-size: 13px;
+        font-weight: 500;
+        padding: 4px 10px;
+        border-radius: 20px;
+    }
+    .status-chip::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--mui-green);
+    }
+
+    .detail-grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 28px;
+    }
+
+    .detail-subhead {
+        font-size: 16px;
+        font-weight: 700;
+        margin: 0 0 14px;
+    }
+    .contact-card {
+        border: 1px solid var(--mui-border);
+        border-radius: 8px;
+        padding: 16px;
+    }
+    .contact-card-title {
+        font-size: 12.5px;
+        color: var(--mui-text-secondary);
+        margin: 0 0 8px;
+    }
+    .contact-card-name {
+        font-size: 15px;
+        font-weight: 500;
+        margin: 0 0 6px;
+    }
+    .contact-card-info {
+        font-size: 13.5px;
+        color: var(--mui-text-secondary);
+        margin: 0 0 3px;
+    }
+    .contact-card-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 14px;
+    }
+    .btn-outline {
+        border: 1px solid var(--mui-blue);
+        background: #fff;
+        color: var(--mui-blue);
+        border-radius: 6px;
+        padding: 6px 14px;
+        font-size: 13.5px;
+        font-weight: 500;
+    }
+    .btn-outline:hover { background: var(--mui-blue-light); }
+    .btn-text {
+        border: none;
+        background: none;
+        color: var(--mui-blue);
+        font-size: 13.5px;
+        padding: 6px 4px;
+    }
+    .btn-text:hover { text-decoration: underline; }
+
+    /* ===== Scrim ===== */
+    .scrim {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 15, 25, 0.28);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s;
+        z-index: 40;
+    }
+    .scrim.open { opacity: 1; pointer-events: auto; }
+
+    /* ===== Dial pad modal ===== */
+    .modal-scrim {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 15, 25, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.18s;
+        z-index: 60;
+    }
+    .modal-scrim.open { opacity: 1; pointer-events: auto; }
+    .dialpad-modal {
+        background: #fff;
+        border-radius: 14px;
+        width: 300px;
+        padding: 24px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+        transform: scale(0.94);
+        transition: transform 0.18s;
+    }
+    .modal-scrim.open .dialpad-modal { transform: scale(1); }
+    .dialpad-head {
+        text-align: center;
+        margin-bottom: 4px;
+    }
+    .dialpad-head h3 { font-size: 16px; font-weight: 700; margin: 0 0 2px; }
+    .dialpad-head p { font-size: 13px; color: var(--mui-text-secondary); margin: 0 0 18px; }
+    .dialpad-display {
+        text-align: center;
+        font-size: 20px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        padding: 10px;
+        border-bottom: 1px solid var(--mui-border);
+        margin-bottom: 18px;
+        min-height: 28px;
+    }
+    .dialpad-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    .dialpad-key {
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 1px solid var(--mui-border);
+        background: #fafafa;
+        font-size: 17px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .dialpad-key:hover { background: #f0f0f3; }
+    .dialpad-actions {
+        display: flex;
+        gap: 10px;
+    }
+    .btn-cancel {
+        flex: 1;
+        border: 1px solid var(--mui-border);
+        background: #fff;
+        color: var(--mui-text);
+        border-radius: 8px;
+        padding: 10px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    .btn-cancel:hover { background: #f5f5f7; }
+    .btn-call {
+        flex: 1;
+        border: none;
+        background: var(--mui-green);
+        color: #fff;
+        border-radius: 8px;
+        padding: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+    .btn-call:hover { background: #266b2a; }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-thumb { background: #d5d5db; border-radius: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+</style>
+</head>
+<body>
+
+<div class="app">
+    <!-- Main content -->
+    <div class="main">
+        <div class="main-header">
+            <h1>Carrier Management</h1>
+            <button class="btn-primary">Create New Carrier</button>
+        </div>
+
+        <div class="search-bar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+            <input type="text" id="mainSearch" placeholder="Search all carriers">
+        </div>
+
+        <p class="section-label">Recently Viewed</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>L Number</th>
+                    <th>Carrier Name</th>
+                    <th>DOT#</th>
+                    <th>MC#</th>
+                    <th>Intrastate #</th>
+                    <th>City</th>
+                    <th>State/Province</th>
+                    <th>Zip/Postal Code</th>
+                </tr>
+            </thead>
+            <tbody id="mainTableBody"></tbody>
+        </table>
+    </div>
+
+    <!-- Nav rail -->
+    <div class="nav-rail">
+        <button class="nav-icon-btn" title="">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+        </button>
+        <button class="nav-icon-btn" title="">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+        </button>
+        <button class="nav-icon-btn" title="">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path d="M16 12a4 4 0 1 0-8 0v1a2 2 0 0 0 4 0"></path><path d="M16 8v5a4 4 0 0 0 8 0 9 9 0 1 0-3.5 7.1"></path></svg>
+        </button>
+        <button class="nav-icon-btn" id="truckToggle" title="">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 3h15v13H1z"></path><path d="M16 8h4l3 3v5h-7V8z"></path><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+        </button>
+        <button class="nav-icon-btn" title="">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </button>
+        <button class="nav-icon-btn" title="">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        </button>
+    </div>
+
+    <!-- My Carriers sidebar -->
+    <div class="carrier-sidebar" id="carrierSidebar">
+        <div class="carrier-sidebar-inner">
+            <div class="cs-header">
+                <div class="cs-title-row">
+                    <h2>My Carriers</h2>
+                    <button title="Open in new window" id="csOpenNew">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </button>
+                </div>
+                <div class="cs-search">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+                    <input type="text" id="sidebarSearch" placeholder="Search my carriers">
+                </div>
+                <p class="cs-total">Carrier Total: <span id="csCount">0</span> of <span id="csTotal">0</span></p>
+            </div>
+            <div class="cs-list" id="csList"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Detail overlay scrim -->
+<div class="scrim" id="detailScrim"></div>
+
+<!-- Detail flyout -->
+<div class="detail-overlay" id="detailOverlay">
+    <div class="detail-head">
+        <button class="detail-back" id="detailBack">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Back To My Carriers
+        </button>
+        <button class="detail-ext-btn" title="Open in new window">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </button>
+    </div>
+    <div class="detail-body">
+        <div class="detail-name-row">
+            <h2 id="dName">—</h2>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--mui-text-secondary)"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </div>
+        <div class="detail-lnum-row">
+            <span id="dLnum">—</span>
+            <button class="copy-btn" title="Copy"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+        </div>
+
+        <div class="detail-grid">
+            <div>
+                <p class="detail-field-label">Compliance Status</p>
+                <span class="status-chip">Active</span>
+            </div>
+            <div>
+                <p class="detail-field-label">Owner</p>
+                <p class="detail-field-value" id="dOwner">Josh Doe</p>
+            </div>
+            <div>
+                <p class="detail-field-label">Location</p>
+                <p class="detail-field-value" id="dLocation">Chicago, IL</p>
+            </div>
+        </div>
+
+        <div class="detail-grid-2">
+            <div>
+                <p class="detail-field-label">MC #</p>
+                <p class="detail-field-value" id="dMc">—</p>
+            </div>
+            <div>
+                <p class="detail-field-label">DOT #</p>
+                <p class="detail-field-value" id="dDot">—</p>
+            </div>
+        </div>
+
+        <p class="detail-subhead">Contacts</p>
+        <div class="contact-card">
+            <p class="contact-card-title">Main Contact</p>
+            <p class="contact-card-name">Alex Doe</p>
+            <p class="contact-card-info">contact@gmail.com</p>
+            <p class="contact-card-info">123-123-1235 ext. 411</p>
+            <div class="contact-card-actions">
+                <button class="btn-outline" id="dCallBtn">Call Carrier</button>
+                <button class="btn-text">View All Contacts</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Floating tooltip (portaled to body so scroll containers can't clip it) -->
+<div class="floating-tooltip" id="floatingTooltip"></div>
+
+<!-- Dial pad modal -->
+<div class="modal-scrim" id="dialpadScrim">
+    <div class="dialpad-modal">
+        <div class="dialpad-head">
+            <h3 id="dialpadName">Calling Carrier</h3>
+            <p>123-123-1235 ext. 411</p>
+        </div>
+        <div class="dialpad-display" id="dialpadDisplay">&nbsp;</div>
+        <div class="dialpad-grid" id="dialpadGrid"></div>
+        <div class="dialpad-actions">
+            <button class="btn-cancel" id="dialpadCancel">Cancel</button>
+            <button class="btn-call">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.25 1.01l-2.2 2.21z"></path></svg>
+                Call
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+const mainCarriers = [
+    { lNumber: "L237445", name: "RP Construction", dot: "3682074", mc: "MC1281153", intrastate: "49548362", city: "Fremont", state: "CA", zip: "94538" },
+    { lNumber: "L237444", name: "RP Construction Inc", dot: "3682073", mc: "MC1281152", intrastate: "49548361", city: "San Diego", state: "CA", zip: "94539" },
+    { lNumber: "L237443", name: "RP Construction Co", dot: "3682072", mc: "MC1281151", intrastate: "49548360", city: "San Francisco", state: "CA", zip: "94537" },
+    { lNumber: "L237442", name: "RP Construction Global", dot: "3682071", mc: "MC1281150", intrastate: "49548359", city: "Sacramento", state: "CA", zip: "94536" },
+];
+
+let sidebarCarriers = [
+    { id: "s1", name: "Acme Shipping", licenseNumber: "L09876", isLead: true, isDanger: false, isInactive: false, isContacted: true, isPosted: false, isBooked: false, hasInsuranceWarning: false, isFavorite: true },
+    { id: "s2", name: "Acme Shipping Inc", licenseNumber: "L19876", isLead: false, isDanger: false, isInactive: false, isContacted: false, isPosted: true, isBooked: false, hasInsuranceWarning: false, isFavorite: true },
+    { id: "s3", name: "Acme Shipping LLC", licenseNumber: "L29876", isLead: false, isDanger: true, isInactive: true, isContacted: true, isPosted: false, isBooked: true, hasInsuranceWarning: true, isFavorite: true },
+    { id: "s4", name: "Acme Shipping Home", licenseNumber: "L39876", isLead: false, isDanger: false, isInactive: false, isContacted: false, isPosted: false, isBooked: false, hasInsuranceWarning: false, isFavorite: false },
+    { id: "s5", name: "Acme Shipping Goods", licenseNumber: "L49876", isLead: false, isDanger: false, isInactive: true, isContacted: false, isPosted: false, isBooked: false, hasInsuranceWarning: false, isFavorite: false },
+    { id: "s6", name: "Global Freight Solutions", licenseNumber: "L12345", isLead: false, isDanger: false, isInactive: false, isContacted: true, isPosted: true, isBooked: false, hasInsuranceWarning: false, isFavorite: false },
+    { id: "s7", name: "Swift Transport Co", licenseNumber: "L54321", isLead: true, isDanger: false, isInactive: false, isContacted: false, isPosted: false, isBooked: true, hasInsuranceWarning: false, isFavorite: true },
+    { id: "s8", name: "Metro Logistics", licenseNumber: "L67890", isLead: false, isDanger: false, isInactive: false, isContacted: true, isPosted: false, isBooked: false, hasInsuranceWarning: true, isFavorite: false },
+    { id: "s9", name: "Prime Cargo Express", licenseNumber: "L98765", isLead: false, isDanger: true, isInactive: false, isContacted: false, isPosted: true, isBooked: false, hasInsuranceWarning: false, isFavorite: false },
+    { id: "s10", name: "Elite Transport Services", licenseNumber: "L13579", isLead: false, isDanger: false, isInactive: true, isContacted: false, isPosted: false, isBooked: false, hasInsuranceWarning: false, isFavorite: true },
+    { id: "s11", name: "Alpha Freight Lines", licenseNumber: "L24680", isLead: true, isDanger: false, isInactive: false, isContacted: true, isPosted: true, isBooked: true, hasInsuranceWarning: false, isFavorite: false },
+    { id: "s12", name: "Pioneer Trucking LLC", licenseNumber: "L35791", isLead: false, isDanger: false, isInactive: false, isContacted: false, isPosted: false, isBooked: false, hasInsuranceWarning: true, isFavorite: false },
+    { id: "s13", name: "Apex Delivery Systems", licenseNumber: "L46802", isLead: false, isDanger: false, isInactive: false, isContacted: true, isPosted: false, isBooked: true, hasInsuranceWarning: false, isFavorite: true },
+    { id: "s14", name: "Continental Express", licenseNumber: "L57913", isLead: false, isDanger: true, isInactive: false, isContacted: false, isPosted: true, isBooked: false, hasInsuranceWarning: false, isFavorite: false },
+    { id: "s15", name: "Nationwide Carriers", licenseNumber: "L68024", isLead: false, isDanger: false, isInactive: true, isContacted: false, isPosted: false, isBooked: false, hasInsuranceWarning: true, isFavorite: false },
+];
+
+const ICONS = {
+    phoneOn: '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.25 1.01l-2.2 2.21z"></path></svg>',
+    phoneOff: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.25 1.01l-2.2 2.21z"></path></svg>',
+    pinOn: '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17v5"></path><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"></path></svg>',
+    pinOff: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17v5"></path><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"></path></svg>',
+    briefcaseOn: '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>',
+    briefcaseOff: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>',
+    triangle: '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 1 21h22z"></path></svg>',
+    clock: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>',
+    starOn: '<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"></polygon></svg>',
+    starOff: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"></polygon></svg>',
+};
+
+function renderMainTable(filter) {
+    const tbody = document.getElementById('mainTableBody');
+    const term = (filter || '').toLowerCase();
+    const rows = mainCarriers.filter(c => !term || c.name.toLowerCase().includes(term) || c.lNumber.toLowerCase().includes(term));
+    tbody.innerHTML = rows.map(c => `
+        <tr data-lnum="${c.lNumber}">
+            <td><span class="l-number-link">${c.lNumber}</span></td>
+            <td>${c.name}</td>
+            <td>${c.dot}</td>
+            <td>${c.mc}</td>
+            <td>${c.intrastate}</td>
+            <td>${c.city}</td>
+            <td>${c.state}</td>
+            <td>${c.zip}</td>
+        </tr>
+    `).join('');
+    tbody.querySelectorAll('tr').forEach(tr => {
+        tr.addEventListener('click', () => {
+            const carrier = mainCarriers.find(c => c.lNumber === tr.dataset.lnum);
+            openDetail({
+                name: carrier.name,
+                lnum: carrier.lNumber,
+                mc: carrier.mc,
+                dot: carrier.dot,
+                owner: 'Josh Doe',
+                location: `${carrier.city}, ${carrier.state}`
+            });
+        });
+    });
+}
+
+function iconWrap(iconHtml, tooltip, extraClass) {
+    return `<span class="cs-icon-wrap ${extraClass || ''}" data-tip="${tooltip}">${iconHtml}</span>`;
+}
+
+function renderSidebar(filter) {
+    const list = document.getElementById('csList');
+    const term = (filter || '').toLowerCase();
+    const rows = sidebarCarriers.filter(c => !term || c.name.toLowerCase().includes(term) || c.licenseNumber.toLowerCase().includes(term));
+
+    document.getElementById('csCount').textContent = rows.length;
+    document.getElementById('csTotal').textContent = sidebarCarriers.length;
+
+    list.innerHTML = rows.map(c => {
+        let icons = '';
+        if (c.isInactive) icons += iconWrap(ICONS.triangle, 'Carrier is inactive', 'on-orange');
+        icons += iconWrap(c.isContacted ? ICONS.phoneOn : ICONS.phoneOff, c.isContacted ? 'Have called/contacted carrier today' : 'Have not called/contacted carrier today', c.isContacted ? 'on-green' : '');
+        icons += iconWrap(c.isPosted ? ICONS.pinOn : ICONS.pinOff, c.isPosted ? 'Posted a truck for carrier today' : 'Did not post a truck for carrier today', c.isPosted ? 'on-green' : '');
+        icons += iconWrap(c.isBooked ? ICONS.briefcaseOn : ICONS.briefcaseOff, c.isBooked ? 'Booked carrier today' : 'Did not book carrier today', c.isBooked ? 'on-green' : '');
+        if (c.hasInsuranceWarning) icons += iconWrap(ICONS.clock, 'Insurance expiring - less than 30 days remaining', 'on-orange');
+
+        return `
+        <div class="cs-item" data-id="${c.id}">
+            <div class="cs-item-top">
+                <div class="cs-item-name">
+                    ${c.isLead ? '<span class="cs-icon-wrap" data-tip="Ownership status: Lead"><span class="status-dot lead"></span></span>' : ''}
+                    ${c.isDanger ? '<span class="cs-icon-wrap" data-tip="Ownership status: Danger"><span class="status-dot danger"></span></span>' : ''}
+                    ${c.name} <span class="cs-item-license">(${c.licenseNumber})</span>
+                </div>
+                <button class="fav-btn" data-fav="${c.id}">${c.isFavorite ? ICONS.starOn : ICONS.starOff}</button>
+            </div>
+            <div class="cs-icons">${icons}</div>
+            <div class="cs-actions">
+                <button data-call="${c.id}">Call Carrier</button>
+                <button>Email Carrier</button>
+            </div>
+        </div>`;
+    }).join('');
+
+    list.querySelectorAll('.fav-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const id = btn.dataset.fav;
+            const c = sidebarCarriers.find(x => x.id === id);
+            c.isFavorite = !c.isFavorite;
+            renderSidebar(document.getElementById('sidebarSearch').value);
+        });
+    });
+
+    list.querySelectorAll('[data-call]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const c = sidebarCarriers.find(x => x.id === btn.dataset.call);
+            openDialpad(c.name);
+        });
+    });
+
+    list.querySelectorAll('.cs-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const c = sidebarCarriers.find(x => x.id === item.dataset.id);
+            openDetail({
+                name: c.name,
+                lnum: c.licenseNumber,
+                mc: '956264502',
+                dot: '3622074',
+                owner: 'Josh Doe',
+                location: 'Chicago, IL'
+            });
+        });
+    });
+}
+
+document.getElementById('mainSearch').addEventListener('input', (e) => renderMainTable(e.target.value));
+document.getElementById('sidebarSearch').addEventListener('input', (e) => renderSidebar(e.target.value));
+
+// Truck toggle
+const truckToggle = document.getElementById('truckToggle');
+const carrierSidebar = document.getElementById('carrierSidebar');
+truckToggle.addEventListener('click', () => {
+    const isOpen = carrierSidebar.classList.toggle('open');
+    truckToggle.classList.toggle('active', isOpen);
+    if (!isOpen) closeDetail();
+});
+
+// Detail flyout
+const detailOverlay = document.getElementById('detailOverlay');
+const detailScrim = document.getElementById('detailScrim');
+function openDetail(data) {
+    document.getElementById('dName').textContent = data.name;
+    document.getElementById('dLnum').textContent = data.lnum;
+    document.getElementById('dMc').textContent = data.mc;
+    document.getElementById('dDot').textContent = data.dot;
+    document.getElementById('dOwner').textContent = data.owner;
+    document.getElementById('dLocation').textContent = data.location;
+    detailOverlay.classList.add('open');
+    detailScrim.classList.add('open');
+}
+function closeDetail() {
+    detailOverlay.classList.remove('open');
+    detailScrim.classList.remove('open');
+}
+document.getElementById('detailBack').addEventListener('click', closeDetail);
+detailScrim.addEventListener('click', closeDetail);
+document.getElementById('dCallBtn').addEventListener('click', () => openDialpad(document.getElementById('dName').textContent));
+
+// Dial pad
+const dialpadScrim = document.getElementById('dialpadScrim');
+const dialpadGrid = document.getElementById('dialpadGrid');
+const dialpadDisplay = document.getElementById('dialpadDisplay');
+let dialed = '';
+['1','2','3','4','5','6','7','8','9','*','0','#'].forEach(k => {
+    const btn = document.createElement('button');
+    btn.className = 'dialpad-key';
+    btn.textContent = k;
+    btn.addEventListener('click', () => {
+        dialed += k;
+        dialpadDisplay.textContent = dialed;
+    });
+    dialpadGrid.appendChild(btn);
+});
+function openDialpad(name) {
+    document.getElementById('dialpadName').textContent = 'Calling ' + name;
+    dialed = '';
+    dialpadDisplay.innerHTML = '&nbsp;';
+    dialpadScrim.classList.add('open');
+}
+document.getElementById('dialpadCancel').addEventListener('click', () => dialpadScrim.classList.remove('open'));
+dialpadScrim.addEventListener('click', (e) => { if (e.target === dialpadScrim) dialpadScrim.classList.remove('open'); });
+
+// Floating tooltip - positioned via JS so it can't be clipped by the scrolling list container
+const floatingTooltip = document.getElementById('floatingTooltip');
+const csListEl = document.getElementById('csList');
+
+function showTooltip(target) {
+    const tip = target.getAttribute('data-tip');
+    if (!tip) return;
+    floatingTooltip.textContent = tip;
+    floatingTooltip.classList.add('visible');
+
+    const rect = target.getBoundingClientRect();
+    const tipRect = floatingTooltip.getBoundingClientRect();
+    let left = rect.left + rect.width / 2 - tipRect.width / 2;
+    let top = rect.top - tipRect.height - 8;
+
+    // Clamp horizontally within the viewport
+    const margin = 8;
+    left = Math.max(margin, Math.min(left, window.innerWidth - tipRect.width - margin));
+
+    // Flip below the icon if there's no room above
+    if (top < margin) top = rect.bottom + 8;
+
+    floatingTooltip.style.left = left + 'px';
+    floatingTooltip.style.top = top + 'px';
+}
+
+function hideTooltip() {
+    floatingTooltip.classList.remove('visible');
+}
+
+csListEl.addEventListener('mouseover', (e) => {
+    const wrap = e.target.closest('.cs-icon-wrap');
+    if (wrap) showTooltip(wrap);
+});
+csListEl.addEventListener('mouseout', (e) => {
+    const wrap = e.target.closest('.cs-icon-wrap');
+    if (wrap) hideTooltip();
+});
+csListEl.addEventListener('scroll', hideTooltip);
+
+// Init
+renderMainTable('');
+renderSidebar('');
+</script>
+</body>
+</html>

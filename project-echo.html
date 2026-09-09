@@ -55,153 +55,257 @@
         </div>
     </nav>
 
-    <!-- Project Header - Split Layout -->
-    <header class="project-header">
+    <!-- Project Header - Stacked Layout -->
+    <header class="project-header stacked-hero" id="overview">
         <div class="header-content">
-            <div class="header-left">
-                <div class="project-category">UX Design • Enterprise Software</div>
-                <h1 class="project-title">Echo Global Logistics</h1>
-                <p class="project-description">Unifying workflows across legacy platforms to improve efficiency for supply chain professionals.</p>
-                
-                <div class="project-meta-grid">
-                    <div class="meta-item">
-                        <span class="meta-label">Role</span>
-                        <span>Senior UX Designer</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-label">Timeline</span>
-                        <span>2025</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-label">Services</span>
-                        <span>Strategy, Research, Design</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-label">Platform</span>
-                        <span>Web Application</span>
-                    </div>
-                </div>
+            <div class="project-category">UX Design • Enterprise Software</div>
+            <h1 class="project-title">Echo Global Logistics</h1>
+            <p class="project-description">Unifying workflows across legacy platforms to improve efficiency for supply chain professionals.</p>
+
+            <div class="hero-image-container">
+                <img src="echo-hero-image.png" alt="Echo Global Logistics Carrier Management">
             </div>
-            
-            <div class="header-right">
-                <div class="hero-image-container">
-                    <img src="echo-hero-image.png" alt="Echo Global Logistics Carrier Management">
+
+            <div class="project-meta-grid">
+                <div class="meta-item">
+                    <span class="meta-label">Role</span>
+                    <span>Senior UX Designer</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Timeline</span>
+                    <span>2025</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Services</span>
+                    <span>Strategy, Research, Design</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Platform</span>
+                    <span>Web Application</span>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Problem & Solution Split -->
-    <section class="split-section">
-        <div class="split-side">
-            <h2>The Problem</h2>
-            <p>Echo's fragmented carrier management system forced users to rely on multiple tools and manual processes.</p>
-            
-            <ul class="key-points">
-                <li>Contact tracking relied on external systems</li>
-                <li>Limited visibility into carrier performance and load history</li>
-                <li>Outdated carrier profiles hindered capacity matching</li>
-                <li>Manual compliance created operational risks</li>
-            </ul>
+    <!-- Overview -->
+    <section class="full-width-section bg-white">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">Overview</div>
+                <h2 class="section-title">Redesigning how Echo manages carrier relationships</h2>
+            </div>
+            <div class="narrative">
+                <p>Echo's carrier teams relied on three disconnected legacy tools (Clutch, Optimizer, and STATS) to do a single job, and none of them shared data automatically. I led the redesign of a unified carrier profile that consolidated contacts, load history, compliance, and equipment data into one interface used daily by Directors, Managers, and Reps.</p>
+            </div>
         </div>
-        
-        <div class="split-side">
-            <h2>The Solution</h2>
-            <p>I designed a unified carrier management system that consolidated critical data and automated manual workflows.</p>
-            
-            <ul class="key-points">
-                <li>Centralized contacts with role tagging and visibility</li>
-                <li>Load history with performance metrics and trends</li>
-                <li>Dynamic, searchable equipment and service profiles</li>
-                <li>Automated compliance workflows with exception flagging</li>
-            </ul>
+    </section>
+
+    <!-- Problem -->
+    <section class="full-width-section bg-white" id="problem">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">Problem</div>
+                <h2 class="section-title">Three tools. One job. No connection.</h2>
+            </div>
+            <div class="narrative">
+                <p class="narrative-lede">Every carrier task meant working across three systems that never synced, and none of them agreed on what was current.</p>
+
+                <p>Carrier Reps and Compliance Reps pieced together their work across multiple systems and external platforms that didn't talk to each other. Contact information lived outside the platform, carrier performance and load history were hard to see at a glance, and profiles went stale fast enough to undermine accurate capacity matching. Compliance was tracked manually, which meant operational risk sat in spreadsheets instead of surfacing where anyone could act on it.</p>
+
+                <div class="quote-card">
+                    <p><span class="quote-mark">&ldquo;</span>There's a lot of different places where you need to do one thing to do another.<span class="quote-mark">&rdquo;</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before / After -->
+    <section class="before-after-section">
+        <div class="before-after">
+            <div class="ba-col">
+                <span class="ba-tag before">Before: 3 disconnected tools</span>
+                <div class="ba-stack">
+                    <div class="ba-image">
+                        <img src="clutch.png" alt="Clutch carrier overview tool">
+                        <span class="ba-tool-label">Clutch</span>
+                    </div>
+                    <div class="ba-image">
+                        <img src="optimizer.png" alt="Optimizer carrier profile tool">
+                        <span class="ba-tool-label">Optimizer</span>
+                    </div>
+                    <div class="ba-image">
+                        <img src="stats.png" alt="STATS reporting tool">
+                        <span class="ba-tool-label">STATS</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ba-col">
+                <span class="ba-tag after">After: 1 unified profile</span>
+                <div class="ba-image ba-image-large">
+                    <img src="Summary Dashboard.png" alt="Unified Echo Accelerator carrier profile">
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Design Showcase -->
-    <section class="full-width-section">
+    <section class="full-width-section bg-white" id="features">
         <div class="section-container">
             <div class="section-header">
-                <h2 class="section-title">Key Features</h2>
+                <div class="section-label">Design</div>
+                <h2 class="section-title">Refining the carrier workflow</h2>
                 <p class="section-subtitle">A closer look at the solutions that improved efficiency and user satisfaction.</p>
             </div>
-            
-            <div class="design-grid">
-                <div class="design-card">
-                    <div class="design-image"><img src="Summary Dashboard.png" alt="Summary Dashboard"></div>
-                    <div class="design-info">
-                        <h3>Summary Dashboard</h3>
-                        <p>Consolidated overview of carrier status, activity history, and relationship management for quick navigation.</p>
-                    </div>
+
+            <div class="feature-showcase">
+                <div class="feature-item">
+                    <div class="feature-image"><img src="Summary Dashboard.png" alt="Summary Dashboard"></div>
+                    <p class="feature-caption"><strong>Summary Dashboard.</strong> Research kept pointing to a single view, carrier status, activity, and relationships surfaced up front instead of buried behind five separate tabs.</p>
                 </div>
-                
-                <div class="design-card">
-                    <div class="design-image"><img src="Contacts & Address Management.png" alt="Contacts & Address Management"></div>
-                    <div class="design-info">
-                        <h3>Contacts & Address Management</h3>
-                        <p>Centralized system with role tagging, note taking, and categorized addresses, eliminating external tool reliance.</p>
-                    </div>
+
+                <div class="feature-item">
+                    <div class="feature-image"><img src="Contacts & Address Management.png" alt="Contacts & Address Management"></div>
+                    <p class="feature-caption"><strong>Contacts & Address Management.</strong> Role-tagged contacts and categorized addresses replace the undifferentiated list that made "who do I even contact for this?" the top complaint in research.</p>
                 </div>
-                
-                <div class="design-card">
-                    <div class="design-image"><img src="Load History & Performance.png" alt="Load History & Performance"></div>
-                    <div class="design-info">
-                        <h3>Load History & Performance</h3>
-                        <p>Interactive view of completed shipments with performance metrics and service trends, enabling informed capacity matching decisions.</p>
-                    </div>
+
+                <div class="feature-item">
+                    <div class="feature-image"><img src="Load History & Performance.png" alt="Load History & Performance"></div>
+                    <p class="feature-caption"><strong>Load History & Performance.</strong> Completed shipments and service trends visible at a glance, closing the gap that made capacity matching slower and less reliable than it should have been.</p>
                 </div>
-                
-                <div class="design-card">
-                    <div class="design-image"><img src="Compliance Management.png" alt="Compliance Management"></div>
-                    <div class="design-info">
-                        <h3>Compliance Management</h3>
-                        <p>Automated workflows with dynamic status indicators and exception flagging, reducing manual effort and mitigating operational risks.</p>
-                    </div>
+
+                <div class="feature-item">
+                    <div class="feature-image"><img src="Compliance Management.png" alt="Compliance Management"></div>
+                    <p class="feature-caption"><strong>Compliance Management.</strong> Dynamic status indicators and exception flagging catch expiring insurance automatically. That's the exact gap that cost Echo a carrier relationship in research.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Results -->
-    <section class="results-section">
-        <div class="results-container">
-            <div class="results-header">
-                <h2 class="results-title">The Impact</h2>
-                <p class="results-intro">The unified carrier management system transformed how teams maintained carrier relationships and managed operational workflows.</p>
+    <!-- Research Highlights -->
+    <section class="full-width-section bg-white" id="research">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">Research Highlights</div>
+                <h2 class="section-title">What we learned from the people doing the work</h2>
             </div>
-            
-            <div class="impact-body">
-                <p>The new design eliminated the need for users to jump between multiple systems and manual processes. By consolidating carrier contacts, addresses, load history, and compliance data into a single interface, teams could now manage carrier relationships efficiently and make informed capacity decisions in real time.</p>
 
-                <p>Automated compliance workflows reduced manual exceptions handling, while dynamic profiles and integrated service area data improved load matching accuracy. What was once a fragmented, time consuming process became a streamlined system that empowered teams to focus on strategic partnerships rather than administrative tasks.</p>
+            <div class="figure-single"><img src="echo-research-canvas.png" alt="Carrier Profile Management research canvas: experiments and facts from carrier team interviews"></div>
+
+            <div class="narrative">
+                <p>I ran seven interviews across the teams closest to the work: two Directors, two Managers, and three Reps, split between remote and in-person sessions.</p>
+
+                <p>A pattern emerged quickly. Every role needed data that lived in a system they weren't currently working in, which meant constant manual cross-referencing just to answer basic questions. Compounding that, there was no proactive alerting for critical events like expiring insurance, so risks were only caught after the fact, or missed entirely.</p>
+
+                <div class="quote-card">
+                    <p><span class="quote-mark">&ldquo;</span>We stopped working with carriers because their insurance expired and a rep just didn't have it on them.<span class="quote-mark">&rdquo;</span></p>
+                    <span class="quote-name">Interview participant</span>
+                    <span class="quote-role">Carrier Operations Rep</span>
+                </div>
+
+                <p>By the time research wrapped, most teams had already built their own workarounds (Excel trackers, personal email threads), a clear sign they no longer trusted the system to do the job.</p>
             </div>
         </div>
     </section>
 
-    <!-- Next Steps CTA -->
-    <section class="next-steps-section">
-        <div class="next-steps-container">
-            <h2 class="next-steps-title">Want to Learn More?</h2>
-            
-            <div class="cta-box">
-                <p>The full case study with detailed process, research findings, and design iterations is coming soon. In the meantime, I'd be happy to discuss this project in more detail.</p>
-                <a href="mailto:yesbobbyreyes@gmail.com" class="cta-button">Get in Touch</a>
+    <!-- Process -->
+    <section class="full-width-section bg-white" id="process">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">Process</div>
+                <h2 class="section-title">Three rounds to the final layout</h2>
+            </div>
+
+            <div class="narrative">
+                <p>Round 1 started as a slide-over drawer at the carrier list level, a lightweight v1 that seemed like the faster build, working from the basic profile data our legacy platforms exposed and the two-way sync a full profile page would require with our legacy Optimizer tool. The insight that actually changed our direction wasn't technical, though. It was that stakeholders wanted the complete profile experience, not something rolled out in small iterative pieces. That's what pushed us to build the full page rather than keep iterating on a drawer.</p>
+
+                <p>Round 2 replaced the drawer with a dedicated page, but reused a flat-stack pattern already built for customers. Carrier profiles had never been designed before, so it was the fastest starting point, not necessarily the right one. Testing showed it hid information reps needed to see at once, like recent notes or which profiles sat under a carrier account.</p>
+
+                <p>That last gap mattered more than it sounds. Echo was introducing a new hierarchy (Logistics Provider, then Carrier Account, then Carrier Profile), and the old tools had no way to represent it. Multiple carrier profiles could exist under one account with no visible relationship between them, which meant Compliance couldn't trust that a change made on one profile was reflected correctly across related ones, and duplicate accounts crept in as a result. The final round's Related Profiles panel was the first surface for that hierarchy, letting Compliance see which profiles actually belonged together before acting on any of them.</p>
+
+                <div class="figure-strip">
+                    <div class="figure-frame"><img src="echo-wireframe-v1.png" alt="Round 1 wireframe"></div>
+                    <div class="figure-frame"><img src="echo-wireframe-v2.png" alt="Round 2 wireframe"></div>
+                    <div class="figure-frame"><img src="echo-wireframe-v4.png" alt="Round 3: final structure"></div>
+                </div>
+                <p class="figure-caption">Fig. 1–3: Wireframe evolution to the final structure.</p>
+
+                <p>Each pass carried its open questions forward on the wireframes themselves, keeping decisions grounded in research rather than personal preference. Some of those questions stayed open past the final round, including one I still think about: is this the right placement for viewing preferred lanes?</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Decisions -->
+    <section class="full-width-section bg-white" id="decisions">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">Key Decisions</div>
+                <h2 class="section-title">Four choices that mattered most</h2>
+            </div>
+
+            <div class="narrative">
+                <p><strong>Consolidated summary cards.</strong> Key metrics and relationships now live directly on the main view instead of behind separate tabs, because people needed to verify a carrier's status before acting, not after digging through five tabs to find it.</p>
+
+                <p><strong>Role-tagged contacts.</strong> Pairing role labels with address types replaced an undifferentiated contact list and solved the single most common complaint from research: "who do I even contact for this?"</p>
+
+                <p><strong>Automated service areas.</strong> Equipment and lane data now pull directly from source systems instead of relying on manually maintained profiles, exactly the kind of stale data that had been quietly breaking capacity matching for years.</p>
+
+                <p><strong>Cut the performance score cards.</strong> On-time rate, tracking compliance, and bounce rate tested well as a concept, but the algorithm behind them wasn't defined yet, and we couldn't get alignment on how to calculate it. Shipping an inaccurate number felt riskier than shipping none. It's still on the roadmap, and getting it right would help reps make faster judgment calls on which carriers to work with.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact -->
+    <section class="full-width-section bg-white" id="impact">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">The Impact</div>
+                <h2 class="section-title">What changed</h2>
+            </div>
+
+            <div class="narrative">
+                <p class="narrative-lede">The clearest signal of success wasn't a metric. It was behavior. Carrier reps and compliance reps chose the new unified profile over falling back to the old three-tool workflow.</p>
+
+                <p>Clutch, Optimizer, and STATS are still running and scheduled for sunset, so switching back was always one click away. Teams didn't take it, which says more about whether the redesign actually solved the problem than a dashboard number would have.</p>
+
+                <p>What I don't have is the analytics to quantify that shift precisely. Echo didn't have instrumentation in place to track it. Pushing for that measurement layer is one of the things I'd prioritize next.</p>
+
+                <p>If I were defining that measurement layer today, the metric that actually tests the thesis is the Optimizer fallback rate. That's the share of carrier work reps still complete by clicking back into Optimizer instead of staying in the unified profile. The button and the Split flags are still live specifically so that fallback is possible; watching that rate collapse toward zero is what would tell us the profile really closed the gap, not just that people used it.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reflection -->
+    <section class="full-width-section bg-white">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">Reflection</div>
+                <h2 class="section-title">What this project taught me</h2>
+            </div>
+            <div class="narrative">
+                <p>The biggest lesson here wasn't about the interface. It was about not trusting a pattern just because it already exists. Reusing the customer profile layout for carriers felt efficient at first and cost us a full round of testing once we realized carriers needed to be designed from scratch. The other thing I keep coming back to is measurement. I pushed for it, but defining success at a company this size, in the middle of a larger TMS overhaul, isn't something one project can force on its own. It's something I want to keep finding better ways to advocate for.</p>
+
+                <p>One thing I'd still change: carrier identifiers (MC#, DOT#, Intrastate#) live in the Certifications card, several scrolls down. For someone just trying to confirm a carrier is compliant before booking, that's real friction; surfacing those identifiers higher up, right in the header, would make the fastest, most common check even faster.</p>
             </div>
         </div>
     </section>
 
     <!-- Project Navigation - CLEAN THREE COLUMN -->
-    <section class="project-navigation">
-        <div class="nav-link prev" style="visibility: hidden;">
-            <!-- No previous project (McDonald's is hidden) -->
+    <section class="explore-more">
+        <h3 class="explore-more-label">Explore more</h3>
+        <div class="explore-more-grid">
+            <a href="project-echo-portfolio.html" class="explore-more-card">
+                <div class="explore-more-image">
+                    <img src="My Carriers - Rep View-Designs.png" alt="Echo Global Logistics: Carrier Portfolio Management">
+                </div>
+                <span class="explore-more-name">Echo: Carrier Portfolio</span>
+            </a>
+            <a href="project-groupon.html" class="explore-more-card">
+                <div class="explore-more-image">
+                    <img src="project-groupon-image.png" alt="Groupon">
+                </div>
+                <span class="explore-more-name">Groupon</span>
+            </a>
         </div>
-
-        <a href="index.html" class="nav-link home">Back to Work</a>
-
-        <a href="project-groupon.html" class="nav-link next">
-            <span>Next Project →</span>
-            <span class="project-name">Groupon</span>
-        </a>
     </section>
 
     <!-- Footer -->
@@ -225,8 +329,13 @@
                         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                     </svg>
                 </a>
+                <a href="reyes-2026.pdf" target="_blank" class="footer-icon" aria-label="Resume">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6 2c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13zM8 13h8v2H8v-2zm0 4h8v2H8v-2zm0-8h3v2H8V9z"/>
+                    </svg>
+                </a>
             </div>
-            <p class="footer-copyright">© 2025 Bobby Reyes. All rights reserved.</p>
+            <p class="footer-copyright">© 2026 Bobby Reyes. All rights reserved.</p>
         </div>
     </footer>
 </body>

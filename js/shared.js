@@ -203,6 +203,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Handle feature showcase and figure images - make image clickable
+    const featureImages = document.querySelectorAll('.feature-image img, .figure-single img, .figure-frame img');
+    featureImages.forEach(img => {
+        if (img.src && !img.src.includes('[')) {
+            img.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                lightboxImg.src = this.src;
+                lightboxImg.alt = this.alt || 'Project image';
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+    });
+
     // Handle design cards - make entire card clickable
     const designCards = document.querySelectorAll('.design-card');
     designCards.forEach(card => {

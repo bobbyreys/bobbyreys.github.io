@@ -55,151 +55,238 @@
         </div>
     </nav>
 
-    <!-- Project Header - Split Layout -->
-    <header class="project-header">
+    <!-- Project Header - Stacked Layout -->
+    <header class="project-header stacked-hero" id="overview">
         <div class="header-content">
-            <div class="header-left">
-                <div class="project-category">UX Design • E-commerce</div>
-                <h1 class="project-title">Groupon</h1>
-                <p class="project-description">Reimagining the merchant experience to empower local businesses.</p>
-                
-                <div class="project-meta-grid">
-                    <div class="meta-item">
-                        <span class="meta-label">Role</span>
-                        <span>Product Designer II</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-label">Timeline</span>
-                        <span>2022</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-label">Services</span>
-                        <span>Strategy, Research, Design</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-label">Platform</span>
-                        <span>Web & Mobile</span>
-                    </div>
-                </div>
+            <div class="project-category">UX Design • E-commerce</div>
+            <h1 class="project-title">Groupon</h1>
+            <p class="project-description">Reimagining the merchant experience to empower local businesses.</p>
+
+            <div class="hero-image-container">
+                <img src="groupon-hero-image.png" alt="Groupon Merchant Dashboard">
             </div>
-            
-            <div class="header-right">
-                <div class="hero-image-container">
-                    <img src="groupon-hero-image.png" alt="Groupon Merchant Dashboard" style="width: 100%; height: 100%; object-fit: cover;">
+
+            <div class="project-meta-grid">
+                <div class="meta-item">
+                    <span class="meta-label">Role</span>
+                    <span>Product Designer II</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Timeline</span>
+                    <span>2022</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Services</span>
+                    <span>Strategy, Research, Design</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Platform</span>
+                    <span>Web & Mobile</span>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Problem & Solution Split -->
-    <section class="split-section">
-        <div class="split-side">
-            <h2>The Problem</h2>
-            <p>Merchants were confused about Account Balance vs. Budget Remaining, leading to mistrust and poor budget planning.</p>
-            
-            <ul class="key-points">
-                <li>Account Balance and Budget Remaining didn't match</li>
-                <li>Lack of transparency in campaign level spending</li>
-                <li>Merchants couldn't track campaign level spending</li>
-                <li>30-day budget renewal cycle wasn't clearly communicated</li>
-            </ul>
+    <!-- Overview -->
+    <section class="full-width-section bg-white">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">Overview</div>
+                <h2 class="section-title">Redesigning how merchants manage their ad spend</h2>
+            </div>
+            <div class="narrative">
+                <p>Groupon merchants couldn't tell whether they were looking at their account balance or their campaign budget, two numbers that were supposed to tell the same story, but often didn't match. I led the redesign of the merchant dashboard to make spending clear, trustworthy, and easy to act on.</p>
+            </div>
         </div>
-        
-        <div class="split-side">
-            <h2>The Solution</h2>
-            <p>I created clear visual distinctions and surfaced campaign specific spending metrics to build merchant trust.</p>
-            <ul class="key-points">
-                <li>Tooltips distinguishing wallet from campaign budget</li>
-                <li>Campaign level spending breakdowns</li>
-                <li>Created funding alert system for low balances</li>
-                <li>Built statistics education modal for merchant clarity</li>
-            </ul>
+    </section>
+
+    <!-- Problem -->
+    <section class="full-width-section bg-white" id="problem">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">Problem</div>
+                <h2 class="section-title">Two numbers. No explanation. No trust.</h2>
+            </div>
+            <div class="narrative">
+                <p class="narrative-lede">Merchants saw two numbers that were supposed to match and often didn't, and nothing on screen explained why.</p>
+
+                <p>Merchants relied on two numbers that looked like they should match, but structurally never could. Account Balance was wallet-level: the total a merchant had deposited. Budget Remaining was scoped to a single campaign's monthly budget, which reset every 30 days. Nothing on screen explained that distinction, so every mismatch between the two read as a bug rather than how the system was designed to work. Add in no visibility into campaign-level spending, and the result was a dashboard that looked precise but felt untrustworthy.</p>
+
+                <div class="quote-card">
+                    <p><span class="quote-mark">&ldquo;</span>You spent my $1400 on sponsored campaigns with nothing to show for it, and there's no record of how that was spent.<span class="quote-mark">&rdquo;</span></p>
+                    <span class="quote-name">Bill S.</span>
+                    <span class="quote-role">Merchant</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before / After -->
+    <section class="before-after-section">
+        <div class="before-after">
+            <div class="ba-col">
+                <span class="ba-tag before">Before: 2 conflicting numbers</span>
+                <div class="ba-image ba-image-large align-left">
+                    <img src="groupon-before-dashboard2.png" alt="Legacy Sponsored Campaigns Manage Funds view">
+                </div>
+            </div>
+            <div class="ba-col">
+                <span class="ba-tag after">After: 1 clear number</span>
+                <div class="ba-image ba-image-large"><img src="Redesigned Dashboard.png" alt="Redesigned merchant dashboard"></div>
+            </div>
         </div>
     </section>
 
     <!-- Design Showcase -->
-    <section class="full-width-section">
+    <section class="full-width-section bg-white" id="features">
         <div class="section-container">
             <div class="section-header">
-                <h2 class="section-title">Key Features</h2>
+                <div class="section-label">Design</div>
+                <h2 class="section-title">Refining the merchant dashboard</h2>
                 <p class="section-subtitle">A closer look at the solutions that improved efficiency and user satisfaction.</p>
             </div>
-            
-            <div class="design-grid">
-                <div class="design-card">
-                    <div class="design-image"><img src="Redesigned Dashboard.png" alt="Redesigned Dashboard"></div>
-                    <div class="design-info">
-                        <h3>Redesigned Dashboard</h3>
-                        <p>Unified view of Account Balance and Budget Remaining with clear visual separation and tooltips.</p>
-                    </div>
+
+            <div class="feature-showcase">
+                <div class="feature-item">
+                    <div class="feature-image"><img src="Redesigned Dashboard.png" alt="Redesigned Dashboard"></div>
+                    <p class="feature-caption"><strong>Redesigned Dashboard.</strong> Account Balance and Budget Remaining finally read as two different things. Clear visual separation and tooltips replace the confusion that eroded merchant trust.</p>
                 </div>
-                
-                <div class="design-card">
-                    <div class="design-image"><img src="Campaign Details with Metrics.png" alt="Campaign Details with Metrics"></div>
-                    <div class="design-info">
-                        <h3>Campaign Details with Metrics</h3>
-                        <p>Granular spending breakdown by campaign, showing exactly where budget is allocated and spent in real time.</p>
-                    </div>
+
+                <div class="feature-item">
+                    <div class="feature-image"><img src="Campaign Details with Metrics.png" alt="Campaign Details with Metrics"></div>
+                    <p class="feature-caption"><strong>Campaign Details with Metrics.</strong> Granular, real-time spending breakdown by campaign, the visibility merchants never had into where their budget was actually going.</p>
                 </div>
-                
-                <div class="design-card">
-                    <div class="design-image"><img src="Add Funds Alert.png" alt="Add Funds Alert"></div>
-                    <div class="design-info">
-                        <h3>Add Funds Alert</h3>
-                        <p>Proactive notification system alerting merchants when Account Balance is low, preventing campaign interruptions.</p>
-                    </div>
+
+                <div class="feature-item">
+                    <div class="feature-image"><img src="Add Funds Alert.png" alt="Add Funds Alert"></div>
+                    <p class="feature-caption"><strong>Add Funds Alert.</strong> Proactive alerts catch a low Account Balance before it interrupts a live campaign, instead of merchants finding out after the fact.</p>
                 </div>
-                
-                <div class="design-card">
-                    <div class="design-image"><img src="Statistics Education Modal.png" alt="Statistics Education Modal"></div>
-                    <div class="design-info">
-                        <h3>Statistics Education Modal</h3>
-                        <p>Interactive guide explaining key metrics (impressions, clicks, ROAS) and how they relate to merchant budget and performance.</p>
-                    </div>
+
+                <div class="feature-item">
+                    <div class="feature-image"><img src="Statistics Education Modal.png" alt="Statistics Education Modal"></div>
+                    <p class="feature-caption"><strong>Statistics Education Modal.</strong> An interactive guide connecting impressions, clicks, and ROAS back to actual budget and performance, turning unfamiliar metrics into decisions merchants could act on.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-image"><img src="groupon-account-balance-tooltip.png" alt="Account Balance tooltip"></div>
+                    <p class="feature-caption"><strong>Account Balance tooltip.</strong> A single click now explains what "Account Balance" actually means: the total in a merchant's Groupon account, allocated across individual campaigns, with a plain note that transactions can take up to 3 business days to reflect. The exact question that used to end in a support ticket.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Results -->
-    <section class="results-section">
-        <div class="results-container">
-            <div class="results-header">
-                <h2 class="results-title">The Impact</h2>
-                <p class="results-intro">Clear visual distinctions and transparent metrics transformed merchant trust and platform adoption.</p>
+    <!-- Research Highlights -->
+    <section class="full-width-section bg-white" id="research">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">Research Highlights</div>
+                <h2 class="section-title">What we learned from the merchants using it</h2>
             </div>
 
-            <div class="impact-body">
-                <p>The new design removed critical barriers that prevented merchants from effectively managing their advertising spend. By distinguishing wallet balance from campaign budgets with explanatory tooltips and surfacing granular spending breakdowns, merchants could finally see exactly where their money was going.</p>
+            <div class="figure-single"><img src="groupon-support-thread3.png" alt="Support conversation showing a merchant confused by contradictory 'Budget Remaining' and 'Funding Required' labels"></div>
 
-                <p>Proactive funding alerts prevented campaign interruptions, while the statistics education modal empowered merchants to make data-driven decisions. What was once a source of frustration became a trusted tool for growing their business.</p>
-            </div>
-        </div>
-    </section>
+            <div class="narrative">
+                <p>I interviewed five merchants, alongside a review of support tickets flagging the same recurring confusion. Merchants weren't one audience. Some were small business owners with no background in advertising or marketing terminology; others were ad-savvy or had marketing staff on hand. What they shared was disengagement. A lot of merchants simply stopped using Sponsored Campaigns because they didn't understand what they were looking at. The clearest evidence came straight from support, merchants were opening tickets over the same handful of screens, not because the numbers were wrong, but because they contradicted each other at a glance.</p>
 
-    <!-- Next Steps CTA -->
-    <section class="next-steps-section">
-        <div class="next-steps-container">
-            <h2 class="next-steps-title">Want to Learn More?</h2>
-            
-            <div class="cta-box">
-                <p>The full case study with detailed process, research findings, and design iterations is coming soon. In the meantime, I'd be happy to discuss this project in more detail.</p>
-                <a href="mailto:yesbobbyreyes@gmail.com" class="cta-button">Get in Touch</a>
+                <div class="quote-card">
+                    <p><span class="quote-mark">&ldquo;</span>I'm confused why there is "Budget Remaining" and "Funding Required", sounds contradictory.<span class="quote-mark">&rdquo;</span></p>
+                    <span class="quote-name">Craig H.</span>
+                    <span class="quote-role">Merchant</span>
+                </div>
+
+                <p>Account Balance and Budget Remaining were never meant to be the same number (one tracked the wallet, the other a single campaign's monthly cycle), but the platform never said so. That gap between what the system meant and what merchants assumed was the real problem to solve.</p>
             </div>
         </div>
     </section>
 
-    <!-- Project Navigation - CLEAN THREE COLUMN -->
-    <section class="project-navigation">
-        <a href="project-echo.html" class="nav-link prev">
-            <span>← Previous Project</span>
-            <span class="project-name">Echo Global Logistics</span>
-        </a>
+    <!-- Process -->
+    <section class="full-width-section bg-white" id="process">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">Process</div>
+                <h2 class="section-title">Designing around two very different merchants</h2>
+            </div>
 
-        <a href="index.html" class="nav-link home">Back to Work</a>
+            <div class="narrative">
+                <p>Sponsored Campaigns held a lot for a merchant to parse, and merchants weren't one audience to design for, some were small business owners with no advertising background, others were ad-savvy or had marketing staff on hand. The redesign worked from three principles: some information needed to be front-and-center, some actions needed to be front-and-center, and everything else stayed accessible without competing for the same attention.</p>
 
-        <div class="nav-link next" style="visibility: hidden;">
-            <!-- No next project (Forager is hidden) -->
+                <div class="figure-strip">
+                    <div class="figure-frame"><img src="groupon-wireframev1-campaigns-dashboard.png" alt="Wireframe v1: Sponsored Campaigns dashboard"></div>
+                    <div class="figure-frame"><img src="groupon-wireframev2-campaigns-dashboard3.png" alt="Wireframe v2: refined Sponsored Campaigns dashboard"></div>
+                    <div class="figure-frame"><img src="groupon-wireframev2-campaigns-details.png" alt="Wireframe v2: refined campaign details"></div>
+                </div>
+                <p class="figure-caption">Fig. 1–3: Wireframe evolution separating balance from budget and surfacing campaign-level detail.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Decisions -->
+    <section class="full-width-section bg-white" id="decisions">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">Key Decisions</div>
+                <h2 class="section-title">Four choices that mattered most</h2>
+            </div>
+
+            <div class="narrative">
+                <p><strong>Distinguish balance from budget.</strong> Account Balance and Budget Remaining were never the same number (one is wallet-level, one is scoped to a single campaign's monthly cycle), but nothing on screen explained that. Tooltips now make the distinction explicit instead of leaving merchants to assume a bug.</p>
+
+                <p><strong>Show spending at the campaign level.</strong> Budget breakdowns are now scoped to each individual campaign instead of only reporting a blended account-level total, the detail merchants needed to actually plan a budget renewal.</p>
+
+                <p><strong>Alert before balance runs out.</strong> A funding alert notifies merchants when their balance is low, rather than letting a campaign go dark and forcing them to discover it after the fact.</p>
+
+                <p><strong>Teach the metrics, not just show them.</strong> The statistics modal explains what impressions, clicks, and ROAS actually mean for a merchant's budget, because raw numbers without context didn't build trust.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact -->
+    <section class="full-width-section bg-white" id="impact">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">The Impact</div>
+                <h2 class="section-title">What changed</h2>
+            </div>
+
+            <div class="narrative">
+                <p class="narrative-lede">This shipped, but I left Groupon before the success metrics came in, so there's no post-launch data to point to. The clearest signal I have came from usability testing beforehand.</p>
+
+                <p>When we asked participants to explain Account Balance and Budget Remaining back to us in their own words, they could, correctly, without hesitation. That was the exact distinction the old dashboard never explained, and the one merchants kept opening support tickets over.</p>
+
+                <p>If I'd stayed to see it through, the metric that actually tests whether this worked is the campaign funding-lapse rate: the share of Sponsored Campaigns that go dark from a depleted Account Balance instead of getting topped up in time. That's the exact failure mode the Add Funds Alert and the balance/budget clarity were built to prevent, and unlike broader retention numbers, it isn't muddied by whether a merchant's campaign was actually performing well. Watching that rate drop is what would tell you the confusion was the real blocker, not just that usability testers could finally explain the numbers back to us.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reflection -->
+    <section class="full-width-section bg-white">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">Reflection</div>
+                <h2 class="section-title">What this project taught me</h2>
+            </div>
+            <div class="narrative">
+                <p>This shipped, but I left before the results came in, so I never got to see how it actually performed. The strongest evidence I have is what came out of usability testing, not what happened after launch. The other thing this project taught me is that merchants weren't one skill level to design for. Some had never touched an ad platform before, others ran marketing for a living, and the answer wasn't picking one of them. It was deciding what had to be front-and-center for everyone and what could stay one click away.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Navigation -->
+    <section class="explore-more">
+        <h3 class="explore-more-label">Explore more</h3>
+        <div class="explore-more-grid">
+            <a href="project-echo.html" class="explore-more-card">
+                <div class="explore-more-image">
+                    <img src="project-echo-image.png" alt="Echo Global Logistics: Carrier Profile Management">
+                </div>
+                <span class="explore-more-name">Echo: Carrier Profile</span>
+            </a>
+            <a href="project-echo-portfolio.html" class="explore-more-card">
+                <div class="explore-more-image">
+                    <img src="My Carriers - Rep View-Designs.png" alt="Echo Global Logistics: Carrier Portfolio Management">
+                </div>
+                <span class="explore-more-name">Echo: Carrier Portfolio</span>
+            </a>
         </div>
     </section>
 
@@ -224,8 +311,13 @@
                         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                     </svg>
                 </a>
+                <a href="reyes-2026.pdf" target="_blank" class="footer-icon" aria-label="Resume">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6 2c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13zM8 13h8v2H8v-2zm0 4h8v2H8v-2zm0-8h3v2H8V9z"/>
+                    </svg>
+                </a>
             </div>
-            <p class="footer-copyright">© 2025 Bobby Reyes. All rights reserved.</p>
+            <p class="footer-copyright">© 2026 Bobby Reyes. All rights reserved.</p>
         </div>
     </footer>
 </body>
