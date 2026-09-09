@@ -404,6 +404,23 @@ body.fun-mode-active .full-width-section.bg-white {
     background: transparent;
 }
 
+/* Scroll reveal */
+.scroll-reveal {
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-reveal.reveal-hidden {
+    opacity: 0;
+    transform: translateY(24px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-reveal.reveal-hidden {
+        opacity: 1;
+        transform: none;
+    }
+}
+
 .section-container {
     max-width: 1000px;
     margin: 0 auto;

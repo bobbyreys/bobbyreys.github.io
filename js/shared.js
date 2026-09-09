@@ -261,3 +261,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// ========================================
+// SCROLL REVEAL
+// Fades/slides case study sections in as they enter the viewport
+// ========================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('.scroll-reveal');
+    if (sections.length === 0 || !('IntersectionObserver' in window)) return;
+
+    sections.forEach(section => section.classList.add('reveal-hidden'));
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.remove('reveal-hidden');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+
+    sections.forEach(section => observer.observe(section));
+});

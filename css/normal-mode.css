@@ -237,6 +237,11 @@ body.fun-mode-active .normal-mode {
     object-fit: cover;
     object-position: top;
     display: block;
+    transition: transform 0.4s ease;
+}
+
+.normal-project-item:hover .project-card-image {
+    transform: scale(1.05);
 }
 
 .normal-project-content {
