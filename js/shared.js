@@ -352,7 +352,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (hidden === navHidden) return;
         navHidden = hidden;
         mainNav.classList.toggle('nav-hidden', hidden);
-        if (sectionNav) sectionNav.style.top = (hidden ? 0 : navHeight) + 'px';
+        if (sectionNav) {
+            sectionNav.style.top = (hidden ? 0 : navHeight) + 'px';
+            document.documentElement.style.scrollPaddingTop =
+                (hidden ? sectionNav.offsetHeight : navHeight + sectionNav.offsetHeight) + 'px';
+        }
     }
 
     function onScroll() {
@@ -374,13 +378,37 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    function waitForScrollSettle(callback) {
+        let lastY = window.scrollY;
+        let stableFrames = 0;
+        function check() {
+            const y = window.scrollY;
+            if (Math.abs(y - lastY) < 0.5) {
+                stableFrames++;
+            } else {
+                stableFrames = 0;
+                lastY = y;
+            }
+            if (stableFrames >= 6) {
+                callback();
+                return;
+            }
+            requestAnimationFrame(check);
+        }
+        requestAnimationFrame(check);
+    }
+
     if (sectionNav) {
         sectionNav.querySelectorAll('.section-nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 setNavHidden(false);
                 suppressAutoHide = true;
                 clearTimeout(suppressTimer);
-                suppressTimer = setTimeout(() => { suppressAutoHide = false; }, 1200);
+                suppressTimer = setTimeout(() => { suppressAutoHide = false; }, 4000);
+                waitForScrollSettle(() => {
+                    suppressAutoHide = false;
+                    clearTimeout(suppressTimer);
+                });
             });
         });
     }
