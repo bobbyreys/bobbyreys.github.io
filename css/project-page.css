@@ -910,9 +910,9 @@
 }
 
 .explore-more-name {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.95em;
-    font-weight: 500;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.05em;
+    font-weight: 600;
     color: var(--teal-dark);
 }
 
