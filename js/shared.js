@@ -149,6 +149,8 @@ document.addEventListener('DOMContentLoaded', function() {
         indicator.style.transform = 'translateX(' + activeLink.offsetLeft + 'px)';
     }
 
+    let lastActiveId = null;
+
     function updateActiveSection() {
         const offset = mainNav.offsetHeight + sectionNav.offsetHeight + 1;
         let current = targets[0];
@@ -164,6 +166,13 @@ document.addEventListener('DOMContentLoaded', function() {
             if (isActive) activeLink = link;
         });
         moveIndicator(activeLink);
+
+        if (current.id !== lastActiveId) {
+            lastActiveId = current.id;
+            if (activeLink) {
+                activeLink.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            }
+        }
     }
 
     const hero = document.querySelector('.project-header') || targets[0];
