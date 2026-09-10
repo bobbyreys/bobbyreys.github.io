@@ -313,7 +313,7 @@ body:has(.normal-mode.active) [role="button"] {
 }
 
 .chapter.c2 .chapter-media {
-    border: 1px solid var(--gray-border);
+    border: 1px solid rgba(0, 0, 0, 0.06);
     box-shadow: none;
 }
 
