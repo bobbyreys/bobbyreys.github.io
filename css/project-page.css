@@ -3,23 +3,12 @@
    Common styles for all project pages
    ======================================== */
 
-/* Fun Mode Symbol Positioning */
-.symbol-1 { top: 15%; left: 5%; color: var(--hot-pink); }
-.symbol-2 { top: 30%; right: 10%; color: var(--neon-green); animation-delay: 0.5s; }
-.symbol-3 { top: 60%; left: 8%; color: var(--red); animation-delay: 1s; }
-.symbol-4 { top: 75%; right: 15%; color: var(--hot-pink); animation-delay: 1.5s; }
-.symbol-5 { top: 45%; right: 5%; color: var(--neon-green); animation-delay: 0.8s; }
-
 /* Project Header - Split Layout */
 .project-header {
     padding: 100px 0 0;
     background: #f8f8f8;
     position: relative;
     z-index: 2;
-}
-
-body.fun-mode-active .project-header {
-    background: transparent;
 }
 
 .header-content {
@@ -41,13 +30,15 @@ body.fun-mode-active .project-header {
     font-size: 0.9em;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #666;
+    color: var(--teal-dark);
+    opacity: 0.6;
     margin-bottom: 24px;
     grid-column: 1 / -1;
 }
 
 .project-title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 600;
     font-size: 4.6em;
     margin-bottom: 24px;
     color: var(--teal-dark);
@@ -56,31 +47,12 @@ body.fun-mode-active .project-header {
     margin-left: -3px;
 }
 
-body.fun-mode-active .project-title {
-    font-family: 'Bebas Neue', sans-serif;
-    color: var(--black);
-    text-shadow:
-        -3px -3px 0 var(--hot-pink),
-        3px -3px 0 var(--hot-pink),
-        -3px 3px 0 var(--hot-pink),
-        3px 3px 0 var(--hot-pink);
-    text-transform: uppercase;
-    letter-spacing: 3px;
-}
-
 .project-description {
     font-size: 1.25em;
     line-height: 1.6;
     color: var(--teal-dark);
     max-width: 460px;
     margin-bottom: 36px;
-}
-
-body.fun-mode-active .project-description {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
 /* Meta row - inline byline instead of boxed grid */
@@ -96,7 +68,8 @@ body.fun-mode-active .project-description {
 
 .meta-item .meta-label {
     display: block;
-    color: #666;
+    color: var(--teal-dark);
+    opacity: 0.55;
     font-size: 0.78em;
     text-transform: uppercase;
     letter-spacing: 1.5px;
@@ -171,23 +144,12 @@ body.fun-mode-active .project-description {
 }
 
 .split-side h2 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 600;
     font-size: 2.2em;
     margin-bottom: 30px;
     color: var(--teal-dark);
     margin-left: -2px;
-}
-
-body.fun-mode-active .split-side h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    color: var(--black);
-    text-shadow:
-        -2px -2px 0 var(--hot-pink),
-        2px -2px 0 var(--hot-pink),
-        -2px 2px 0 var(--hot-pink),
-        2px 2px 0 var(--hot-pink);
-    text-transform: uppercase;
-    letter-spacing: 2px;
 }
 
 .split-side p {
@@ -219,25 +181,17 @@ body.fun-mode-active .split-side h2 {
     font-weight: bold;
 }
 
-body.fun-mode-active .key-points li:before {
-    color: var(--hot-pink);
-}
-
 /* Pull Quote */
 .quote-block {
     border-left: 4px solid var(--teal-dark);
     padding: 4px 0 4px 26px;
     margin-top: 36px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', Georgia, serif;
     font-size: 1.35em;
-    font-weight: 600;
+    font-weight: 500;
     font-style: italic;
     line-height: 1.4;
     color: var(--teal-dark);
-}
-
-body.fun-mode-active .quote-block {
-    border-left-color: var(--hot-pink);
 }
 
 /* Pull Quote — card variant */
@@ -249,7 +203,7 @@ body.fun-mode-active .quote-block {
 }
 
 .quote-card .quote-mark {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', Georgia, serif;
     font-weight: 700;
     color: var(--teal-dark);
     opacity: 0.45;
@@ -270,7 +224,7 @@ body.fun-mode-active .quote-block {
 
 .quote-card .quote-name {
     display: block;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', Georgia, serif;
     font-weight: 600;
     color: var(--teal-dark);
 }
@@ -279,15 +233,6 @@ body.fun-mode-active .quote-block {
     display: block;
     font-size: 0.9em;
     color: var(--gray-medium);
-}
-
-body.fun-mode-active .quote-card .quote-mark {
-    color: var(--hot-pink);
-    opacity: 0.5;
-}
-
-body.fun-mode-active .quote-card .quote-name {
-    color: var(--hot-pink);
 }
 
 /* Before / After Comparison */
@@ -314,7 +259,8 @@ body.fun-mode-active .quote-card .quote-name {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #999;
+    color: var(--teal-dark);
+    opacity: 0.5;
     margin-bottom: 14px;
 }
 
@@ -324,7 +270,7 @@ body.fun-mode-active .quote-card .quote-name {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #aaa;
+    color: rgba(44, 95, 93, 0.45);
     font-size: 0.9em;
     border-radius: 8px;
     overflow: hidden;
@@ -375,7 +321,8 @@ body.fun-mode-active .quote-card .quote-name {
     text-align: left;
     margin: 28px 0 0;
     font-size: 0.9em;
-    color: #666;
+    color: var(--teal-dark);
+    opacity: 0.6;
     font-style: italic;
 }
 
@@ -392,80 +339,81 @@ body.fun-mode-active .quote-card .quote-name {
     padding: 72px 0;
 }
 
-body.fun-mode-active .full-width-section {
-    background: rgba(255,255,255,0.3);
-}
-
 .full-width-section.bg-white {
     background: var(--white);
 }
 
-body.fun-mode-active .full-width-section.bg-white {
-    background: transparent;
-}
-
 /* Section sub-nav */
 .section-nav {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 900;
-    background: var(--white);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--gray-border);
-    transition: top 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: top 0.3s ease, opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.section-nav.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .section-nav-container {
+    position: relative;
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 40px;
     display: flex;
-    gap: 28px;
+    gap: 40px;
     overflow-x: auto;
 }
 
 .section-nav-link {
-    position: relative;
     flex: 0 0 auto;
-    padding: 10px 0;
+    padding: 16px 0;
     font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
     color: var(--teal-dark);
-    opacity: 0.55;
+    opacity: 0.5;
     text-decoration: none;
     white-space: nowrap;
     transition: opacity 0.2s ease;
 }
 
-.section-nav-link::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 6px;
-    width: 100%;
-    height: 2px;
-    background: var(--teal-dark);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.2s ease;
-}
-
 .section-nav-link:hover {
-    opacity: 0.85;
+    opacity: 0.8;
 }
 
 .section-nav-link.active {
     opacity: 1;
 }
 
-.section-nav-link.active::after {
-    transform: scaleX(1);
+.section-nav-indicator {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: var(--teal-dark);
+    transform: translateX(0);
+    transition: transform 0.3s ease, width 0.3s ease;
 }
 
 @media (max-width: 768px) {
     .section-nav-container {
         padding: 0 24px;
-        gap: 20px;
+        gap: 26px;
     }
 }
 
@@ -501,14 +449,16 @@ body.fun-mode-active .full-width-section.bg-white {
     font-size: 0.9em;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #666;
+    color: var(--teal-dark);
+    opacity: 0.6;
     font-weight: 500;
     font-family: 'Inter', sans-serif;
     margin-bottom: 14px;
 }
 
 .section-title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 600;
     font-size: 2.6em;
     margin-bottom: 20px;
     color: var(--teal-dark);
@@ -516,22 +466,11 @@ body.fun-mode-active .full-width-section.bg-white {
     margin-left: -2px;
 }
 
-body.fun-mode-active .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    color: var(--black);
-    text-shadow:
-        -2px -2px 0 var(--hot-pink),
-        2px -2px 0 var(--hot-pink),
-        -2px 2px 0 var(--hot-pink),
-        2px 2px 0 var(--hot-pink);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
 .section-subtitle {
     font-size: 1.15em;
     line-height: 1.6;
-    color: #666;
+    color: var(--teal-dark);
+    opacity: 0.65;
     margin: 0;
 }
 
@@ -556,11 +495,6 @@ body.fun-mode-active .section-title {
     border-color: var(--teal-dark);
 }
 
-body.fun-mode-active .design-card {
-    border: 3px solid var(--black);
-    box-shadow: 6px 6px 0 rgba(0,0,0,0.2);
-}
-
 .design-image {
     width: 100%;
     height: 350px;
@@ -568,7 +502,7 @@ body.fun-mode-active .design-card {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #aaa;
+    color: rgba(44, 95, 93, 0.45);
     overflow: hidden;
 }
 
@@ -591,15 +525,11 @@ body.fun-mode-active .design-card {
 }
 
 .design-info h3 {
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 600;
     font-size: 1.2em;
     margin-bottom: 10px;
     color: var(--teal-dark);
-}
-
-body.fun-mode-active .design-info h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 .design-info p {
@@ -670,9 +600,10 @@ body.fun-mode-active .design-info h3 {
 }
 
 .narrative .narrative-lede {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', Georgia, serif;
+    font-style: italic;
     font-size: 1.3em;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.5;
 }
 
@@ -687,13 +618,15 @@ body.fun-mode-active .design-info h3 {
 .quote-attribution {
     font-size: 0.9em;
     line-height: 1.5;
-    color: #999;
+    color: var(--teal-dark);
+    opacity: 0.55;
     margin-bottom: 36px;
 }
 
 .narrative-note {
     font-size: 0.9em;
-    color: #666;
+    color: var(--teal-dark);
+    opacity: 0.6;
     font-style: italic;
     margin-top: 30px;
 }
@@ -751,7 +684,8 @@ body.fun-mode-active .design-info h3 {
 
 .figure-caption {
     font-size: 0.9em;
-    color: #666;
+    color: var(--teal-dark);
+    opacity: 0.6;
     font-style: italic;
     margin-bottom: 36px;
 }
@@ -768,10 +702,6 @@ body.fun-mode-active .design-info h3 {
     opacity: 0.7;
 }
 
-body.fun-mode-active .inline-link {
-    color: var(--hot-pink);
-}
-
 /* Results Section */
 .results-section {
     background: var(--teal-dark);
@@ -779,10 +709,6 @@ body.fun-mode-active .inline-link {
     padding: 100px 0;
     position: relative;
     z-index: 2;
-}
-
-body.fun-mode-active .results-section {
-    background: var(--black);
 }
 
 .results-container {
@@ -797,17 +723,13 @@ body.fun-mode-active .results-section {
 }
 
 .results-title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 600;
     font-size: 3em;
     margin-bottom: 20px;
     max-width: 700px;
     margin-left: 0;
     margin-right: 0;
-}
-
-body.fun-mode-active .results-title {
-    font-family: 'Bebas Neue', sans-serif;
-    text-shadow: 3px 3px 0 var(--hot-pink);
 }
 
 .results-intro {
@@ -850,21 +772,11 @@ body.fun-mode-active .results-title {
 }
 
 .next-steps-title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 600;
     font-size: 2.2em;
     margin-bottom: 30px;
     color: var(--teal-dark);
-}
-
-body.fun-mode-active .next-steps-title {
-    font-family: 'Bebas Neue', sans-serif;
-    color: var(--black);
-    text-shadow:
-        -2px -2px 0 var(--hot-pink),
-        2px -2px 0 var(--hot-pink),
-        -2px 2px 0 var(--hot-pink),
-        2px 2px 0 var(--hot-pink);
-    text-transform: uppercase;
 }
 
 .cta-box {
@@ -956,7 +868,8 @@ body.fun-mode-active .next-steps-title {
     font-size: 0.8em;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #666;
+    color: var(--teal-dark);
+    opacity: 0.55;
     font-weight: 500;
     margin: 0 0 20px;
 }

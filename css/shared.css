@@ -4,7 +4,7 @@
    ======================================== */
 
 /* Font Import */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=Anton&family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,600;0,700;1,500&display=swap');
 
 /* Temporary Hide Projects - Remove class to unhide */
 .project-hidden {
@@ -22,9 +22,6 @@
 :root {
     /* Primary Colors */
     --teal-dark: #2c5f5d;
-    --hot-pink: #ff00ff;
-    --neon-green: #00ff00;
-    --red: #ff0000;
     --black: #000000;
     --white: #ffffff;
 
@@ -121,15 +118,24 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    background: var(--white);
+    background: rgba(255, 255, 255, 0);
     padding: 24px 0;
     z-index: 1000;
-    border-bottom: 1px solid #f0f0f0;
-    transition: transform 0.3s ease;
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0);
+    transition: transform 0.3s ease, background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
 nav.nav-hidden {
     transform: translateY(-100%);
+}
+
+nav.scrolled {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom-color: #f0f0f0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
 
 .nav-container {
@@ -143,7 +149,7 @@ nav.nav-hidden {
 }
 
 .logo {
-    color: var(--black);
+    color: var(--teal-dark);
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-weight: 500;
@@ -180,7 +186,7 @@ nav.nav-hidden {
 
 .nav-links a {
     position: relative;
-    color: var(--black);
+    color: var(--teal-dark);
     text-decoration: none;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
@@ -202,153 +208,6 @@ nav.nav-hidden {
 
 .nav-links a:hover::after {
     transform: scaleX(1);
-}
-
-/* Mode Icon Button */
-.mode-icon-button {
-    background: none;
-    border: none;
-    color: var(--black);
-    font-size: 20px;
-    cursor: pointer;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease, color 0.2s ease;
-    position: relative;
-}
-
-.mode-icon-button:hover {
-    transform: scale(1.1);
-    opacity: 0.7;
-}
-
-.mode-icon-button i {
-    transition: transform 0.3s ease;
-}
-
-.mode-icon-button.rotating i {
-    transform: rotate(180deg);
-}
-
-/* Tooltip - Desktop Only */
-.mode-icon-button::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: -35px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--black);
-    color: white;
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 13px;
-    font-family: 'Inter', sans-serif;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s ease;
-    z-index: 1000;
-}
-
-.mode-icon-button::before {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid var(--black);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s ease;
-    z-index: 1001;
-}
-
-@media (min-width: 769px) {
-    .mode-icon-button:hover::after,
-    .mode-icon-button:hover::before {
-        opacity: 1;
-    }
-}
-
-/* Play Mode - Colorful Palette Icon */
-body.fun-mode-active .mode-icon-button {
-    color: var(--hot-pink);
-}
-
-body.fun-mode-active .mode-icon-button:hover {
-    color: var(--neon-green);
-    transform: scale(1.15);
-}
-
-/* ========================================
-   GRUNGE SECTION STYLES
-   ======================================== */
-
-.grunge-section {
-    margin-bottom: 60px;
-    background: var(--white);
-    border: 4px solid var(--black);
-    position: relative;
-    box-shadow: 8px 8px 0 rgba(0,0,0,0.3);
-    scroll-margin-top: 20px;
-}
-
-.grunge-section:nth-child(odd) {
-    transform: rotate(-0.5deg);
-}
-
-.grunge-section:nth-child(even) {
-    transform: rotate(0.5deg);
-}
-
-.grunge-header {
-    background: var(--black);
-    padding: 20px 30px;
-    position: relative;
-    overflow: hidden;
-}
-
-.grunge-header::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 100%;
-    height: 20px;
-    background: linear-gradient(135deg,
-        var(--black) 0%, var(--black) 10%,
-        transparent 10%, transparent 15%,
-        var(--black) 15%, var(--black) 25%,
-        transparent 25%, transparent 30%,
-        var(--black) 30%, var(--black) 40%,
-        transparent 40%);
-    background-size: 30px 30px;
-}
-
-.grunge-title {
-    font-family: 'Anton', 'Impact', sans-serif;
-    font-size: clamp(36px, 6vw, 56px);
-    color: var(--neon-green);
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    text-shadow: 3px 3px 0 var(--hot-pink);
-}
-
-.grunge-title::before {
-    content: '▶';
-    color: var(--hot-pink);
-    margin-right: 10px;
-}
-
-.grunge-content {
-    padding: 40px;
-    font-size: 20px;
-    line-height: 1.8;
-    color: var(--black);
 }
 
 /* ========================================
@@ -376,55 +235,38 @@ body.fun-mode-active .mode-icon-button:hover {
    ======================================== */
 
 footer {
-    background: var(--teal-dark);
-    padding: 40px 0;
-    color: white;
-    text-align: center;
+    background: #f0f0f0;
+    padding: 44px 0;
+    border-top: 1px solid #e0e0e0;
     margin-top: 0;
 }
 
 .footer-content {
-    max-width: 800px;
+    max-width: 1180px;
     margin: 0 auto;
     padding: 0 40px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 15px;
+    justify-content: space-between;
+    gap: 20px;
 }
 
-.footer-heading {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.5em;
+.footer-copyright {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--teal-dark);
     margin: 0;
-    line-height: 1.2;
-    font-weight: 400;
-    display: block;
-}
-
-.footer-email {
-    color: white;
-    text-decoration: underline;
-    font-size: 1em;
-    margin: 0;
-    line-height: 1;
-    display: block;
-    transition: opacity 0.2s;
-}
-
-.footer-email:hover {
-    opacity: 0.8;
 }
 
 .footer-icons {
     display: flex;
     gap: 20px;
-    justify-content: center;
     margin: 0;
 }
 
 .footer-icon {
-    color: white;
+    color: var(--teal-dark);
+    opacity: 0.75;
     transition: opacity 0.2s;
     display: inline-flex;
     align-items: center;
@@ -433,179 +275,12 @@ footer {
 }
 
 .footer-icon:hover {
-    opacity: 0.8;
-}
-
-.footer-copyright {
-    color: rgba(255,255,255,0.7);
-    font-size: 0.9em;
-    margin: 0;
-}
-
-/* ========================================
-   FUN MODE DECORATIONS
-   ======================================== */
-
-.fun-decorations {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-body.fun-mode-active .fun-decorations {
     opacity: 1;
 }
 
-.float-symbol {
-    position: absolute;
-    font-size: 40px;
-    animation: float 4s ease-in-out infinite;
-    opacity: 0.6;
-}
-
-.symbol-1 {
-    top: 15%;
-    left: 5%;
-    color: var(--hot-pink);
-}
-
-.symbol-2 {
-    top: 30%;
-    right: 10%;
-    color: var(--neon-green);
-    animation-delay: 0.5s;
-}
-
-.symbol-3 {
-    bottom: 20%;
-    left: 15%;
-    color: var(--hot-pink);
-    animation-delay: 1s;
-}
-
-.symbol-4 {
-    top: 50%;
-    right: 5%;
-    color: var(--neon-green);
-    animation-delay: 1.5s;
-}
-
-.symbol-5 {
-    bottom: 10%;
-    right: 20%;
-    color: var(--hot-pink);
-    animation-delay: 2s;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-}
-
-/* ========================================
-   FUN MODE CURSOR STYLES
-   ======================================== */
-
-body.fun-mode-active {
-    background: #FFFEF8 !important; /* Subtle warm cream tint */
-    position: relative;
-}
-
-/* Dot pattern for playful aesthetic */
-body.fun-mode-active::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-    background-image:
-        /* Hot pink dots */
-        radial-gradient(circle, var(--hot-pink) 1.5px, transparent 1.5px),
-        /* Neon green dots */
-        radial-gradient(circle, var(--neon-green) 1.5px, transparent 1.5px),
-        /* Additional pink dots offset */
-        radial-gradient(circle, var(--hot-pink) 1px, transparent 1px);
-    background-size:
-        60px 60px,
-        60px 60px,
-        30px 30px;
-    background-position:
-        0 0,
-        30px 30px,
-        15px 15px;
-    opacity: 0.15;
-}
-
-body.fun-mode-active nav {
-    box-shadow: 0 4px 20px rgba(255, 0, 255, 0.3);
-}
-
-body.fun-mode-active .nav-links a {
-    transition: all 0.2s ease;
-}
-
-body.fun-mode-active .nav-links a:hover {
-    color: var(--hot-pink);
-    transform: scale(1.1);
-}
-
-/* ========================================
-   TRANSITION ANIMATIONS
-   ======================================== */
-
-/* Ripple effect expanding from toggle */
-@keyframes rippleExpand {
-    0% {
-        transform: scale(0);
-        opacity: 0.6;
-    }
-    50% {
-        opacity: 0.3;
-    }
-    100% {
-        transform: scale(2.5);
-        opacity: 0;
-    }
-}
-
-/* Color wash sweeping across screen */
-@keyframes colorWash {
-    0% {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    30% {
-        opacity: 0.3;
-    }
-    70% {
-        opacity: 0.3;
-    }
-    100% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-}
-
-/* Gentle fade for reduced motion */
-@keyframes gentleFade {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.7;
-    }
-    100% {
-        opacity: 1;
-    }
+.footer-icon svg {
+    width: 22px;
+    height: 22px;
 }
 
 /* ========================================
@@ -652,24 +327,15 @@ body.fun-mode-active .nav-links a:hover {
         font-size: 15px;
     }
 
-    .mode-icon-button {
-        font-size: 18px;
-    }
-
     footer {
         padding: 30px 0;
     }
 
     .footer-content {
         padding: 0 24px;
-    }
-
-    .footer-heading {
-        font-size: 1.5em;
-    }
-
-    .footer-email {
-        font-size: 0.9em;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
     }
 }
 

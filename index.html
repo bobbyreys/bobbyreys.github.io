@@ -7,8 +7,6 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="css/shared.css">
     <link rel="stylesheet" href="css/normal-mode.css">
-    <link rel="stylesheet" href="css/fun-mode.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="js/shared.js"></script>
     <style>
         /* ========================================
@@ -508,6 +506,16 @@
             max-width: 950px; /* Keeps text at 2 lines max while still feeling spacious */
         }
 
+        .normal-hero-centered {
+            text-align: center;
+        }
+
+        .normal-hero-centered .normal-intro-small,
+        .normal-hero-centered .normal-hero-text {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .company-name {
             font-weight: 600;
             text-decoration: underline;
@@ -527,7 +535,7 @@
 
         /* Section overrides */
         .normal-section {
-            padding: 0 0 100px;
+            padding: 0;
             margin-top: 0;
         }
 
@@ -816,68 +824,6 @@
             opacity: 0.7;
         }
 
-        /* Easter Egg Animations - TV Static Glitch */
-        /* Glitch animations and fun mode cursor styles are in shared.css */
-
-        body.fun-mode-active .normal-mode {
-            background: var(--white);
-        }
-
-        /* ========================================
-           PAGE-SPECIFIC FUN MODE STYLES - index.html
-           Common fun mode styles are in css/fun-mode.css
-           ======================================== */
-
-        /* First-Time Fun Mode Animation */
-        @keyframes funModeActivate {
-            0% {
-                transform: scale(1);
-            }
-            25% {
-                transform: scale(1.02) rotate(0.5deg);
-            }
-            50% {
-                transform: scale(0.98) rotate(-0.5deg);
-            }
-            75% {
-                transform: scale(1.01) rotate(0.3deg);
-            }
-            100% {
-                transform: scale(1) rotate(0deg);
-            }
-        }
-
-        .first-time-animate {
-            animation: funModeActivate 0.5s ease !important;
-        }
-
-        /* Fun Mode Navigation - specific to index */
-        /* Fun Mode Project Grid/Card specific to index */
-        body.fun-mode-active .normal-project-grid {
-            gap: 32px;
-        }
-
-        body.fun-mode-active .normal-project-card {
-            border: 4px solid var(--black);
-            box-shadow: 8px 8px 0 rgba(0,0,0,0.3);
-            background: var(--white);
-            transform: rotate(-1deg);
-        }
-
-        body.fun-mode-active .normal-project-card:hover {
-            transform: rotate(0deg) translateY(-8px);
-            box-shadow: 12px 12px 0 rgba(0,0,0,0.4);
-        }
-
-        /* Fun Mode Text/Button Styles */
-        body.fun-mode-active .normal-section-content {
-            line-height: 1.5;
-            color: #000;
-            font-weight: normal;
-        }
-
-        /* Page-specific fun mode overrides can go here if needed */
-
     </style>
 </head>
 <body>
@@ -892,102 +838,106 @@
                     <ul class="nav-links">
                         <li><a href="index.html#work">Work</a></li>
                         <li><a href="about-me.html">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="reyes-2026.pdf" target="_blank">Resume</a></li>
                     </ul>
-                    <button class="mode-icon-button"
-                            id="mode-toggle-btn"
-                            onclick="toggleFunMode()"
-                            aria-label="Switch to Play Mode"
-                            
-                            data-tooltip="Play Mode">
-                        <i class="fa-solid fa-briefcase"></i>
-                    </button>
                 </div>
             </div>
         </nav>
 
         <!-- Hero Section -->
-        <section class="normal-hero">
+        <section class="normal-hero normal-hero-centered">
             <div class="normal-container">
                 <p class="normal-intro-small">Hi, I'm Bobby</p>
-                <p class="normal-hero-text">
-                    <span class="cutout-wrapper">
-                        <span class="cutout-1">Senior</span>
-                        <span class="cutout-2">UX</span>
-                        <span class="cutout-3">Designer</span>
-                        <span class="cutout-4">at</span>
-                        <span class="cutout-5">Echo</span>
-                        <span class="cutout-6">Global</span>
-                        <span class="cutout-7">Logistics.</span>
-                    </span>
-                    <span class="description-text">I navigate ambiguity, align teams on product direction, and craft intuitive product experiences from discovery to delivery.</span>
-                </p>
+                <p class="normal-hero-text">Senior UX Designer at Echo Global Logistics. From problem framing and research to interaction design and prototyping, I love untangling complex systems from start to finish.</p>
             </div>
         </section>
 
         <!-- Projects -->
         <section class="normal-section" id="work">
-            <div class="normal-container">
-                <div class="normal-project-list">
-                    <a href="project-echo-portfolio.html" class="normal-project-item">
-                        <div class="normal-project-image">
-                            <img src="My Carriers - Rep View-Designs.png" alt="Echo Carrier Portfolio Project" class="project-card-image">
+            <a href="project-echo-portfolio.html" class="chapter c1">
+                <div class="chapter-inner">
+                    <div class="chapter-text">
+                        <h3 class="chapter-title">Echo Global Logistics</h3>
+                        <p class="chapter-hook">Reps couldn't tell who they owned or who they were even allowed to book.</p>
+                        <p class="chapter-desc">I designed a carrier list that turns ownership and compliance into a view reps can act on immediately.</p>
+                        <span class="chapter-cta">View case study</span>
+                    </div>
+                    <div class="chapter-media">
+                        <div class="chapter-media-inner">
+                            <img src="My Carriers - Rep View-Designs.png" alt="Echo Carrier Portfolio Project">
                         </div>
-                        <div class="normal-project-content">
-                            <h3 class="normal-project-name">Echo Global Logistics</h3>
-                            <p class="normal-project-desc">Designing a carrier list reps could trust</p>
-                        </div>
-                    </a>
-
-                    <a href="project-echo.html" class="normal-project-item">
-                        <div class="normal-project-image">
-                            <img src="project-echo-image.png" alt="Echo Global Logistics Project" class="project-card-image">
-                        </div>
-                        <div class="normal-project-content">
-                            <h3 class="normal-project-name">Echo Global Logistics</h3>
-                            <p class="normal-project-desc">Unifying workflows across legacy platforms</p>
-                        </div>
-                    </a>
-
-                    <a href="project-groupon.html" class="normal-project-item">
-                        <div class="normal-project-image">
-                            <img src="project-groupon-image.png" alt="Groupon Project" class="project-card-image">
-                        </div>
-                        <div class="normal-project-content">
-                            <h3 class="normal-project-name">Groupon</h3>
-                            <p class="normal-project-desc">Bringing clarity to the merchant experience</p>
-                        </div>
-                    </a>
-
-                    <a href="project-forager.html" class="normal-project-item project-hidden">
-                        <div class="normal-project-image">
-                            <img src="project-forger-image.png" alt="Forager Project" class="project-card-image">
-                        </div>
-                        <div class="normal-project-content">
-                            <h3 class="normal-project-name">Forager</h3>
-                            <p class="normal-project-desc">Building the future of cross-border logistics</p>
-                        </div>
-                    </a>
-
-                    <a href="project-mcdonalds.html" class="normal-project-item project-hidden">
-                        <div class="normal-project-image">
-                            <img src="project-mcdonalds-image.png" alt="McDonald's Project" class="project-card-image">
-                        </div>
-                        <div class="normal-project-content">
-                            <h3 class="normal-project-name">McDonald's Monopoly</h3>
-                            <p class="normal-project-desc">Refreshing the prize redemption journey</p>
-                        </div>
-                    </a>
+                    </div>
                 </div>
-            </div>
+            </a>
+
+            <a href="project-echo.html" class="chapter c2">
+                <div class="chapter-inner">
+                    <div class="chapter-text">
+                        <h3 class="chapter-title">Echo Global Logistics</h3>
+                        <p class="chapter-hook">Every carrier task meant jumping between three systems that never agreed.</p>
+                        <p class="chapter-desc">I unified the workflow into one page, cutting the guesswork reps used to do just to trust the data.</p>
+                        <span class="chapter-cta">View case study</span>
+                    </div>
+                    <div class="chapter-media">
+                        <div class="chapter-media-inner">
+                            <img src="project-echo-image.png" alt="Echo Global Logistics Project">
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="project-groupon.html" class="chapter c3">
+                <div class="chapter-inner">
+                    <div class="chapter-text">
+                        <h3 class="chapter-title">Groupon</h3>
+                        <p class="chapter-hook">Merchants saw two numbers that were supposed to match, and rarely did.</p>
+                        <p class="chapter-desc">I redesigned the dashboard so merchants could finally tell their balance from their budget.</p>
+                        <span class="chapter-cta">View case study</span>
+                    </div>
+                    <div class="chapter-media">
+                        <div class="chapter-media-inner">
+                            <img src="project-groupon-image.png" alt="Groupon Project">
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="project-forager.html" class="normal-project-item project-hidden">
+                <div class="normal-project-image">
+                    <img src="project-forger-image.png" alt="Forager Project" class="project-card-image">
+                </div>
+                <div class="normal-project-content">
+                    <h3 class="normal-project-name">Forager</h3>
+                    <p class="normal-project-desc">Building the future of cross-border logistics</p>
+                </div>
+            </a>
+
+            <a href="project-mcdonalds.html" class="normal-project-item project-hidden">
+                <div class="normal-project-image">
+                    <img src="project-mcdonalds-image.png" alt="McDonald's Project" class="project-card-image">
+                </div>
+                <div class="normal-project-content">
+                    <h3 class="normal-project-name">McDonald's Monopoly</h3>
+                    <p class="normal-project-desc">Refreshing the prize redemption journey</p>
+                </div>
+            </a>
         </section>
 
         <!-- Footer -->
         <footer id="contact">
             <div class="footer-content">
-                <h3 class="footer-heading">Let's Connect</h3>
-                <a href="mailto:yesbobbyreyes@gmail.com" class="footer-email">yesbobbyreyes@gmail.com</a>
+                <p class="footer-copyright">© 2026 Bobby Reyes</p>
                 <div class="footer-icons">
+                    <a href="mailto:yesbobbyreyes@gmail.com" class="footer-icon" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" fill="currentColor">
+                            <path d="M48 64c-26.5 0-48 21.5-48 48 0 15.1 7.1 29.3 19.2 38.4l208 156c17.1 12.8 40.5 12.8 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48L48 64zM0 196L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-188-198.4 148.8c-34.1 25.6-81.1 25.6-115.2 0L0 196z"/>
+                        </svg>
+                    </a>
+                    <a href="reyes-2026.pdf" target="_blank" class="footer-icon" aria-label="Resume">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 384 512" fill="currentColor">
+                            <path d="M0 64C0 28.7 28.7 0 64 0L213.5 0c17 0 33.3 6.7 45.3 18.7L365.3 125.3c12 12 18.7 28.3 18.7 45.3L384 448c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64zm208-5.5l0 93.5c0 13.3 10.7 24 24 24L325.5 176 208 58.5zM120 256c-13.3 0-24 10.7-24 24s10.7 24 24 24l144 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-144 0zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24l144 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-144 0z"/>
+                        </svg>
+                    </a>
                     <a href="https://www.linkedin.com/in/bobbyreys/" target="_blank" class="footer-icon" aria-label="LinkedIn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
@@ -1003,40 +953,9 @@
                             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                         </svg>
                     </a>
-                    <a href="reyes-2026.pdf" target="_blank" class="footer-icon" aria-label="Resume">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M6 2c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13zM8 13h8v2H8v-2zm0 4h8v2H8v-2zm0-8h3v2H8V9z"/>
-                        </svg>
-                    </a>
                 </div>
-                <p class="footer-copyright">© 2026 Bobby Reyes. All rights reserved.</p>
             </div>
         </footer>
     </div>
-
-    <!-- Fun Mode Overlays (Hidden by Default) -->
-    <div class="fun-mode-overlays" id="funModeOverlays">
-        <div class="fun-symbol fun-x" style="top: 10%; left: 15%;">✕</div>
-        <div class="fun-symbol fun-x" style="top: 70%; right: 20%;">✕</div>
-        <div class="fun-symbol fun-arrow" style="top: 25%; right: 10%;">→</div>
-        <div class="fun-symbol fun-arrow" style="bottom: 30%; left: 8%;">↑</div>
-        <div class="fun-symbol fun-plus" style="top: 50%; left: 5%;">+</div>
-        <div class="fun-symbol fun-plus" style="bottom: 15%; right: 12%;">+</div>
-        <div class="fun-symbol fun-star" style="top: 80%; left: 25%;">★</div>
-        <div class="fun-symbol fun-star" style="top: 15%; right: 30%;">★</div>
-        <div class="fun-circle" style="top: 40%; right: 5%;"></div>
-        <div class="fun-circle" style="bottom: 20%; left: 18%;"></div>
-    </div>
-
-    <!-- Floating Symbols for Punk Aesthetic -->
-    <div class="fun-decorations">
-        <div class="float-symbol symbol-1">✕</div>
-        <div class="float-symbol symbol-2">★</div>
-        <div class="float-symbol symbol-3">✕</div>
-        <div class="float-symbol symbol-4">►</div>
-        <div class="float-symbol symbol-5">★</div>
-    </div>
-
 </body>
 </html>
-    

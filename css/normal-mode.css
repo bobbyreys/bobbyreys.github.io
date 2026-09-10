@@ -17,34 +17,28 @@
     display: block;
 }
 
-/* Cursor styles only apply when NOT in fun mode */
-body:not(.fun-mode-active):has(.normal-mode.active) {
+body:has(.normal-mode.active) {
     cursor: default;
 }
 
-body:not(.fun-mode-active):has(.normal-mode.active) * {
+body:has(.normal-mode.active) * {
     cursor: default;
 }
 
-body:not(.fun-mode-active):has(.normal-mode.active) a,
-body:not(.fun-mode-active):has(.normal-mode.active) button,
-body:not(.fun-mode-active):has(.normal-mode.active) .normal-project-card,
-body:not(.fun-mode-active):has(.normal-mode.active) .normal-project-item,
-body:not(.fun-mode-active):has(.normal-mode.active) .normal-project-item *,
-body:not(.fun-mode-active):has(.normal-mode.active) .normal-button,
-body:not(.fun-mode-active):has(.normal-mode.active) .about-panel,
-body:not(.fun-mode-active):has(.normal-mode.active) .footer-icon,
-body:not(.fun-mode-active):has(.normal-mode.active) .footer-icon *,
-body:not(.fun-mode-active):has(.normal-mode.active) .project-card,
-body:not(.fun-mode-active):has(.normal-mode.active) .logo,
-body:not(.fun-mode-active):has(.normal-mode.active) .logo *,
-body:not(.fun-mode-active):has(.normal-mode.active) [role="button"] {
+body:has(.normal-mode.active) a,
+body:has(.normal-mode.active) button,
+body:has(.normal-mode.active) .normal-project-card,
+body:has(.normal-mode.active) .chapter,
+body:has(.normal-mode.active) .chapter *,
+body:has(.normal-mode.active) .normal-button,
+body:has(.normal-mode.active) .about-panel,
+body:has(.normal-mode.active) .footer-icon,
+body:has(.normal-mode.active) .footer-icon *,
+body:has(.normal-mode.active) .project-card,
+body:has(.normal-mode.active) .logo,
+body:has(.normal-mode.active) .logo *,
+body:has(.normal-mode.active) [role="button"] {
     cursor: pointer !important;
-}
-
-/* Fun mode background override */
-body.fun-mode-active .normal-mode {
-    background: var(--white) !important;
 }
 
 /* Container */
@@ -60,15 +54,16 @@ body.fun-mode-active .normal-mode {
 }
 
 .normal-intro-small {
-    font-family: 'Montserrat', sans-serif !important;
+    font-family: 'Lora', Georgia, serif !important;
+    font-style: italic !important;
     font-size: 64px !important;
     color: var(--teal-dark);
     margin-top: 0;
     margin-bottom: 40px;
     padding-top: 0;
-    font-weight: 700 !important;
+    font-weight: 500 !important;
     line-height: 1.1 !important;
-    letter-spacing: -0.02em !important;
+    letter-spacing: -0.01em !important;
 }
 
 .normal-body-text {
@@ -98,6 +93,7 @@ body.fun-mode-active .normal-mode {
     color: var(--teal-dark);
     margin-bottom: 24px;
     font-weight: 400;
+    max-width: 560px;
 }
 
 /* Sections */
@@ -108,7 +104,7 @@ body.fun-mode-active .normal-mode {
 /* About Grid */
 .normal-about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 600px 1fr;
     gap: 60px;
     align-items: start;
 }
@@ -192,77 +188,145 @@ body.fun-mode-active .normal-mode {
     opacity: 0.7;
 }
 
-/* Project List */
-.normal-project-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-}
-
-.normal-project-item {
+/* Full-bleed project chapters */
+.chapter {
     text-decoration: none;
+    color: var(--white);
     display: block;
-    background: #ffffff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    transition: all 0.3s ease;
+    padding: 72px 0;
 }
 
-.normal-project-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
-}
-
-.normal-project-image {
-    background: #f0f0f0;
-    width: 100%;
-    height: 250px;
-    display: flex;
+.chapter-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: .92fr 1.08fr;
+    gap: 56px;
     align-items: center;
-    justify-content: center;
 }
 
-.normal-project-image span {
+.chapter.reverse .chapter-inner {
+    grid-template-columns: 1.08fr .92fr;
+}
+
+.chapter.reverse .chapter-media {
+    order: 1;
+}
+
+.chapter.reverse .chapter-text {
+    order: 2;
+}
+
+.chapter-title {
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    margin: 0 0 18px;
+}
+
+.chapter-hook {
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    color: #d0d0d0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.5;
+    max-width: 40ch;
+    margin: 0 0 10px;
 }
 
-.project-card-image {
+.chapter-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    opacity: 0.85;
+    max-width: 40ch;
+    margin: 0 0 28px;
+}
+
+.chapter-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--white);
+    color: #1c4442;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chapter-cta::after {
+    content: '\2192';
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.chapter:hover .chapter-cta {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+.chapter:hover .chapter-cta::after {
+    transform: translateX(3px);
+}
+
+.chapter-media {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.chapter-media-inner {
+    aspect-ratio: 16 / 11.5;
+    border-radius: 4px;
+    background: #f0f0f0;
+    overflow: hidden;
+}
+
+.chapter-media-inner img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: top;
     display: block;
-    transition: transform 0.4s ease;
 }
 
-.normal-project-item:hover .project-card-image {
-    transform: scale(1.05);
+.chapter.c1,
+.chapter.c3 {
+    background: var(--teal-dark);
 }
 
-.normal-project-content {
-    padding: 32px;
-}
-
-.normal-project-name {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 32px;
+.chapter.c2 {
+    background: var(--white);
     color: var(--teal-dark);
-    font-weight: 600;
-    margin-bottom: 16px;
-    line-height: 1.2;
 }
 
-.normal-project-desc {
-    font-family: 'Inter', sans-serif;
-    font-size: 18px;
-    color: var(--teal-dark);
-    line-height: 1.6;
-    margin: 0;
+.chapter.c2 .chapter-cta {
+    background: var(--teal-dark);
+    color: var(--white);
+}
+
+.chapter.c2 .chapter-media {
+    border: 1px solid var(--gray-border);
+    box-shadow: none;
+}
+
+@media (max-width: 860px) {
+    .chapter-inner {
+        padding: 0 22px;
+        grid-template-columns: 1fr !important;
+    }
+
+    .chapter.reverse .chapter-media,
+    .chapter.reverse .chapter-text {
+        order: initial;
+    }
 }
 
 /* Location List */
@@ -331,16 +395,15 @@ body.fun-mode-active .normal-mode {
         padding: 60px 0;
     }
 
-    .normal-project-list {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .normal-project-name {
+    .chapter-title {
         font-size: 28px;
     }
 
-    .normal-project-desc {
+    .chapter-hook {
+        font-size: 17px;
+    }
+
+    .chapter-desc {
         font-size: 16px;
     }
 
@@ -359,16 +422,16 @@ body.fun-mode-active .normal-mode {
         font-size: 36px;
     }
 
-    .normal-project-name {
+    .chapter-title {
         font-size: 24px;
     }
 
-    .normal-project-desc {
+    .chapter-hook {
         font-size: 16px;
     }
 
-    .normal-project-content {
-        padding: 24px;
+    .chapter-desc {
+        font-size: 16px;
     }
 
     .normal-hero {
