@@ -7,7 +7,9 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="css/shared.css">
     <link rel="stylesheet" href="css/normal-mode.css">
+    <link rel="stylesheet" href="css/live-thumbnails.css">
     <script src="js/shared.js"></script>
+    <script src="js/live-thumbnails.js"></script>
     <style>
         /* ========================================
            PAGE-SPECIFIC STYLES - index.html
@@ -854,7 +856,7 @@
 
         <!-- Projects -->
         <section class="normal-section" id="work">
-            <a href="project-echo-portfolio.html" class="chapter c1">
+            <a href="project-echo-portfolio.html" class="chapter c1 reorder-demo">
                 <div class="chapter-inner">
                     <div class="chapter-text">
                         <h3 class="chapter-title">Echo Global Logistics</h3>
@@ -863,14 +865,90 @@
                         <span class="chapter-cta">View case study</span>
                     </div>
                     <div class="chapter-media">
-                        <div class="chapter-media-inner">
-                            <img src="My Carriers - Rep View-Designs.png" alt="Echo Carrier Portfolio Project">
+                        <div class="chapter-media-inner" role="img" aria-label="Echo Carrier Portfolio Project">
+                            <div class="carrier-panel">
+                                <div class="carrier-panel-head">My Carriers</div>
+                                <div class="carrier-panel-search">
+                                    <span>Search all Echo carriers</span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="20" y1="20" x2="15.5" y2="15.5"/></svg>
+                                </div>
+                                <div class="carrier-panel-total">Carrier Total: 8 of 8</div>
+                                <div class="carrier-rows">
+                                    <div class="carrier-row starred row-1">
+                                        <div class="row-main">
+                                            <div class="row-name">ABC Shipping (L04327)</div>
+                                            <div class="row-icons">
+                                                <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#9aa3b0" stroke-width="2.2"/><line x1="6.5" y1="17.5" x2="17.5" y2="6.5" stroke="#9aa3b0" stroke-width="2.2"/></svg>
+                                                <svg class="ic" viewBox="0 0 24 24"><path d="M12 3.5L2.5 20h19L12 3.5z" fill="#f5a623"/><rect x="11" y="10" width="2" height="5" rx="1" fill="#fff"/><rect x="11" y="16.5" width="2" height="2" rx="1" fill="#fff"/></svg>
+                                                <svg class="ic" viewBox="0 0 24 24"><rect x="6" y="1" width="2" height="4" rx="1" fill="#f5a623"/><rect x="16" y="1" width="2" height="4" rx="1" fill="#f5a623"/><rect x="3" y="4" width="18" height="18" rx="3" fill="none" stroke="#f5a623" stroke-width="2"/><path d="M3 7a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v3H3V7z" fill="#f5a623"/><line x1="8.5" y1="14" x2="15.5" y2="21" stroke="#f5a623" stroke-width="2.2" stroke-linecap="round"/><line x1="15.5" y1="14" x2="8.5" y2="21" stroke="#f5a623" stroke-width="2.2" stroke-linecap="round"/></svg>
+                                            </div>
+                                            <div class="row-links"><span>Call Carrier</span><span>Email Carrier</span></div>
+                                        </div>
+                                        <div class="star-btn">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                                <path class="star-fill" d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.8 7.1-.7z" fill="currentColor" stroke="none"/>
+                                                <path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.8 7.1-.7z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="carrier-row row-2">
+                                        <div class="row-main">
+                                            <div class="row-name">Acme Shipping Inc (L09876)</div>
+                                            <div class="row-icons">
+                                                <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#9aa3b0" stroke-width="2.2"/><line x1="6.5" y1="17.5" x2="17.5" y2="6.5" stroke="#9aa3b0" stroke-width="2.2"/></svg>
+                                                <svg class="ic" viewBox="0 0 24 24"><path d="M12 3.5L2.5 20h19L12 3.5z" fill="#f5a623"/><rect x="11" y="10" width="2" height="5" rx="1" fill="#fff"/><rect x="11" y="16.5" width="2" height="2" rx="1" fill="#fff"/></svg>
+                                                <svg class="ic" viewBox="0 0 24 24"><rect x="6" y="1" width="2" height="4" rx="1" fill="#f5a623"/><rect x="16" y="1" width="2" height="4" rx="1" fill="#f5a623"/><rect x="3" y="4" width="18" height="18" rx="3" fill="none" stroke="#f5a623" stroke-width="2"/><path d="M3 7a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v3H3V7z" fill="#f5a623"/><line x1="8.5" y1="14" x2="15.5" y2="21" stroke="#f5a623" stroke-width="2.2" stroke-linecap="round"/><line x1="15.5" y1="14" x2="8.5" y2="21" stroke="#f5a623" stroke-width="2.2" stroke-linecap="round"/></svg>
+                                            </div>
+                                            <div class="row-links"><span>Call Carrier</span><span>Email Carrier</span></div>
+                                        </div>
+                                        <div class="star-btn">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                                <path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.8 7.1-.7z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="carrier-row starred row-3">
+                                        <div class="row-main">
+                                            <div class="row-name">Acme Shipping LLC (L04327)</div>
+                                            <div class="row-icons">
+                                                <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#9aa3b0" stroke-width="2.2"/><line x1="6.5" y1="17.5" x2="17.5" y2="6.5" stroke="#9aa3b0" stroke-width="2.2"/></svg>
+                                                <svg class="ic" viewBox="0 0 24 24"><path d="M12 3.5L2.5 20h19L12 3.5z" fill="#f5a623"/><rect x="11" y="10" width="2" height="5" rx="1" fill="#fff"/><rect x="11" y="16.5" width="2" height="2" rx="1" fill="#fff"/></svg>
+                                                <svg class="ic" viewBox="0 0 24 24"><rect x="6" y="1" width="2" height="4" rx="1" fill="#f5a623"/><rect x="16" y="1" width="2" height="4" rx="1" fill="#f5a623"/><rect x="3" y="4" width="18" height="18" rx="3" fill="none" stroke="#f5a623" stroke-width="2"/><path d="M3 7a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v3H3V7z" fill="#f5a623"/><line x1="8.5" y1="14" x2="15.5" y2="21" stroke="#f5a623" stroke-width="2.2" stroke-linecap="round"/><line x1="15.5" y1="14" x2="8.5" y2="21" stroke="#f5a623" stroke-width="2.2" stroke-linecap="round"/></svg>
+                                            </div>
+                                            <div class="row-links"><span>Call Carrier</span><span>Email Carrier</span></div>
+                                        </div>
+                                        <div class="star-btn">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                                <path class="star-fill" d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.8 7.1-.7z" fill="currentColor" stroke="none"/>
+                                                <path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.8 7.1-.7z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="carrier-row will-star row-4">
+                                        <div class="row-main">
+                                            <div class="row-name">Acme Shipping Goods (L04327)</div>
+                                            <div class="row-icons">
+                                                <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#9aa3b0" stroke-width="2.2"/><line x1="6.5" y1="17.5" x2="17.5" y2="6.5" stroke="#9aa3b0" stroke-width="2.2"/></svg>
+                                                <svg class="ic" viewBox="0 0 24 24"><path d="M12 3.5L2.5 20h19L12 3.5z" fill="#f5a623"/><rect x="11" y="10" width="2" height="5" rx="1" fill="#fff"/><rect x="11" y="16.5" width="2" height="2" rx="1" fill="#fff"/></svg>
+                                                <svg class="ic" viewBox="0 0 24 24"><rect x="6" y="1" width="2" height="4" rx="1" fill="#f5a623"/><rect x="16" y="1" width="2" height="4" rx="1" fill="#f5a623"/><rect x="3" y="4" width="18" height="18" rx="3" fill="none" stroke="#f5a623" stroke-width="2"/><path d="M3 7a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v3H3V7z" fill="#f5a623"/><line x1="8.5" y1="14" x2="15.5" y2="21" stroke="#f5a623" stroke-width="2.2" stroke-linecap="round"/><line x1="15.5" y1="14" x2="8.5" y2="21" stroke="#f5a623" stroke-width="2.2" stroke-linecap="round"/></svg>
+                                            </div>
+                                            <div class="row-links"><span>Call Carrier</span><span>Email Carrier</span></div>
+                                        </div>
+                                        <div class="star-btn">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                                <path class="star-fill" d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.8 7.1-.7z" fill="currentColor" stroke="none"/>
+                                                <path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.8 7.1-.7z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </a>
 
-            <a href="project-echo.html" class="chapter c2">
+            <a href="project-echo.html" class="chapter c2 tabslide-demo">
                 <div class="chapter-inner">
                     <div class="chapter-text">
                         <h3 class="chapter-title">Echo Global Logistics</h3>
@@ -879,14 +957,64 @@
                         <span class="chapter-cta">View case study</span>
                     </div>
                     <div class="chapter-media">
-                        <div class="chapter-media-inner">
-                            <img src="project-echo-image.png" alt="Echo Global Logistics Project">
+                        <div class="chapter-media-inner" role="img" aria-label="Echo Global Logistics Project">
+                            <div class="carrier-app">
+                                <div class="app-breadcrumb">Account Management / Carriers / L1234567</div>
+                                <div class="app-title-row">
+                                    <h4>ABC Carrier L1234567</h4>
+                                    <span class="app-status-pill">Active</span>
+                                </div>
+                                <div class="app-tabs">
+                                    <span class="app-tab active">Summary</span>
+                                    <span class="app-tab">Directory</span>
+                                    <span class="app-tab">History</span>
+                                    <span class="app-tab">Equipment</span>
+                                    <span class="app-tab target">Compliance</span>
+                                    <span class="app-tab">Accounting</span>
+                                    <span class="app-tab">Notes</span>
+                                    <span class="app-tab">Documents</span>
+                                    <span class="tab-underline"></span>
+                                </div>
+                                <div class="app-card">
+                                    <div class="app-card-panel summary visible">
+                                        <h5>Carrier Ownership</h5>
+                                        <div class="app-field-grid">
+                                            <div class="app-field"><label>Owned Status</label><div>No</div></div>
+                                            <div class="app-field"><label>Carrier Owner</label><div>Dave Fernandez</div></div>
+                                            <div class="app-field"><label>Status Change</label><div>12/07/2023</div></div>
+                                            <div class="app-field"><label>Last Load Moved</label><div>12/07/2023</div></div>
+                                            <div class="app-field"><label>Modes Supported</label><div>LTL, TL</div></div>
+                                            <div class="app-field"><label>Equipment</label><div>Standard Van (2)</div></div>
+                                        </div>
+                                    </div>
+                                    <div class="app-card-panel compliance">
+                                        <h5>Carrier Status</h5>
+                                        <div class="app-field-grid three">
+                                            <div class="app-field"><label>Compliance Status</label><div>Active</div></div>
+                                            <div class="app-field"><label>Status Last Change</label><div>11/21/2023</div></div>
+                                            <div class="app-field"><label>Last Update By</label><div>Erica Watts</div></div>
+                                            <div class="app-field"><label>Opt Out of Rules</label><div>Yes</div></div>
+                                            <div class="app-field"><label>Hazmat</label><div>Approved: Yes</div></div>
+                                            <div class="app-field"><label>Targeted Commodity</label><div>Yes</div></div>
+                                        </div>
+                                        <h5 class="second">Insurance</h5>
+                                        <div class="app-field-grid three">
+                                            <div class="app-field"><label>Auto</label><div>Active</div></div>
+                                            <div class="app-field"><label>Liability</label><div>Active</div></div>
+                                            <div class="app-field"><label>Cargo</label><div>Active</div></div>
+                                            <div class="app-field"><label>Auto Limit</label><div>$250,000,000</div></div>
+                                            <div class="app-field"><label>Liability Limit</label><div>$250,000,000</div></div>
+                                            <div class="app-field"><label>Cargo Limit</label><div>$250,000,000</div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </a>
 
-            <a href="project-groupon.html" class="chapter c3">
+            <a href="project-groupon.html" class="chapter c3 tooltip-demo">
                 <div class="chapter-inner">
                     <div class="chapter-text">
                         <h3 class="chapter-title">Groupon</h3>
@@ -895,8 +1023,47 @@
                         <span class="chapter-cta">View case study</span>
                     </div>
                     <div class="chapter-media">
-                        <div class="chapter-media-inner">
-                            <img src="project-groupon-image.png" alt="Groupon Project">
+                        <div class="chapter-media-inner" role="img" aria-label="Groupon Project">
+                            <div class="groupon-app">
+                                <div class="groupon-header">
+                                    <h4>Sponsored campaigns</h4>
+                                    <span class="groupon-cta-btn">Create a sponsored campaign</span>
+                                </div>
+                                <div class="groupon-tabs">
+                                    <span class="groupon-tab active">Performance</span>
+                                    <span class="groupon-tab">Manage funds</span>
+                                </div>
+                                <div class="groupon-balance-card">
+                                    <div class="groupon-balance-main">
+                                        <div class="groupon-balance-amount">$356.75</div>
+                                        <div class="groupon-balance-label">Account balance <span class="info-dot">i</span></div>
+                                        <span class="groupon-addfunds-btn">Add funds</span>
+                                    </div>
+                                    <div class="groupon-balance-details">
+                                        Ad spend this month: <strong>$1100.55</strong><br>
+                                        Payment: <strong>Visa ...1234</strong> <span class="link-like">Update</span><br>
+                                        Auto-funding: <strong>Disabled</strong> <span class="link-like">Enable</span>
+                                    </div>
+                                </div>
+                                <div class="groupon-stats-row">
+                                    <div class="groupon-stat-tile">
+                                        <div class="stat-num">15</div>
+                                        <div class="stat-label">Sponsored sales</div>
+                                    </div>
+                                    <div class="groupon-stat-tile">
+                                        <div class="stat-num">4000</div>
+                                        <div class="stat-label">Sponsored impressions</div>
+                                    </div>
+                                </div>
+                                <div class="balance-dialog-overlay">
+                                    <div class="balance-dialog">
+                                        <div class="balance-dialog-title">Account balance</div>
+                                        <svg class="balance-dialog-close" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M1 1l10 10M11 1L1 11"/></svg>
+                                        <p class="balance-dialog-text">Your account balance is the money you have in your Groupon account in general. This can be allocated to individual sponsored campaigns.</p>
+                                        <span class="balance-dialog-btn">Got it</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
