@@ -453,7 +453,6 @@
     height: 14px;
     color: #6b7178;
     display: inline-flex;
-    transition: color 0.3s ease;
 }
 
 .info-dot svg {
@@ -664,10 +663,6 @@
     transform: translateY(0) scale(1);
     transition-delay: calc(var(--intent) + 0.05s);
 }
-.chapter.tooltip-demo:focus-visible .info-dot {
-    color: #1a1a1a;
-    transition-delay: var(--intent);
-}
 
 /* Mouse / trackpad */
 @media (hover: hover) and (pointer: fine) {
@@ -726,10 +721,6 @@
     .chapter.tooltip-demo:hover .balance-dialog {
         transform: translateY(0) scale(1);
         transition-delay: calc(var(--intent) + 0.05s);
-    }
-    .chapter.tooltip-demo:hover .info-dot {
-        color: #1a1a1a;
-        transition-delay: var(--intent);
     }
 }
 
