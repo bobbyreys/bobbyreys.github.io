@@ -147,6 +147,7 @@
     aspect-ratio: auto;
     background: #ffffff;
     display: block;
+    container: tabslide / inline-size;
 }
 
 .carrier-app {
@@ -154,8 +155,38 @@
     background: #ffffff;
 }
 
+.app-topbar {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 7px 14px;
+    background: #ffffff;
+    border-bottom: 1px solid #e3e7ec;
+    /* elevation so the white bar reads as chrome above the page, not the same surface as the white cards below it */
+    box-shadow: 0 2px 5px rgba(15, 23, 42, 0.1);
+    font-size: 11px;
+    font-weight: 700;
+    color: #b7bcc4;
+    /* hard clip, not a fade: a fade on a solid white bar just fades white into the grey page behind it */
+    overflow: hidden;
+}
+
+.app-topbar span {
+    white-space: nowrap;
+    flex: 0 0 auto;
+}
+
+.app-topbar .brand {
+    color: #1a1a1a;
+    font-weight: 800;
+    margin-right: 4px;
+}
+
+.app-topbar .brand span { color: #2f6fed; }
+.app-topbar .active-link { color: #2f6fed; }
+
 .app-breadcrumb {
-    padding: 16px 14px 0;
+    padding: 10px 14px 6px;
     font-size: 10px;
     color: #9aa1a8;
 }
@@ -164,7 +195,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 4px 14px 12px;
+    padding: 0 14px 6px;
 }
 
 .app-title-row h4 {
@@ -216,7 +247,7 @@
     font-size: 12px;
     font-weight: 600;
     color: #9aa1a8;
-    padding: 10px 0;
+    padding: 7px 0;
     transition: color 0.4s ease;
     white-space: nowrap;
 }
@@ -235,24 +266,33 @@
     transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
+/* The card's height comes from its content, not a hand-picked pixel value: both panels stack
+   in the same grid cell (sized to the taller one), so the card is never force-fit or stretched.
+   Anything past the frame's own fixed height is cropped by chapter-media-inner's overflow:hidden
+   below, a clean "peek" of the next card rather than a cramped layout that fits everything. */
 .app-card {
     margin: 14px;
-    border: 1px solid #eef0f2;
-    border-radius: 8px;
-    padding: 16px;
-    position: relative;
-    height: 275px;
+    display: grid;
 }
 
 .app-card-panel {
-    position: absolute;
-    inset: 14px;
+    grid-area: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     opacity: 0;
     transition: opacity 0.4s ease;
 }
 
 .app-card-panel.visible {
     opacity: 1;
+}
+
+.field-card {
+    background: #ffffff;
+    border: 1px solid #eef0f2;
+    border-radius: 8px;
+    padding: 16px 18px;
 }
 
 .app-card-panel h5 {
@@ -262,14 +302,29 @@
     margin: 0 0 12px;
 }
 
+/* Columns size to their own content instead of splitting the row into equal shares. Equal
+   columns left uneven-looking gaps: a short value like "SCAC" stranded a lot of empty column
+   space before the next field, while a long one like "Intrastate #" left almost none, even
+   though the columns themselves were uniform. A fixed gap between content-sized columns reads
+   as evenly spaced regardless of how long each field's own label or value happens to be. */
 .app-field-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px 20px;
+    grid-template-columns: repeat(2, auto);
+    gap: 14px 28px;
 }
 
-.app-card-panel h5.second { margin-top: 14px; }
-.app-field-grid.three { grid-template-columns: 1fr 1fr 1fr; }
+.app-field-grid.three { grid-template-columns: repeat(3, auto); }
+.app-field-grid.four { grid-template-columns: repeat(4, auto); gap: 12px 24px; }
+.app-field-grid.five { grid-template-columns: repeat(5, auto); gap: 12px 20px; }
+
+/* A grid cell stretches to the height of its row's tallest label (CSS Grid's default), so when
+   one field's label wraps to 2 lines, every field in that row grows to match. Anchoring the
+   value to the bottom of its own cell keeps all the values on one line across the row, whatever
+   wraps and at whatever card width, instead of hardcoding which labels are "long enough" to wrap. */
+.app-field {
+    display: flex;
+    flex-direction: column;
+}
 
 .app-field label {
     display: block;
@@ -279,9 +334,19 @@
 }
 
 .app-field div {
+    margin-top: auto;
     font-size: 12px;
     color: #1a1a1a;
     font-weight: 500;
+}
+
+/* Below this card width, more labels wrap to 2 lines (adding row height), so the roomier
+   padding/gaps above would push Certifications past the fixed card height. Tighten them back
+   up here rather than removing the breathing room everywhere. */
+@container tabslide (max-width: 420px) {
+    .field-card { padding: 12px 14px; }
+    .app-card-panel { gap: 10px; }
+    .app-field-grid { gap: 10px 14px; }
 }
 
 
@@ -527,7 +592,7 @@
 /* Echo Profile sits on a white section, so give the app a light grey ground like the real screenshot */
 .tabslide-demo .chapter-media-inner { background: #f1f2f7; }
 .tabslide-demo .carrier-app { background: transparent; }
-.tabslide-demo .app-card { background: #ffffff; }
+/* app-card is now just a positioning container; the light grey chapter background shows between the field-cards, like the real page */
 /* c2's media mat has a 1px border each side, so trim 2px to keep all three sections the same height */
 .tabslide-demo .chapter-media-inner { height: calc(var(--demo-h) - 2px); }
 
