@@ -275,13 +275,22 @@
     display: grid;
 }
 
+/* Each panel is its own N-column grid (4 for Summary, 3 for Compliance), and every field-card
+   inside it is a subgrid spanning those same columns. That's what makes "Carrier Owner" and
+   "Docket #" line up: both cards' columns are sized together, as one shared set of tracks,
+   instead of each card sizing its own columns independently off its own content. */
 .app-card-panel {
     grid-area: 1 / 1;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    column-gap: 24px;
+    row-gap: 16px;
     opacity: 0;
     transition: opacity 0.4s ease;
+}
+
+.app-card-panel.compliance {
+    grid-template-columns: repeat(3, auto);
 }
 
 .app-card-panel.visible {
@@ -289,6 +298,9 @@
 }
 
 .field-card {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
     background: #ffffff;
     border: 1px solid #eef0f2;
     border-radius: 8px;
@@ -296,26 +308,19 @@
 }
 
 .app-card-panel h5 {
+    grid-column: 1 / -1;
     font-size: 13px;
     font-weight: 700;
     color: #1a1a1a;
     margin: 0 0 12px;
 }
 
-/* Columns size to their own content instead of splitting the row into equal shares. Equal
-   columns left uneven-looking gaps: a short value like "SCAC" stranded a lot of empty column
-   space before the next field, while a long one like "Intrastate #" left almost none, even
-   though the columns themselves were uniform. A fixed gap between content-sized columns reads
-   as evenly spaced regardless of how long each field's own label or value happens to be. */
 .app-field-grid {
+    grid-column: 1 / -1;
     display: grid;
-    grid-template-columns: repeat(2, auto);
-    gap: 14px 28px;
+    grid-template-columns: subgrid;
+    row-gap: 14px;
 }
-
-.app-field-grid.three { grid-template-columns: repeat(3, auto); }
-.app-field-grid.four { grid-template-columns: repeat(4, auto); gap: 12px 24px; }
-.app-field-grid.five { grid-template-columns: repeat(5, auto); gap: 12px 20px; }
 
 /* A grid cell stretches to the height of its row's tallest label (CSS Grid's default), so when
    one field's label wraps to 2 lines, every field in that row grows to match. Anchoring the
