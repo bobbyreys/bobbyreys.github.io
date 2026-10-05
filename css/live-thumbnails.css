@@ -15,7 +15,7 @@
 }
 
 .carrier-panel {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background: #ffffff;
     padding: 4px 2px 2px;
 }
@@ -151,7 +151,7 @@
 }
 
 .carrier-app {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background: #ffffff;
 }
 
@@ -199,6 +199,7 @@
 }
 
 .app-title-row h4 {
+    font-family: 'Open Sans', sans-serif;
     font-size: 17px;
     font-weight: 700;
     color: #1a1a1a;
@@ -308,6 +309,7 @@
 }
 
 .app-card-panel h5 {
+    font-family: 'Open Sans', sans-serif;
     grid-column: 1 / -1;
     font-size: 13px;
     font-weight: 700;
@@ -366,7 +368,7 @@
 
 .groupon-app {
     position: relative;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background: #ffffff;
     padding: 26px;
 }
@@ -381,6 +383,7 @@
 }
 
 .groupon-header h4 {
+    font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     font-weight: 700;
     color: #1a1a1a;

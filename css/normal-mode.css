@@ -54,14 +54,14 @@ body:has(.normal-mode.active) [role="button"] {
 }
 
 .normal-intro-small {
-    font-family: 'Lora', Georgia, serif !important;
+    font-family: 'DM Serif Text', Georgia, serif !important;
     font-style: italic !important;
     font-size: 64px !important;
     color: var(--teal-dark);
     margin-top: 0;
     margin-bottom: 40px;
     padding-top: 0;
-    font-weight: 500 !important;
+    font-weight: 400 !important;
     line-height: 1.1 !important;
     letter-spacing: -0.01em !important;
 }
@@ -219,8 +219,8 @@ body:has(.normal-mode.active) [role="button"] {
 }
 
 .chapter-title {
-    font-family: 'Lora', Georgia, serif;
-    font-weight: 600;
+    font-family: 'DM Serif Text', Georgia, serif;
+    font-weight: 400;
     font-size: 32px;
     line-height: 1.2;
     letter-spacing: -0.005em;

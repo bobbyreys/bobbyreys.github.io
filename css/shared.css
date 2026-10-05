@@ -4,7 +4,7 @@
    ======================================== */
 
 /* Font Import */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,600;0,700;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Serif+Text:ital@0;1&family=Open+Sans:wght@400;500;600;700&display=swap');
 
 /* Temporary Hide Projects - Remove class to unhide */
 .project-hidden {
@@ -50,8 +50,8 @@ body {
 
 /* Typography Hierarchy */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+    font-family: 'DM Serif Text', Georgia, serif;
+    font-weight: 400;
     line-height: 1.2;
 }
 
