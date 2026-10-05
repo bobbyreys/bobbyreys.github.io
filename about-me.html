@@ -149,6 +149,101 @@
             border: none;
             outline: none;
         }
+    
+        /* Footer bike */
+        footer {
+            position: relative;
+        }
+        
+        .footer-bike-track {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 0;
+            pointer-events: none;
+        }
+        
+        .footer-bike {
+            position: absolute;
+            bottom: 2px;
+            left: -80px;
+            width: 58px;
+            height: 40px;
+            color: var(--teal-dark);
+            pointer-events: auto;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+        
+        .footer-bike svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        
+        .footer-bike .wheel,
+        .footer-bike .crank {
+            transform-box: fill-box;
+            transform-origin: center;
+        }
+        
+        .footer-bike.is-riding {
+            animation: bike-ride 6.5s cubic-bezier(0.22, 0.7, 0.3, 1) forwards,
+                       bike-hop 0.5s ease-out 6.5s;
+        }
+        
+        .footer-bike.is-riding .wheel {
+            animation: bike-spin 6.5s cubic-bezier(0.22, 0.7, 0.3, 1) forwards;
+        }
+        
+        .footer-bike.is-riding .crank {
+            animation: bike-crank 6.5s cubic-bezier(0.22, 0.7, 0.3, 1) forwards;
+        }
+        
+        @keyframes bike-ride {
+            from { left: -80px; }
+            to   { left: calc(100% - 175px); }
+        }
+        
+        @keyframes bike-hop {
+            0%   { transform: translateY(0); }
+            40%  { transform: translateY(-6px); }
+            100% { transform: translateY(0); }
+        }
+        
+        @keyframes bike-spin {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(5000deg); }
+        }
+        
+        @keyframes bike-crank {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(2500deg); }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .footer-bike,
+            .footer-bike.is-riding {
+                left: calc(100% - 175px);
+                animation: none;
+            }
+        
+            .footer-bike.is-riding .wheel,
+            .footer-bike.is-riding .crank {
+                animation: none;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            @keyframes bike-ride {
+                from { left: -80px; }
+                to   { left: calc(100% - 115px); }
+            }
+        }
     </style>
 </head>
 <body>
@@ -187,7 +282,7 @@
                         </p>
 
                         <p class="normal-section-text">
-                            I cover the whole design process, from research and strategy through execution. But I'm just as into the unglamorous stuff, like documentation, clear handoffs, reusable patterns, and making sure research actually shapes what gets built. My time teaching sharpened how I think about communication, feedback, and making complex ideas easy to follow. I also lean on AI tools for research synthesis and rapid prototyping.
+                            I cover the whole design process, from research and strategy through execution. But I'm just as into the unglamorous stuff, like documentation, clear handoffs, reusable patterns, and making sure research actually shapes what gets built. My time teaching sharpened how I think about communication, feedback, and making complex ideas easy to follow, especially after I started building my own challenges and workshops on top of the assigned curriculum to help students upskill faster than the program alone would. I also lean on AI tools for research synthesis and rapid prototyping.
                         </p>
 
                         <p class="normal-section-text">
@@ -218,6 +313,31 @@
 
         <!-- Footer -->
         <footer id="contact">
+            <div class="footer-bike-track" aria-hidden="true">
+                <button type="button" class="footer-bike" id="footerBike" tabindex="-1">
+                    <svg viewBox="6 4 80 55" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <g class="wheel">
+                            <circle cx="23" cy="43" r="14.5"/>
+                            <path d="M23 29v28M9 43h28M13 33l20 20M33 33L13 53" stroke-width="0.8"/>
+                            <circle cx="23" cy="43" r="1.3" fill="currentColor" stroke="none"/>
+                        </g>
+                        <g class="wheel">
+                            <circle cx="69" cy="43" r="14.5"/>
+                            <path d="M69 29v28M55 43h28M59 33l20 20M79 33L59 53" stroke-width="0.8"/>
+                            <circle cx="69" cy="43" r="1.3" fill="currentColor" stroke="none"/>
+                        </g>
+                        <path d="M23 43L44 45M23 43L37 23M44 45L37 23M37 23L63 22M44 45L65 29M65 29L69 43M63 22L65 29"/>
+                        <path d="M37 23L36 18" />
+                        <path d="M31 18H41" stroke-width="2.8"/>
+                        <path d="M63 22L62 18M62 18H69Q73 18 73 22Q73 25 70 25"/>
+                        <g class="crank">
+                            <circle cx="44" cy="45" r="4" stroke-width="1.6"/>
+                            <path d="M44 38V52M41.5 38H46.5M41.5 52H46.5" stroke-width="1.8"/>
+                        </g>
+                    </svg>
+                </button>
+            </div>
+            
             <div class="footer-content">
                 <p class="footer-copyright">© 2026 Bobby Reyes</p>
                 <div class="footer-icons">
@@ -250,5 +370,36 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        (function () {
+            var footer = document.getElementById('contact');
+            var bike = document.getElementById('footerBike');
+            if (!footer || !bike) return;
+
+            function ride() {
+                bike.classList.remove('is-riding');
+                void bike.offsetWidth;
+                bike.classList.add('is-riding');
+            }
+
+            if ('IntersectionObserver' in window) {
+                var seen = false;
+                new IntersectionObserver(function (entries, obs) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting && !seen) {
+                            seen = true;
+                            ride();
+                            obs.disconnect();
+                        }
+                    });
+                }, { threshold: 0.6 }).observe(footer);
+            } else {
+                ride();
+            }
+
+            bike.addEventListener('click', ride);
+        })();
+    </script>
 </body>
 </html>
