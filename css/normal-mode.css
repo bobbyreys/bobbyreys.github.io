@@ -55,7 +55,7 @@ body:has(.normal-mode.active) [role="button"] {
 
 .normal-intro-small {
     font-family: 'DM Serif Text', Georgia, serif !important;
-    font-style: italic !important;
+    font-style: normal !important;
     font-size: 64px !important;
     color: var(--teal-dark);
     margin-top: 0;
