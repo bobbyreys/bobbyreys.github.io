@@ -602,6 +602,13 @@
 /* c2's media mat has a 1px border each side, so trim 2px to keep all three sections the same height */
 .tabslide-demo .chapter-media-inner { height: calc(var(--demo-h) - 2px); }
 
+/* Star pops up, then settles back to its normal size */
+@keyframes star-pop {
+    0%   { transform: scale(1); }
+    45%  { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
 /* ========================================
    INTERACTION STATES
    Focus works everywhere (keyboard). Hover only on devices that really hover, so a tap on
@@ -630,8 +637,7 @@
     transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) var(--intent), background 0.25s ease calc(var(--intent) + 0.35s), box-shadow 0.25s ease calc(var(--intent) + 0.35s);
 }
 .chapter.reorder-demo:focus-visible .row-4 .star-btn {
-    transform: scale(1.22);
-    transition-delay: var(--intent);
+    animation: star-pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) var(--intent);
 }
 .chapter.reorder-demo:focus-visible .row-4 .star-fill {
     opacity: 1;
@@ -689,8 +695,7 @@
         transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) var(--intent), background 0.25s ease calc(var(--intent) + 0.35s), box-shadow 0.25s ease calc(var(--intent) + 0.35s);
     }
     .chapter.reorder-demo:hover .row-4 .star-btn {
-        transform: scale(1.22);
-        transition-delay: var(--intent);
+        animation: star-pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) var(--intent);
     }
     .chapter.reorder-demo:hover .row-4 .star-fill {
         opacity: 1;
