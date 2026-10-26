@@ -56,7 +56,7 @@
         <div class="header-content">
             <div class="project-category">UX Design • Enterprise Software</div>
             <h1 class="project-title">Echo Global Logistics</h1>
-            <p class="project-description">Turning a carrier list into a book reps could trust was safe to work, without losing the ability to call and email carriers directly.</p>
+            <p class="project-description">A rep-owned carrier book that shows who's safe to work, with call and email one click away.</p>
 
             <div class="hero-image-container">
                 <img src="My Carriers - Rep View-Designs.png" alt="My Carriers panel in Echo Accelerator">
@@ -91,7 +91,7 @@
                 <h2 class="section-title">Where Echo's margin actually comes from</h2>
             </div>
             <div class="narrative">
-                <p>Echo is an asset-light freight broker: it sells space on a truck to a shipper, then pays a trucking company less than that to actually haul the load, and keeps the difference. Volume comes from sales; margin comes from carrier relationships. But Echo's carrier network was wide and shallow. It had tens of thousands of carrier records, but a large share of loads got covered by re-shopping the spot market rather than re-loading a carrier Echo had already onboarded and priced with. I designed My Carriers, moving the concept of a rep-owned book into Accelerator, the tool carrier sales actually worked in every day, and turning it from a passive list into a book reps could trust was safe to call, email, and book.</p>
+                <p>Echo makes its margin on the gap between what a shipper pays and what it pays a carrier, so carrier relationships drive profit. I designed My Carriers, a rep-owned book of carriers inside Accelerator, the tool carrier sales used every day, so reps could see who was safe to call, email, and book.</p>
             </div>
         </div>
     </section>
@@ -106,9 +106,9 @@
             <div class="narrative">
                 <p class="narrative-lede">A rep couldn't answer "who's mine, who can I legally use today, and who has a truck near this load" without stitching together three or four screens.</p>
 
-                <p>Every time a load needed a carrier, Echo re-negotiated the price from scratch, even with carriers it had worked with before, instead of using an established rate, so relationships that should have compounded got spent once and forgotten. Carrier data was scattered across four different systems that didn't talk to each other, so no single view answered a rep's actual question, and the easy default was posting the load publicly for any carrier to grab, even though that always cost more than working with a carrier Echo already knew. Carriers also quietly fell out of eligibility (expired insurance, lapsed authority) with nothing surfacing it until a shipment got blocked mid-delivery. Dead capacity inside Echo's own network was the most fixable waste in the whole picture.</p>
+                <p>Carrier data lived in four systems that didn't talk to each other, so no single view answered a rep's real question. The easy default was posting the load publicly for any carrier to grab, which cost more than working with a carrier Echo already knew. The price was also re-negotiated from scratch each time, even with carriers Echo had worked with before, so relationships that should have compounded were spent once and forgotten. Carriers could also quietly fall out of eligibility, through expired insurance or lapsed authority, with nothing surfacing it until a shipment was blocked mid-delivery.</p>
 
-                <p>Here's the twist. Carrier portfolio management already existed, just split across two legacy tools, STATS and Clutch, that reps were already stitching together for everything else. Both showed a version of carrier status (Danger, Lead, Active), and a nightly job quietly computed each carrier's ownership stage behind the scenes: Lead → Opportunity → Relationship → Danger, with a 6-day countdown before a carrier under 3 booked loads in a rolling 30 days got auto-unassigned. Reps could only ever see pieces of that status, never the countdown itself, and never in one place, so plenty kept their own Excel spreadsheet just to track where they actually stood.</p>
+                <p>Carrier portfolio management already existed, split across two legacy tools, STATS and Clutch. Both showed a version of carrier status, and a nightly job moved each carrier through five ownership stages, from Lead to Opportunity to Relationship to Managed to Danger, then unassigned carriers that stopped booking after a countdown reps never saw. Reps only saw pieces of this, never all of it in one place, so plenty kept their own Excel spreadsheet to track where they actually stood.</p>
             </div>
         </div>
     </section>
@@ -148,7 +148,7 @@
 
                 <div class="feature-item">
                     <div class="feature-image"><img src="Carrier Details Icon Hover.png" alt="Status icon system: safe-to-use, active status, insurance expiration"></div>
-                    <p class="feature-caption"><strong>Two icons, color-coded.</strong> Compliance status splits across two related shapes: a color-weighted triangle for inactive, on hold, or active, and a solid circle-slash for do not use. Insurance expiration gets its own calendar icon, since it's the one compliance problem that's actually predictable, the mark shifts from a checkmark to an X as the deadline gets closer. Both carry a hover tooltip with the specifics and, for insurance, the real date.</p>
+                    <p class="feature-caption"><strong>Three icons, color-coded.</strong> Compliance status splits across two related shapes: a color-weighted triangle for inactive, on hold, or active, and a solid circle-slash for do not use. Insurance expiration gets its own calendar icon, since it's the one compliance problem that's actually predictable, the mark shifts from a checkmark to an X as the deadline gets closer. Both carry a hover tooltip with the specifics and, for insurance, the real date.</p>
                 </div>
 
                 <div class="feature-item">
@@ -201,6 +201,8 @@
             </div>
 
             <div class="narrative">
+                <p>I was the only designer, working with one product owner and five engineers, and I had about a month to get from research to handoff. I worked within the existing design system, adding a few new colors and icon states. Research was limited too, with six interviews in one week the most I could get.</p>
+
                 <p>Before any screens, I mapped out how a rep gets from the existing Accelerator page into their portfolio, then either searches or scans the list and clicks into a carrier. I left open questions right on the flow itself, like what search should actually match on, what else besides calling should be one click away, and which contact info actually needs to surface. Those were the questions the wireframes and prototype had to answer.</p>
 
                 <div class="figure-single">
@@ -236,13 +238,13 @@
             </div>
 
             <div class="narrative">
-                <p><strong>One list, not separate tabs.</strong> The original plan split My Carriers, Group Carriers, and Unowned into tabs. Manager and director interviews changed the first two, their own carrier counts topped out around 30, small enough that tabs added a click without adding clarity, so the shipped version uses one list with collapsible My Carriers and Group Carriers sections instead. Unowned didn't make the cut at all. Since no rep owns those carriers, they were never going to live inside a rep's own book. That's Carrier Prospecting's job, a separate tool built for exactly that.</p>
+                <p><strong>One list, not separate tabs.</strong> The original plan split My Carriers, Group Carriers, and Unowned into tabs. Manager and director interviews showed their carrier counts topped out around 30, small enough that tabs added a click without adding clarity, so the shipped version uses one list with collapsible My Carriers and Group Carriers sections. Unowned didn't make the cut. No rep owns those carriers, so they never belonged in a rep's own book, and Carrier Prospecting already handles them.</p>
 
-                <p><strong>Give managers the team view, not just their own book.</strong> The Group Carriers section fans the same ownership query across a manager or director's direct team, so oversight didn't require a separate tool or a data pull.</p>
+                <p><strong>Give managers the team view, not just their own book.</strong> Managers needed to see their team's carriers, so Group Carriers runs the same ownership query across their direct reports.</p>
 
-                <p><strong>Two questions, two icons: never blended into one.</strong> "Can I use this carrier?" (compliance: Active, Inactive, On Hold, Do Not Use) and "what's my relationship with them?" (ownership: Lead through Danger) are computed independently and never merge into a single status. Compliance renders as one icon, color-weighted grey through red; insurance expiration gets its own calendar icon, separate, because it's the one compliance problem that's actually predictable, it lapses on a known date. A "safe to use" green affirmative icon, complete with its own tooltip ("Safe to use carrier"), existed at launch and was removed afterward. It added noise on the common case instead of reserving color for the exception.</p>
+                <p><strong>Two questions, two signals, never blended.</strong> "Can I use this carrier?" (compliance) and "what's my relationship with them?" (ownership) are computed independently and never merge into one status. Ownership shows as a small colored dot beside the carrier's name, and compliance as a row of icons, with insurance expiration getting its own. Each icon is a muted grey outline when it doesn't apply and a color when it does, so only problems stand out.</p>
 
-                <p><strong>Give non-owning roles a second way in.</strong> Ownership isn't how every rep works. Specialized Services and Partials reps generally don't own carriers at all. Favorites let any rep, in any role, pin any carrier (owned or not), so a list still exists for roles the ownership model was never built for. Typeahead backs it up, reaching every carrier profile so a rep can still pull one up they haven't favorited yet.</p>
+                <p><strong>Give reps who don't own carriers a second way in.</strong> Ownership isn't how every rep works, and some roles don't own carriers at all. Favorites let any rep pin any carrier, owned or not, so a list still exists for roles the ownership model wasn't built for. Typeahead backs it up, so a rep can pull up any carrier profile they haven't favorited.</p>
             </div>
         </div>
     </section>
@@ -256,7 +258,7 @@
             </div>
 
             <div class="narrative">
-                <p class="narrative-lede">My Carriers shipped, and the clearest signal of how well it worked came a month later, in a structured round of feedback from the reps actually using it. It told me exactly what MVP speed had cost us.</p>
+                <p class="narrative-lede">My Carriers shipped to a pilot group. Reps who own carriers got a list of their book, and reps who don't got Favorites and search. Managers and directors got a team view. A month later, a structured round of feedback from those reps showed exactly what MVP speed had cost us.</p>
 
                 <p>The highest-impact gap was filtering. Reps couldn't narrow their book by location and radius, compliance flags, insurance thresholds, or ownership and carrier status, the core unlock for making a 500-carrier list usable at all.</p>
 
@@ -266,9 +268,7 @@
 
                 <p>There was also a foundational fix underneath all of it, some carrier profile features weren't being used simply because reps didn't know they existed. The color-coded icon system and the enriched detail panel in Design above are the direct response, legibility and insurance visibility got fixed; the countdown itself is still the gap I'd go after next.</p>
 
-                <p>Longer-term, the metric that actually tests whether this feature is worth its cost is carrier cost per load: net revenue per load, normalized for lane, equipment, and market. A carrier-side tool can't move the sell rate, so the buy rate is the only money lever it has.</p>
-
-                <p>Before the cost savings would even show up, you'd expect to see more loads going to carriers Echo already knows instead of new ones off the spot market. The ownership data already tracks that without building anything new, how many carriers in a rep's book stay in the healthy Relationship stage instead of sliding into Danger, and how often carriers get dropped entirely. That data doesn't exist yet; the feedback above is the real signal I have.</p>
+                <p>If I could measure one thing, it would be what Echo pays carriers per load, adjusted for the type of load. The tool can't change what shippers pay, so the cost of the carrier is the only money lever it has. Earlier signs would be more loads going to carriers Echo already knows, and fewer carriers sliding from Relationship into Danger or getting dropped. That data doesn't exist yet, so the feedback above is the real signal I have.</p>
             </div>
         </div>
     </section>
@@ -281,13 +281,11 @@
                 <h2 class="section-title">What this project taught me</h2>
             </div>
             <div class="narrative">
-                <p>If I'm honest, giving reps visibility wasn't the same as giving them agency. Compliance status works because it's genuinely a state: grey, yellow, orange, or red tells a rep everything they need, and the icon is a complete answer. Ownership status isn't a state, it's constantly counting down toward a deadline, and the UI shows it like it's just as stable. Take the "Danger" chip. A carrier in Danger has a real countdown behind it, 6 days before it gets automatically unassigned unless it gets back to 3 booked loads in the last 30 days, but none of that ever reaches the screen, a rep just sees the word "Danger."</p>
+                <p>Giving reps visibility wasn't the same as giving them agency. Compliance status works because it's a state, and a grey, yellow, orange, or red icon tells a rep everything they need. Ownership isn't a state. It's a countdown, and the interface showed it as if it were stable. A carrier in Danger has 6 days before it's automatically unassigned unless it gets back to 3 booked loads in the last 30 days, but a rep only sees a small colored dot, with the stage name on hover.</p>
 
-                <p>When a carrier's clock runs out, it falls into Unowned with no queue and no claim action. Claiming one back is still possible, but it means leaving My Carriers for Carrier Prospecting, a detour instead of a decision made where the rep already is. A chip doing the job of a countdown is the clearest gap left in this design, and it's the next version I'd build.</p>
+                <p>When the clock runs out, the carrier falls into Unowned with no queue and no claim action. Claiming it back means leaving My Carriers for Carrier Prospecting, a detour instead of a decision made where the rep already is. A dot doing the job of a countdown is the clearest gap left in this design. It's the next version I'd build, along with the daily-task layer I designed early on, whether a rep had called a carrier today, posted a truck, or booked a load, which didn't make it into MVP scope.</p>
 
-                <p>The daily-task layer I designed early on (had they called this carrier today, posted a truck, booked a load) is still something reps need, it just didn't make it into MVP scope.</p>
-
-                <p>The other thing I'd want to verify before building it is whether sticking with a carrier Echo already knows actually saves money compared to just posting the load and taking whatever the market offers. That's the assumption the whole feature rests on, and it's checkable from historical pricing data, so it should be checked before more design work, not after. If it turns out visibility was never the real problem, a better panel won't move margin no matter how well it's designed.</p>
+                <p>Before building either, I'd verify the assumption the whole feature rests on, that sticking with a carrier Echo already knows saves money compared to posting the load and taking what the market offers. Historical pricing data can answer that, so it should be checked before more design work, not after. If visibility was never the real problem, a better panel won't move margin.</p>
             </div>
         </div>
     </section>
