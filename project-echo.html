@@ -56,7 +56,7 @@
         <div class="header-content">
             <div class="project-category">UX Design • Enterprise Software</div>
             <h1 class="project-title">Echo Global Logistics</h1>
-            <p class="project-description">Unifying workflows across legacy platforms to improve efficiency for supply chain professionals.</p>
+            <p class="project-description">Replacing three disconnected carrier tools with one unified profile.</p>
 
             <div class="hero-image-container">
                 <img src="echo-hero-image.png" alt="Echo Global Logistics Carrier Management">
@@ -150,7 +150,7 @@
             <div class="section-header">
                 <div class="section-label">Design</div>
                 <h2 class="section-title">Refining the carrier workflow</h2>
-                <p class="section-subtitle">A closer look at the solutions that improved efficiency and user satisfaction.</p>
+                <p class="section-subtitle">The four views that make up the unified profile.</p>
             </div>
 
             <div class="feature-showcase">
@@ -188,7 +188,7 @@
             <div class="figure-single"><img src="echo-research-canvas.png" alt="Carrier Profile Management research canvas: experiments and facts from carrier team interviews"></div>
 
             <div class="narrative">
-                <p>I ran seven interviews across the teams closest to the work: two Directors, two Managers, and three Reps, split between remote and in-person sessions.</p>
+                <p>I ran seven interviews across the teams closest to the work: two Directors, two Managers, and three Reps, split between remote and in-person sessions. I also shadowed two reps in the office to see how they actually worked.</p>
 
                 <p>A pattern emerged quickly. Every role needed data that lived in a system they weren't currently working in, which meant constant manual cross-referencing just to answer basic questions. Compounding that, there was no proactive alerting for critical events like expiring insurance, so risks were only caught after the fact, or missed entirely.</p>
 
@@ -212,11 +212,13 @@
             </div>
 
             <div class="narrative">
-                <p>Round 1 started as a slide-over drawer at the carrier list level, a lightweight v1 that seemed like the faster build, working from the basic profile data our legacy platforms exposed and the two-way sync a full profile page would require with our legacy Optimizer tool. The insight that actually changed our direction wasn't technical, though. It was that stakeholders wanted the complete profile experience, not something rolled out in small iterative pieces. That's what pushed us to build the full page rather than keep iterating on a drawer.</p>
+                <p>I was the only designer, working with one product owner and five engineers, and the design had to be defined within a quarter. I stayed within our design system and built new components only where its patterns fell short. Reps are hard to get time with, so seven interviews, about half in person, was all I could get.</p>
+
+                <p>Round 1 was a slide-over drawer at the carrier list level, the faster build, working from the basic profile data our legacy platforms exposed. A full profile page would have meant a two-way sync with the legacy Optimizer tool. What changed our direction wasn't technical, though. Stakeholders wanted the complete profile experience, not small iterative pieces, so we built the full page instead of iterating on a drawer.</p>
 
                 <p>Round 2 replaced the drawer with a dedicated page, but reused a flat-stack pattern already built for customers. Carrier profiles had never been designed before, so it was the fastest starting point, not necessarily the right one. Testing showed it hid information reps needed to see at once, like recent notes or which profiles sat under a carrier account.</p>
 
-                <p>That last gap mattered more than it sounds. Echo was introducing a new hierarchy (Logistics Provider, then Carrier Account, then Carrier Profile), and the old tools had no way to represent it. Multiple carrier profiles could exist under one account with no visible relationship between them, which meant Compliance couldn't trust that a change made on one profile was reflected correctly across related ones, and duplicate accounts crept in as a result. The final round's Related Profiles panel was the first surface for that hierarchy, letting Compliance see which profiles actually belonged together before acting on any of them.</p>
+                <p>That last gap mattered more than it sounds. Echo was introducing a new hierarchy of Logistics Provider, Carrier Account, and Carrier Profile, and the old tools couldn't represent it. Multiple profiles could sit under one account with no visible link between them. Compliance couldn't trust that a change on one profile carried across the related ones, and duplicate accounts crept in. The final round's Related Profiles panel was the first place that hierarchy showed up, so Compliance could see which profiles belonged together before acting on any of them.</p>
 
                 <div class="figure-strip">
                     <div class="figure-frame"><img src="echo-wireframe-v1.png" alt="Round 1 wireframe"></div>
@@ -259,13 +261,13 @@
             </div>
 
             <div class="narrative">
-                <p class="narrative-lede">The clearest signal of success wasn't a metric. It was behavior. Carrier reps and compliance reps chose the new unified profile over falling back to the old three-tool workflow.</p>
+                <p class="narrative-lede">Everything in the final designs shipped, as a full release to a UAT group first and then to the rest of the reps. That includes the summary dashboard, role-tagged contacts and addresses, load history, compliance management with automatic expiry flags, automated service areas, and a Related Profiles panel. The clearest signal of success wasn't a metric. It was behavior. Carrier reps and compliance reps chose the new unified profile over falling back to the old three-tool workflow.</p>
 
                 <p>Clutch, Optimizer, and STATS are still running and scheduled for sunset, so switching back was always one click away. Teams didn't take it, which says more about whether the redesign actually solved the problem than a dashboard number would have.</p>
 
                 <p>What I don't have is the analytics to quantify that shift precisely. Echo didn't have instrumentation in place to track it. Pushing for that measurement layer is one of the things I'd prioritize next.</p>
 
-                <p>If I were defining that measurement layer today, the metric that actually tests the thesis is the Optimizer fallback rate. That's the share of carrier work reps still complete by clicking back into Optimizer instead of staying in the unified profile. The button and the Split flags are still live specifically so that fallback is possible; watching that rate collapse toward zero is what would tell us the profile really closed the gap, not just that people used it.</p>
+                <p>If I were defining that measurement layer today, the metric I'd track is the Optimizer fallback rate, the share of carrier work reps still finish by clicking back into Optimizer instead of staying in the unified profile. The fallback button is still live so that's possible. If that rate fell toward zero, it would show the profile truly closed the gap, not just that people used it.</p>
             </div>
         </div>
     </section>
@@ -278,7 +280,7 @@
                 <h2 class="section-title">What this project taught me</h2>
             </div>
             <div class="narrative">
-                <p>The biggest lesson here wasn't about the interface. It was about not trusting a pattern just because it already exists. Reusing the customer profile layout for carriers felt efficient at first and cost us a full round of testing once we realized carriers needed to be designed from scratch. The other thing I keep coming back to is measurement. I pushed for it, but defining success at a company this size, in the middle of a larger TMS overhaul, isn't something one project can force on its own. It's something I want to keep finding better ways to advocate for.</p>
+                <p>The biggest lesson here wasn't about the interface. It was about not trusting a pattern just because it already exists. Reusing the customer profile layout for carriers felt efficient at first and cost us a full round of testing once we realized carriers needed to be designed from scratch. The other thing I keep coming back to is measurement. I pushed for it, but defining success in the middle of a larger TMS overhaul isn't something one project can force, and I want to keep finding better ways to advocate for it.</p>
 
                 <p>One thing I'd still change: carrier identifiers (MC#, DOT#, Intrastate#) live in the Certifications card, several scrolls down. For someone just trying to confirm a carrier is compliant before booking, that's real friction; surfacing those identifiers higher up, right in the header, would make the fastest, most common check even faster.</p>
             </div>
