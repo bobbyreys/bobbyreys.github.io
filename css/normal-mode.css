@@ -275,6 +275,43 @@ body:has(.normal-mode.active) [role="button"] {
     transform: translateX(3px);
 }
 
+/* Password-protected case studies swap the arrow for a lock that opens on hover */
+.chapter-cta.is-locked::after {
+    content: none;
+}
+
+.chapter-cta .lock {
+    flex: none;
+    overflow: visible;
+}
+
+.chapter-cta .lock .shackle {
+    transform-box: fill-box;
+    transform-origin: 100% 100%;
+    transition: transform 0.25s ease;
+}
+
+.chapter:hover .chapter-cta.is-locked .lock .shackle,
+.chapter:focus-visible .chapter-cta.is-locked .lock .shackle,
+.chapter-cta.is-locked.is-unlocked .lock .shackle {
+    transform: translateY(-2px) rotate(-24deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .chapter-cta .lock .shackle {
+        transition: none;
+    }
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
 .chapter-media {
     background: var(--white);
     border-radius: 8px;

@@ -862,7 +862,7 @@
                         <h3 class="chapter-title">Echo Global Logistics</h3>
                         <p class="chapter-hook">Reps couldn't tell who they owned or who they were even allowed to book.</p>
                         <p class="chapter-desc">I designed a carrier list that turns ownership and compliance into a view reps can act on immediately.</p>
-                        <span class="chapter-cta">View case study</span>
+                        <span class="chapter-cta is-locked">View case study<svg class="lock" viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="shackle" d="M5 7V5a3 3 0 0 1 6 0v2"/><rect x="3" y="7" width="10" height="7" rx="1.6"/></svg><span class="sr-only"> (password protected)</span></span>
                     </div>
                     <div class="chapter-media">
                         <div class="chapter-media-inner" role="img" aria-label="Echo Carrier Portfolio Project">
@@ -954,7 +954,7 @@
                         <h3 class="chapter-title">Echo Global Logistics</h3>
                         <p class="chapter-hook">Every carrier task meant jumping between three systems that never agreed.</p>
                         <p class="chapter-desc">I unified the workflow into one page, cutting the guesswork reps used to do just to trust the data.</p>
-                        <span class="chapter-cta">View case study</span>
+                        <span class="chapter-cta is-locked">View case study<svg class="lock" viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="shackle" d="M5 7V5a3 3 0 0 1 6 0v2"/><rect x="3" y="7" width="10" height="7" rx="1.6"/></svg><span class="sr-only"> (password protected)</span></span>
                     </div>
                     <div class="chapter-media">
                         <div class="chapter-media-inner" role="img" aria-label="Echo Global Logistics Project">
@@ -1127,5 +1127,13 @@
             </div>
         </footer>
     </div>
+    <script>
+        // Show an open lock on the password-protected case studies when this browser already has the password saved.
+        document.addEventListener('DOMContentLoaded', function () {
+            var saved = false;
+            try { saved = !!localStorage.getItem('echo-case-study-pw'); } catch (e) {}
+            if (saved) document.querySelectorAll('.chapter-cta.is-locked').forEach(function (el) { el.classList.add('is-unlocked'); });
+        });
+    </script>
 </body>
 </html>
